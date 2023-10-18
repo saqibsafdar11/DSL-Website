@@ -1,10 +1,30 @@
 ---
-title: "Website for Digital Skills Lab R workshops"
+title: "Digital Skills Lab R workshops"
+image: images/DigitalSkillsLab.png
+about:
+  template: marquee
+  image-width: 40em
+  image-shape: rounded
+  links: 
+    - text: Email
+      icon: envelope
+      href: mailto:Digital.Skills.Lab@lse.ac.uk
+    - text: Link to book
+      icon: book
+      href: https://apps.lse.ac.uk/training-system/userBooking/course/9999199
 ---
 
-This is a Quarto website. 
+This website provides and introduction to the R workshops run by the Digital Skills Lab (DSL) at LSE.
 
-```{webr-r}
-1 + 1
-```
+You can navigate this website using the top bar menu, where you can find information about:
 
+-   Why R is a popular programming language and why you should learn it
+
+-   How to install R and RStudio on to your own laptops
+
+-   Information about the workshops which includes download links
+
+-   How to get started with the workshops materials
+
+
+![](images/r_logo.png){width="25%" fig-align="center"}

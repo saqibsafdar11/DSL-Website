@@ -6,29 +6,38 @@ project:
   - webr-worker.js
 
 website:
-  title: "Website for Digital Skills Lab R workshops"
+  title: "Learning R at the DSL"
   search: true
   reader-mode: true
   navbar:
     left:
       - href: index.qmd
         text: Home
+      - href: install.qmd
+        text: Install R and RStudio
       - href: example-page.qmd
-        text: Example page
+        text: R Testing Ground
       - icon: github
         href: https://github.com/andrewmoles2
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+        - flatly
+        - css/roboto.css
+    css: css/styles.css
     toc: true
+    toc-depth: 4
+    toc-location: left
+    mainfont: roboto
+    #title-block-banner: "#15BC9B"
+    #title-block-banner-color: "#000508"
 
 # Set default options for every webpage that may or may not include webR.
 webr: 
   show-startup-message: false    # Display status of webR initialization
 #  show-header-message: false     # Check to see if COOP&COEP headers are set for speed.
-#  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
+  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
 #  base-url: ''                   # Base URL used for specifying where R WebAssembly binaries should be located
 #  home-dir: '/home/rstudio'      # Customize where the working directory is
 #  channel-type: 'post-message'   # Specify communication channel

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Website for Digital Skills Lab R workshops</title>
+<title>Learning R at the DSL - Digital Skills Lab R workshops</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -59,207 +58,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<style>
-  .monaco-editor pre {
-    background-color: unset !important;
-  }
-
-  .qwebr-icon-status-spinner {
-    color: #7894c4;
-  }
-
-  .qwebr-icon-run-code {
-    color: #0d9c29
-  }
-
-  .btn-webr {
-    background-color: #EEEEEE;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0; /* Extra styling for consistency */
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    -webkit-text-decoration: none;
-    -moz-text-decoration: none;
-    -ms-text-decoration: none;
-    -o-text-decoration: none;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    border-color: #dee2e6;
-    border: 1px solid rgba(0,0,0,0);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-
-  .btn-webr:hover {
-    color: #000;
-    background-color: #e3e6ea;
-    border-color: #e1e5e9;
-  }
-
-  .btn-webr:disabled,.btn-webr.disabled,fieldset:disabled .btn-webr {
-    pointer-events: none;
-    opacity: .65
-  }
-</style>
-
-<script type="module">
-
-  // Start a timer
-  const initializeWebRTimerStart = performance.now();
-
-  // Determine if we need to install R packages
-  var installRPackagesList = [''];
-  // Check to see if we have an empty array, if we do set to skip the installation.
-  var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
-
-  // Display a startup message?
-  var showStartupMessage = false;
-  var showHeaderMessage = false;
-  if (showStartupMessage) {
-
-    // Create the outermost div element
-    var quartoTitleMeta = document.createElement("div");
-    quartoTitleMeta.classList.add("quarto-title-meta");
-
-    // Create the first inner div element
-    var firstInnerDiv = document.createElement("div");
-
-    // Create the second inner div element with "WebR Status" heading 
-    // and contents
-    var secondInnerDiv = document.createElement("div");
-    secondInnerDiv.classList.add("quarto-title-meta-heading");
-    secondInnerDiv.innerText = "WebR Status";
-
-    // Add another inner div
-    var secondInnerDivContents = document.createElement("div");
-    secondInnerDivContents.classList.add("quarto-title-meta-contents");
-
-    // Describe the WebR state
-    var startupMessageWebR = document.createElement("p");
-    startupMessageWebR.innerText = "🟡 Loading...";
-    startupMessageWebR.setAttribute("id", "startup");
-    // Add `aria-live` to auto-announce the startup status to screen readers
-    startupMessageWebR.setAttribute("aria-live", "assertive");
-
-    // Put everything together
-    secondInnerDivContents.appendChild(startupMessageWebR);
-
-    // Add a status indicator for COOP and COEP Headers
-    if (showHeaderMessage) {
-      var crossOriginMessage = document.createElement("p");
-      crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
-      crossOriginMessage.setAttribute("id", "coop-coep-header");
-      secondInnerDivContents.appendChild(crossOriginMessage);
-    }
-
-    firstInnerDiv.appendChild(secondInnerDiv);
-    firstInnerDiv.appendChild(secondInnerDivContents);
-    quartoTitleMeta.appendChild(firstInnerDiv);
-
-    // Add new element as last child in header element
-    var header = document.getElementById("title-block-header");
-
-    // Check if the header option is present or missing
-    if(header) {
-      // If present, directly append the child element.
-      header.appendChild(quartoTitleMeta);
-    } else {
-      // Attempt to place the new element inside a header _after_ the Monaco initialization
-      var monacoScript = document.getElementById("webr-monaco-editor-init");
-      var header = document.createElement("header");
-      header.setAttribute("id", "title-block-header");
-      // Now attempt to add the webR area to the title
-      header.appendChild(quartoTitleMeta);
-      // Include the header after the script tag
-      monacoScript.after(header);
-    }
-  }
-
-  // Retrieve the webr.mjs
-  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
-
-  // Populate WebR options with defaults or new values based on 
-  // webr meta
-  globalThis.webR = new WebR({
-    "baseURL": "https://webr.r-wasm.org/v0.2.1/",
-    "serviceWorkerUrl": "",
-    "homedir": "/home/web_user", 
-    "channelType": ChannelType.Automatic
-  });
-
-  // Initialization WebR
-  await globalThis.webR.init();
-
-  // Setup a shelter
-  globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
-
-  // Setup a pager to allow processing help documentation 
-  await globalThis.webR.evalRVoid('webr::pager_install()'); 
-
-  // Package install 
-  async function installRPackagesWithStatus(packages, status = true) {
-
-    // Update reason for code cells not being executable
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.innerText = "🟡 Installing packages ...";
-    });
-
-    // Iterate through package list
-    for (let i = 0; i < packages.length; i++) {
-
-      // Obtain one package
-      const activePackage = packages[i];
-
-      // Update status of package install with progress
-      if (status) {
-        startupMessageWebR.innerHTML = 
-           `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> 
-            <span>Installing package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
-      }
-
-      // Install the selected package
-      await globalThis.webR.installPackages([activePackage]);
-    }
-  }
-
-  // Check to see if any packages need to be installed
-  if (setupRPackages) {
-    // Obtain only a unique list of packages
-    const uniqueRPackageList = Array.from(new Set(installRPackagesList));
-
-    // Install R packages one at a time (either silently or with a status update)
-    await installRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
-  }
-
-  // Stop timer
-  const initializeWebRTimerEnd = performance.now();
-
-  // Release document status as ready
-  if (showStartupMessage) {
-    startupMessageWebR.innerText = "🟢 Ready!"
-  }
-  
-  // Switch to allowing code to be executed
-  document.querySelectorAll(".btn-webr").forEach((btn) => {
-    btn.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
-    btn.disabled = false;
-  });
-
-</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -267,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Website for Digital Skills Lab R workshops</span>
+    <span class="navbar-title">Learning R at the DSL</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -281,8 +85,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./install.html" rel="" target="">
+ <span class="menu-text">Install R and RStudio</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./example-page.html" rel="" target="">
- <span class="menu-text">Example page</span></a>
+ <span class="menu-text">R Testing Ground</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/andrewmoles2" rel="" target=""><i class="bi bi-github" role="img">
@@ -304,315 +112,56 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
-<script type="module" id="webr-monaco-editor-init">
-
-  // Configure the Monaco Editor's loader
-  require.config({
-    paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs'
-    }
-  });
-</script>
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Website for Digital Skills Lab R workshops</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="images/DigitalSkillsLab.png" class="about-image
+  rounded " style="width: 40em;">
   </div>
-  
-
-</header>
-
-<p>This is a Quarto website.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">🟡 Loading
-  webR...</button>
-<div id="webr-editor-1"></div>
-<div id="webr-code-output-1" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Digital Skills Lab R workshops</h1>
 </div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-1");
-  const outputDiv = document.getElementById("webr-code-output-1");
-  const editorDiv = document.getElementById("webr-editor-1");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
-  // Load the Monaco Editor and create an instance
-  let editor;
-  require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(editorDiv, {
-      value: `1 + 1`,
-      language: 'r',
-      theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      fontSize: '17.5rem',               // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
-    });
-
-    // Dynamically modify the height of the editor window if new lines are added.
-    let ignoreEvent = false;
-    const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
-      // We're avoiding a width change
-      //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
-      try {
-        ignoreEvent = true;
-
-        // The key to resizing is this call
-        editor.layout();
-      } finally {
-        ignoreEvent = false;
-      }
-    };
-
-    // Helper function to check if selected text is empty
-    function isEmptyCodeText(selectedCodeText) {
-      return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
-    }
-
-    // Registry of keyboard shortcuts that should be re-added to each editor window
-    // when focus changes.
-    const addWebRKeyboardShortCutCommands = () => {
-      // Add a keydown event listener for Shift+Enter to run all code in cell
-      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
-
-        // Retrieve all text inside the editor
-        executeCode(editor.getValue());
-      });
-
-      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-
-        // Get the selected text from the editor
-        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Check if no code is selected
-        if (isEmptyCodeText(selectedText)) {
-          // Obtain the current cursor position
-          let currentPosition = editor.getPosition();
-          // Retrieve the current line content
-          let currentLine = editor.getModel().getLineContent(currentPosition.lineNumber);
-
-          // Propose a new position to move the cursor to
-          let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
-
-          // Check if the new position is beyond the last line of the editor
-          if (newPosition.lineNumber > editor.getModel().getLineCount()) {
-            // Add a new line at the end of the editor
-            editor.executeEdits("addNewLine", [{
-            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
-            text: "\n", 
-            forceMoveMarkers: true,
-            }]);
-          }
-          
-          // Run the entire line of code.
-          executeCode(currentLine);
-
-          // Move cursor to new position
-          editor.setPosition(newPosition);
-        } else {
-          // Code to run when Ctrl+Enter is pressed with selected code
-          executeCode(selectedText);
-        }
-      });
-    }
-
-    // Register an on focus event handler for when a code cell is selected to update
-    // what keyboard shortcut commands should work.
-    // This is a workaround to fix a regression that happened with multiple
-    // editor windows since Monaco 0.32.0 
-    // https://github.com/microsoft/monaco-editor/issues/2947
-    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
-
-    // Register an on change event for when new code is added to the editor window
-    editor.onDidContentSizeChange(updateHeight);
-
-    // Manually re-update height to account for the content we inserted into the call
-    updateHeight();
-  });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-
-    // Disallowing execution of other code cells
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.disabled = true;
-    });
-
-    // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Create a pager variable for help/file contents
-    let pager = [];
-
-    // Process 
-    async function parseTypePager(msg) { 
-
-        // Split out the event data
-        const { path, title, deleteFile } = msg.data; 
-
-        // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
-          // Obtain the file content
-          let content = new TextDecoder().decode(data);
-
-          // Remove excessive backspace characters until none remain
-          while(content.match(/.[\b]/)){
-            content = content.replace(/.[\b]/g, '');
-          }
-
-          // Returned cleaned data
-          return content;
-        });
-
-        // Unlink file if needed
-        if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
-        } 
-
-        // Return extracted data with spaces
-        return paged_data;
-    } 
-
-    // Initialize webR
-    await globalThis.webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image event stored
-      msgs.forEach((msg) => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        } 
-      });
-
-      // Use `map` to process the filtered "pager" events asynchronously
-      const pager = await Promise.all(
-        msgs.filter(msg => msg.type === 'pager').map(
-          async (msg) => {
-            return await parseTypePager(msg);
-          }
-        )
-      );
-
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-
-      // Display the pager data
-      if (pager) {
-        // Use the `pre` element to preserve whitespace.
-        pager.forEach((paged_data, index) => {
-          let pre_pager = document.createElement("pre");
-          pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-1-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
-        });
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-    }
-
-    // Switch to allowing execution of code
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.disabled = false;
-    });
-
-    // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
-  }
-
-  // Add a click event listener to the run button
-  runButton.onclick = function () {
-    executeCode(editor.getValue());
-  };
-</script>
+<div class="quarto-title-meta">
+  </div>
+</header> <main class="content" id="quarto-document-content">
+<p>This website provides and introduction to the R workshops run by the Digital Skills Lab (DSL) at LSE.</p>
+<p>You can navigate this website using the top bar menu, where you can find information about:</p>
+<ul>
+<li><p>Why R is a popular programming language and why you should learn it</p></li>
+<li><p>How to install R and RStudio on to your own laptops</p></li>
+<li><p>Information about the workshops which includes download links</p></li>
+<li><p>How to get started with the workshops materials</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/r_logo.png" class="img-fluid figure-img" style="width:25.0%"></p>
+</figure>
+</div>
 
 
-
-</main> <!-- /main -->
+</main> 
+    <div class="about-footer"><div class="about-links">
+  <a href="mailto:Digital.Skills.Lab@lse.ac.uk" class="about-link" rel="" target="">
+    <i class="bi bi-envelope"></i>
+     <span class="about-link-text">Email</span>
+  </a>
+  <a href="https://apps.lse.ac.uk/training-system/userBooking/course/9999199" class="about-link" rel="" target="">
+    <i class="bi bi-book"></i>
+     <span class="about-link-text">Link to book</span>
+  </a>
+</div>
+</div>
+  </div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -633,13 +182,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
