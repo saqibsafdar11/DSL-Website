@@ -1,0 +1,10 @@
+---
+title: "Example page"
+---
+
+Hello, I'm Andrew.
+
+```{webr-r}
+1 + 1
+```
+

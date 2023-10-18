@@ -1,0 +1,10 @@
+---
+title: "Website for Digital Skills Lab R workshops"
+---
+
+This is a Quarto website. 
+
+```{webr-r}
+1 + 1
+```
+
