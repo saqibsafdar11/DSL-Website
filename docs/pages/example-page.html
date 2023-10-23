@@ -23,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/downloadthis-1.9.1/downloadthis.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/downloadthis-1.9.1/downloadthis.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
   const initializeWebRTimerStart = performance.now();
 
   // Determine if we need to install R packages
-  var installRPackagesList = ['ggplot2', 'dplyr'];
+  var installRPackagesList = ['ggplot2', 'dplyr', 'quanteda', 'quanteda.textstats'];
   // Check to see if we have an empty array, if we do set to skip the installation.
   var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
 
@@ -257,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
 
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body class="floating nav-fixed">
@@ -267,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Learning R at the DSL</span>
     </a>
   </div>
@@ -278,15 +278,31 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./install.html" rel="" target="">
+    <a class="nav-link" href="../pages/whyR.html" rel="" target="">
+ <span class="menu-text">Why learn R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/install.html" rel="" target="">
  <span class="menu-text">Install R and RStudio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./example-page.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../pages/workshop-materials.html" rel="" target="">
+ <span class="menu-text">Workshop Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/using-files.html" rel="" target="">
+ <span class="menu-text">Using R Markdown files</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/faq.html" rel="" target="">
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/example-page.html" rel="" target="" aria-current="page">
  <span class="menu-text">R Testing Ground</span></a>
   </li>  
   <li class="nav-item compact">
@@ -905,7 +921,7 @@ ggplot(sw_heights, aes(x = species, y = avg_height)) +
     executeCode(editor.getValue());
   };
 </script>
-<p><a href="#dnldts34278" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiUiBUZXN0aW5nIGdyb3VuZCIKLS0tCgpPbiB0aGlzIHBhZ2UsIHlvdSBjYW4gcGxheSBhcm91bmQgd2l0aCBSIHRocm91Z2ggdGhpcyB3ZWJzaXRlISAKCkJlbG93IGlzIGFuIGV4YW1wbGU6CmBgYHt3ZWJyLXJ9Cm5hbWUgPC0gIkFuZHJldyIKCmRlcHQgPC0gIkRTTCIKCnBhc3RlMChuYW1lLCAiIHdvcmtzIGF0IHRoZSAiLCBkZXB0KQpgYGAKCkFub3RoZXIgZXhhbXBsZSBsb29raW5nIGF0IHNvbWUgc3RhciB3YXJzIGRhdGE6CmBgYHt3ZWJyLXJ9CmxpYnJhcnkoZHBseXIpCmxpYnJhcnkoZ2dwbG90MikKCnN3X2hlaWdodHMgPC0gZHBseXI6OnN0YXJ3YXJzICU+JQogIGdyb3VwX2J5KHNwZWNpZXMpICU+JQogIHN1bW1hcmlzZShhdmdfaGVpZ2h0ID0gbWVhbihoZWlnaHQsIG5hLnJtID0gVFJVRSkpICU+JQogIGZpbHRlcihzcGVjaWVzICVpbiUgYygiRHJvaWQiLCAiSHVtYW4iLCAiV29va2llZSIpKQoKc3dfaGVpZ2h0cwoKZ2dwbG90KHN3X2hlaWdodHMsIGFlcyh4ID0gc3BlY2llcywgeSA9IGF2Z19oZWlnaHQpKSArCiAgZ2VvbV9jb2woKSArCiAgY29vcmRfZmxpcCgpCmBgYAoKCnt7PCBkb3dubG9hZHRoaXMgZXhhbXBsZS1wYWdlLnFtZCBsYWJlbD0nRG93bmxvYWQgUiBmaWxlJyBkbmFtZT1leGFtcGxlIGljb249ci1jaXJjbGUgdHlwZT1zdWNjZXNzID59fQ==').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts14086" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiUiBUZXN0aW5nIGdyb3VuZCIKLS0tCgpPbiB0aGlzIHBhZ2UsIHlvdSBjYW4gcGxheSBhcm91bmQgd2l0aCBSIHRocm91Z2ggdGhpcyB3ZWJzaXRlISAKCkJlbG93IGlzIGFuIGV4YW1wbGU6CmBgYHt3ZWJyLXJ9Cm5hbWUgPC0gIkFuZHJldyIKCmRlcHQgPC0gIkRTTCIKCnBhc3RlMChuYW1lLCAiIHdvcmtzIGF0IHRoZSAiLCBkZXB0KQpgYGAKCkFub3RoZXIgZXhhbXBsZSBsb29raW5nIGF0IHNvbWUgc3RhciB3YXJzIGRhdGE6CmBgYHt3ZWJyLXJ9CmxpYnJhcnkoZHBseXIpCmxpYnJhcnkoZ2dwbG90MikKCnN3X2hlaWdodHMgPC0gZHBseXI6OnN0YXJ3YXJzICU+JQogIGdyb3VwX2J5KHNwZWNpZXMpICU+JQogIHN1bW1hcmlzZShhdmdfaGVpZ2h0ID0gbWVhbihoZWlnaHQsIG5hLnJtID0gVFJVRSkpICU+JQogIGZpbHRlcihzcGVjaWVzICVpbiUgYygiRHJvaWQiLCAiSHVtYW4iLCAiV29va2llZSIpKQoKc3dfaGVpZ2h0cwoKZ2dwbG90KHN3X2hlaWdodHMsIGFlcyh4ID0gc3BlY2llcywgeSA9IGF2Z19oZWlnaHQpKSArCiAgZ2VvbV9jb2woKSArCiAgY29vcmRfZmxpcCgpCmBgYAoKCnt7PCBkb3dubG9hZHRoaXMgZXhhbXBsZS1wYWdlLnFtZCBsYWJlbD0nRG93bmxvYWQgUiBmaWxlJyBkbmFtZT1leGFtcGxlIGljb249ci1jaXJjbGUgdHlwZT1zdWNjZXNzID59fQ==').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -913,7 +929,7 @@ ggplot(sw_heights, aes(x = species, y = avg_height)) +
       a.download = 'example.qmd'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-success downloadthis  " id="dnldts34278"><i class="bi bi-r-circle"></i> Download R file </button></a></p>
+        });"><button class="btn btn-success downloadthis  " id="dnldts14086"><i class="bi bi-r-circle"></i> Download R file </button></a></p>
 
 
 

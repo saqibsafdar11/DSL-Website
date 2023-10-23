@@ -13,9 +13,17 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: install.qmd
+      - href: pages/whyR.qmd
+        text: Why learn R
+      - href: pages/install.qmd
         text: Install R and RStudio
-      - href: example-page.qmd
+      - href: pages/workshop-materials.qmd
+        text: Workshop Materials
+      - href: pages/using-files.qmd
+        text: Using R Markdown files
+      - href: pages/faq.qmd
+        text: FAQ
+      - href: pages/example-page.qmd
         text: R Testing Ground
       - icon: github
         href: https://github.com/andrewmoles2
@@ -37,7 +45,7 @@ format:
 webr: 
   show-startup-message: false    # Display status of webR initialization
 #  show-header-message: false     # Check to see if COOP&COEP headers are set for speed.
-  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
+  packages: ['ggplot2', 'dplyr', 'quanteda', 'quanteda.textstats'] # Pre-install dependencies
 #  base-url: ''                   # Base URL used for specifying where R WebAssembly binaries should be located
 #  home-dir: '/home/rstudio'      # Customize where the working directory is
 #  channel-type: 'post-message'   # Specify communication channel

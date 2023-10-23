@@ -26,5 +26,9 @@ You can navigate this website using the top bar menu, where you can find informa
 
 -   How to get started with the workshops materials
 
+-   Frequently asked questions about the workshops and R
+
+-   A testing ground for playing around with R where you can run R through this website
+
 
 ![](images/r_logo.png){width="25%" fig-align="center"}

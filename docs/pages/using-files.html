@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning R at the DSL - Installing R and RStudio</title>
+<title>Learning R at the DSL - Using R Markdown files</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body class="floating nav-fixed">
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Learning R at the DSL</span>
     </a>
   </div>
@@ -82,15 +82,31 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./install.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../pages/whyR.html" rel="" target="">
+ <span class="menu-text">Why learn R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/install.html" rel="" target="">
  <span class="menu-text">Install R and RStudio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./example-page.html" rel="" target="">
+    <a class="nav-link" href="../pages/workshop-materials.html" rel="" target="">
+ <span class="menu-text">Workshop Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/using-files.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Using R Markdown files</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/faq.html" rel="" target="">
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/example-page.html" rel="" target="">
  <span class="menu-text">R Testing Ground</span></a>
   </li>  
   <li class="nav-item compact">
@@ -118,22 +134,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#windows-install" id="toc-windows-install" class="nav-link active" data-scroll-target="#windows-install">Windows install</a>
+  <li><a href="#opening-rstudio" id="toc-opening-rstudio" class="nav-link active" data-scroll-target="#opening-rstudio">Opening RStudio</a>
   <ul>
-  <li><a href="#install-r" id="toc-install-r" class="nav-link" data-scroll-target="#install-r">Install R</a></li>
-  <li><a href="#install-rstudio" id="toc-install-rstudio" class="nav-link" data-scroll-target="#install-rstudio">Install RStudio</a></li>
+  <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users">Windows users</a></li>
+  <li><a href="#mac-users" id="toc-mac-users" class="nav-link" data-scroll-target="#mac-users">Mac users</a></li>
   </ul></li>
-  <li><a href="#mac-install" id="toc-mac-install" class="nav-link" data-scroll-target="#mac-install">Mac install</a>
-  <ul>
-  <li><a href="#install-r-1" id="toc-install-r-1" class="nav-link" data-scroll-target="#install-r-1">Install R</a>
-  <ul class="collapse">
-  <li><a href="#m1-or-m2-mac" id="toc-m1-or-m2-mac" class="nav-link" data-scroll-target="#m1-or-m2-mac">M1 or M2 Mac</a></li>
-  <li><a href="#intel-mac" id="toc-intel-mac" class="nav-link" data-scroll-target="#intel-mac">Intel Mac</a></li>
-  </ul></li>
-  <li><a href="#install-xquartz" id="toc-install-xquartz" class="nav-link" data-scroll-target="#install-xquartz">Install XQuartz</a></li>
-  <li><a href="#install-rstudio-1" id="toc-install-rstudio-1" class="nav-link" data-scroll-target="#install-rstudio-1">Install RStudio</a></li>
-  </ul></li>
-  <li><a href="#installing-r-and-rstudio-installation-issues" id="toc-installing-r-and-rstudio-installation-issues" class="nav-link" data-scroll-target="#installing-r-and-rstudio-installation-issues">Installing R and RStudio installation issues</a></li>
+  <li><a href="#opening-the-r-markdown-files" id="toc-opening-the-r-markdown-files" class="nav-link" data-scroll-target="#opening-the-r-markdown-files">Opening the R Markdown files</a></li>
+  <li><a href="#using-a-r-markdown-file" id="toc-using-a-r-markdown-file" class="nav-link" data-scroll-target="#using-a-r-markdown-file">Using a R Markdown file</a></li>
   </ul>
 </nav>
 </nav>
@@ -146,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Installing R and RStudio</h1>
+<h1 class="title">Using R Markdown files</h1>
 </div>
 
 
@@ -161,72 +168,84 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This page is about getting R and RStudio installed on your laptop so you can start using R! Below are step by step instructions for getting the software needed installed.</p>
-<section id="windows-install" class="level2">
-<h2 class="anchored" data-anchor-id="windows-install">Windows install</h2>
-<section id="install-r" class="level3">
-<h3 class="anchored" data-anchor-id="install-r">Install R</h3>
+<section id="opening-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="opening-rstudio">Opening RStudio</h2>
+<p>If you have not done so already, open RStudio!</p>
+<section id="windows-users" class="level3">
+<h3 class="anchored" data-anchor-id="windows-users">Windows users</h3>
 <ul>
-<li><p>To install R, you need to download the installer from the <a href="https://cloud.r-project.org/bin/windows/">R website</a></p></li>
-<li><p>Click on either <strong>base</strong> or <strong>install R for the first time</strong></p></li>
-<li><p>Click on the <strong>download R for Windows</strong> link</p></li>
-<li><p>Once downloaded, open the <code>.exe</code> file and follow the installation instructions on your computer</p></li>
+<li>Type <code>RStudio</code> in the search bar (bottom left, next to windows symbol)</li>
+<li>If you prefer, open the start menu (click windows symbol), then scroll until you find RStudio</li>
 </ul>
 </section>
-<section id="install-rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="install-rstudio">Install RStudio</h3>
+<section id="mac-users" class="level3">
+<h3 class="anchored" data-anchor-id="mac-users">Mac users</h3>
 <ul>
-<li><p>To install RStudio we download it from the <a href="https://posit.co/download/rstudio-desktop/">Posit website</a></p></li>
-<li><p>Click on the <strong>Download RStudio Desktop</strong> link</p></li>
-<li><p>Once downloaded, open the <code>.exe</code> file and follow the installation instructions on your computer</p></li>
+<li>Hit command + space and type in <code>RStudio</code></li>
+<li>If you prefer to look for RStudio in an applications folder (open finder and select Applications on the left panel), you should be looking for this icon: <img src="images/rs.png" class="img-fluid"></li>
 </ul>
+<p>When RStudio opens you should see a layout with 3 panels, similar to the image below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rstudio.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">RStudio, image from 2023</figcaption>
+</figure>
+</div>
+<p>The largest panel on the left with the <code>&gt;</code> is the console. On the bottom right there is the files/plot panel, and top right is the environment panel.</p>
+<p>If your installation of R and RStudio has worked, first RStudio should be open, and second you should see a message in your console panel telling you the version of R you have installed, like the image below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/r-version.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">R version displayed in RStudio console</figcaption>
+</figure>
+</div>
+<p>There are three ways of running R code: console, scripts and R Markdown. In the R workshops we use R Markdown.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is R Markdown?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An R Markdown file has sections of text and code together in a single document. This is helpful for tutorials, documentation, and writing reports.</p>
+<p>An in-depth description can be found in the <a href="https://r4ds.had.co.nz/r-markdown.html">R for Data Science</a> open source book</p>
+</div>
+</div>
 </section>
 </section>
-<section id="mac-install" class="level2">
-<h2 class="anchored" data-anchor-id="mac-install">Mac install</h2>
-<section id="install-r-1" class="level3">
-<h3 class="anchored" data-anchor-id="install-r-1">Install R</h3>
-<p>To install R on your Mac you need to know the type of processor your Mac uses. This is straightforward to find out:</p>
-<ol type="1">
-<li>On the top navigation bar on your Mac, click on the apple icon</li>
-<li>From the drop down menu, select <em>About This Mac</em></li>
-<li>In <em>Overview</em> you will find the information about your Mac. If you have an <em>Intel Mac</em>, you will see the processor row, which has information that includes <em>Intel</em>. If you have an M1 or M2 Mac, you will see chip and M1/M2 in the <em>Overview</em> with something like <em>Chip Apple M1</em></li>
-</ol>
-<p><img src="images/mac_pros1.png" class="img-fluid" style="width:49.0%"> <img src="images/mac_pros2.png" class="img-fluid" style="width:49.0%"></p>
-<section id="m1-or-m2-mac" class="level4">
-<h4 class="anchored" data-anchor-id="m1-or-m2-mac">M1 or M2 Mac</h4>
-<ul>
-<li><p>To install R, you need to download the installer from the <a href="https://cloud.r-project.org/bin/macosx/">R website</a></p></li>
-<li><p>If you have a <em>M1 Mac</em> you will need click on the link the contains <strong>arm64</strong> to download R. It will look something like <code>R-4.3.1-arm64.pkg</code></p></li>
-<li><p>Once downloaded, open the <code>.pkg</code> file and follow the installation instructions</p></li>
-</ul>
+<section id="opening-the-r-markdown-files" class="level2">
+<h2 class="anchored" data-anchor-id="opening-the-r-markdown-files">Opening the R Markdown files</h2>
+<p>Opening a R Markdown file is very similar to opening a file in other software. If you move your mouse/curser to the top of your screen you will see a banner with <em>file</em>, <em>edit</em>, <em>code</em> etc. Using <code>File &gt; Open File...</code>, find the R Markdown file to load. R Markdown files have the extension <code>.Rmd</code>.</p>
 </section>
-<section id="intel-mac" class="level4">
-<h4 class="anchored" data-anchor-id="intel-mac">Intel Mac</h4>
-<ul>
-<li><p>To install R, you need to download the installer from the <a href="https://cloud.r-project.org/bin/macosx/">R website</a></p></li>
-<li><p>If you have a <em>Intel Mac</em> you will need to click on the link that just contains the version of R. It will look something like <code>R-4.3.1.pkg</code>, and can be located a touch further down the page under the header <strong>Binaries for legacy macOS/OS X systems:</strong></p></li>
-<li><p>Once downloaded, open the <code>.pkg</code> file and follow the installation instructions</p></li>
-</ul>
-</section>
-</section>
-<section id="install-xquartz" class="level3">
-<h3 class="anchored" data-anchor-id="install-xquartz">Install XQuartz</h3>
-<p>To run R on a Mac operating system, XQuartz is required. You can install it by following <a href="https://www.xquartz.org/">this link</a>, downloading it and following the installation instructions.</p>
-</section>
-<section id="install-rstudio-1" class="level3">
-<h3 class="anchored" data-anchor-id="install-rstudio-1">Install RStudio</h3>
-<ul>
-<li><p>To install RStudio we download it from the <a href="https://posit.co/download/rstudio-desktop/">Posit website</a></p></li>
-<li><p>Click on the <strong>Download RStudio Desktop</strong> link</p></li>
-<li><p>Once downloaded, open the <code>.dmg</code> file and follow the installation instructions on your computer</p></li>
-</ul>
-</section>
-</section>
-<section id="installing-r-and-rstudio-installation-issues" class="level2">
-<h2 class="anchored" data-anchor-id="installing-r-and-rstudio-installation-issues">Installing R and RStudio installation issues</h2>
-<p>If your installation for R and RStudio did not work, this is likely because your computer is running an older operating system. In these cases you will have to install an older version of the software.</p>
-<p>It will be simplest, if you have faced installation issues, for you to come to a R workshop for support or book a 1-2-1 support session.</p>
+<section id="using-a-r-markdown-file" class="level2">
+<h2 class="anchored" data-anchor-id="using-a-r-markdown-file">Using a R Markdown file</h2>
+<p>We are using R Markdown notebooks for these workshops as we can add text around code, which can help us guide you. The image below shows the basic layout of a R Markdown document.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/R-Markdown.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption class="figure-caption">Image of R Markdown notebook, indicating the text and code sections</figcaption>
+</figure>
+</div>
+<p>There are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use <code>ctrl/command + Enter</code> to run each like just like you would with an R script.</p>
+<p>The most important thing for you to take note of is the code cells. Each code cell is like a small R script. You’ll notice the ``` markings around the code cell. It is important these do not get deleted, so be careful when editing your code!</p>
+<p>Finally, you can add your own code cell using <code>option+command+i</code> on a Mac or <code>ctrl + alt + i</code> on a Windows machine.</p>
+<p>Throughout the notebooks you will come across exercises, with empty code cells for you to type your code into. Your task is to test out the examples, then try and do the exercises.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have struggled with any of these steps, just come along to the workshops and ask a trainer for support</p>
+</div>
+</div>
 
 
 </section>
