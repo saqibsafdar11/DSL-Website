@@ -13,18 +13,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: pages/whyR.qmd
+      - href: whyR.qmd
         text: Why learn R
-      - href: pages/install.qmd
+      - href: install.qmd
         text: Install R and RStudio
-      - href: pages/workshop-materials.qmd
+      - href: workshop-materials.qmd
         text: Workshop Materials
-      - href: pages/using-files.qmd
+      - href: using-files.qmd
         text: Using R Markdown files
-      - href: pages/faq.qmd
-        text: FAQ
-      - href: pages/example-page.qmd
-        text: R Testing Ground
+      - text: Other information
+        menu: 
+          - href: faq.qmd
+            text: FAQ
+          - href: example-page.qmd
+            text: R Testing Ground
       - icon: github
         href: https://github.com/andrewmoles2
 
@@ -43,9 +45,9 @@ format:
 
 # Set default options for every webpage that may or may not include webR.
 webr: 
-  show-startup-message: false    # Display status of webR initialization
+  show-startup-message: true    # Display status of webR initialization
 #  show-header-message: false     # Check to see if COOP&COEP headers are set for speed.
-  packages: ['ggplot2', 'dplyr', 'quanteda', 'quanteda.textstats'] # Pre-install dependencies
+  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
 #  base-url: ''                   # Base URL used for specifying where R WebAssembly binaries should be located
 #  home-dir: '/home/rstudio'      # Customize where the working directory is
 #  channel-type: 'post-message'   # Specify communication channel

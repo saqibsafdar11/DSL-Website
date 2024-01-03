@@ -1,149 +1,163 @@
 [
   {
-    "objectID": "pages/using-files.html",
-    "href": "pages/using-files.html",
+    "objectID": "using-files.html",
+    "href": "using-files.html",
     "title": "Using R Markdown files",
     "section": "",
     "text": "If you have not done so already, open RStudio!\n\n\n\nType RStudio in the search bar (bottom left, next to windows symbol)\nIf you prefer, open the start menu (click windows symbol), then scroll until you find RStudio\n\n\n\n\n\nHit command + space and type in RStudio\nIf you prefer to look for RStudio in an applications folder (open finder and select Applications on the left panel), you should be looking for this icon: \n\nWhen RStudio opens you should see a layout with 3 panels, similar to the image below.\n\n\n\nRStudio, image from 2023\n\n\nThe largest panel on the left with the &gt; is the console. On the bottom right there is the files/plot panel, and top right is the environment panel.\nIf your installation of R and RStudio has worked, first RStudio should be open, and second you should see a message in your console panel telling you the version of R you have installed, like the image below.\n\n\n\nR version displayed in RStudio console\n\n\nThere are three ways of running R code: console, scripts and R Markdown. In the R workshops we use R Markdown.\n\n\n\n\n\n\nWhat is R Markdown?\n\n\n\nAn R Markdown file has sections of text and code together in a single document. This is helpful for tutorials, documentation, and writing reports.\nAn in-depth description can be found in the R for Data Science open source book"
   },
   {
-    "objectID": "pages/using-files.html#opening-rstudio",
-    "href": "pages/using-files.html#opening-rstudio",
+    "objectID": "using-files.html#opening-rstudio",
+    "href": "using-files.html#opening-rstudio",
     "title": "Using R Markdown files",
     "section": "",
     "text": "If you have not done so already, open RStudio!\n\n\n\nType RStudio in the search bar (bottom left, next to windows symbol)\nIf you prefer, open the start menu (click windows symbol), then scroll until you find RStudio\n\n\n\n\n\nHit command + space and type in RStudio\nIf you prefer to look for RStudio in an applications folder (open finder and select Applications on the left panel), you should be looking for this icon: \n\nWhen RStudio opens you should see a layout with 3 panels, similar to the image below.\n\n\n\nRStudio, image from 2023\n\n\nThe largest panel on the left with the &gt; is the console. On the bottom right there is the files/plot panel, and top right is the environment panel.\nIf your installation of R and RStudio has worked, first RStudio should be open, and second you should see a message in your console panel telling you the version of R you have installed, like the image below.\n\n\n\nR version displayed in RStudio console\n\n\nThere are three ways of running R code: console, scripts and R Markdown. In the R workshops we use R Markdown.\n\n\n\n\n\n\nWhat is R Markdown?\n\n\n\nAn R Markdown file has sections of text and code together in a single document. This is helpful for tutorials, documentation, and writing reports.\nAn in-depth description can be found in the R for Data Science open source book"
   },
   {
-    "objectID": "pages/using-files.html#opening-the-r-markdown-files",
-    "href": "pages/using-files.html#opening-the-r-markdown-files",
+    "objectID": "using-files.html#opening-the-r-markdown-files",
+    "href": "using-files.html#opening-the-r-markdown-files",
     "title": "Using R Markdown files",
     "section": "Opening the R Markdown files",
     "text": "Opening the R Markdown files\nOpening a R Markdown file is very similar to opening a file in other software. If you move your mouse/curser to the top of your screen you will see a banner with file, edit, code etc. Using File &gt; Open File..., find the R Markdown file to load. R Markdown files have the extension .Rmd."
   },
   {
-    "objectID": "pages/using-files.html#using-a-r-markdown-file",
-    "href": "pages/using-files.html#using-a-r-markdown-file",
+    "objectID": "using-files.html#using-a-r-markdown-file",
+    "href": "using-files.html#using-a-r-markdown-file",
     "title": "Using R Markdown files",
     "section": "Using a R Markdown file",
     "text": "Using a R Markdown file\nWe are using R Markdown notebooks for these workshops as we can add text around code, which can help us guide you. The image below shows the basic layout of a R Markdown document.\n\n\n\nImage of R Markdown notebook, indicating the text and code sections\n\n\nThere are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use ctrl/command + Enter to run each like just like you would with an R script.\nThe most important thing for you to take note of is the code cells. Each code cell is like a small R script. You’ll notice the ``` markings around the code cell. It is important these do not get deleted, so be careful when editing your code!\nFinally, you can add your own code cell using option+command+i on a Mac or ctrl + alt + i on a Windows machine.\nThroughout the notebooks you will come across exercises, with empty code cells for you to type your code into. Your task is to test out the examples, then try and do the exercises.\n\n\n\n\n\n\nNote\n\n\n\nIf you have struggled with any of these steps, just come along to the workshops and ask a trainer for support"
   },
   {
-    "objectID": "pages/faq.html",
-    "href": "pages/faq.html",
+    "objectID": "faq.html",
+    "href": "faq.html",
     "title": "FAQ",
     "section": "",
     "text": "In this page we list some of the most frequently asked questions about R, the workshops, or other more general topics."
   },
   {
-    "objectID": "pages/faq.html#workshops",
-    "href": "pages/faq.html#workshops",
+    "objectID": "faq.html#what-is-r",
+    "href": "faq.html#what-is-r",
+    "title": "FAQ",
+    "section": "What is R?",
+    "text": "What is R?\nR is an open-source, widely used statistical programming language, that is easy to learn and, thanks to its many extensions, can be used as a general-purpose programming language. R was first released in 1993 and has since risen greatly in popularity, being used in academic institutions as well as companies such as the BBC, NHS, Google, Facebook, Twitter, Microsoft, Office of National Statistics (ONS), Wellcome, Sanger Institute, New York Times, Financial Times, and Mozilla.\nR is simple to use and easy to read, this makes sharing your code easier and enables you to write your code faster. This is taken further by the Tidyverse ecosystem within R, that provides even easier to read code as well as excellent documentation. R is one of the best choices for data science and machine learning due to its wide pool of libraries for statistics, data manipulation and wrangling, data visualisation, and modelling; it is used across many sectors such as finance, healthcare, technology and retail for these purposes. R is the gold standard choice for data visualisation in data science thanks to the ggplot2 library and its many extensions. R also has one of the best open-source Integrated Development Environments (IDE) available in RStudio, not only does it make programming in R easy, it makes it simple to create documents with your code and outputs in various output formats such as HTML, Word, Powerpoint, and PDF."
+  },
+  {
+    "objectID": "faq.html#workshops",
+    "href": "faq.html#workshops",
     "title": "FAQ",
     "section": "Workshops",
-    "text": "Workshops\nWhy do we use this style of training?"
+    "text": "Workshops\n\nWhat should I do if I get stuck\n\nAsk your neighbour in the workshop\nSearch online:\n\n\nThe answer box on the top of Google’s results page\nhttps://stackoverflow.com/ (for task-specific solutions)\nhttps://www.r-bloggers.com/ (topic based tutorials)\nhttps://www.w3schools.com/r/ (w3 schools short tutorials)\nhttps://www.geeksforgeeks.org/r-programming-language-introduction/ (geeks for geeks R tutorials)\nhttp://www.cookbook-r.com/ (R cookbook)\n\n\nDon’t struggle too long looking online, ask the trainer if you can’t find a solution!\n\n\n\nWhy do we use this style of training?\nWe prefer a “learner-led” style of teaching, where you work at your own pace supported by trainers. In the real-world, this is similar to how you would learn to use software, searching online and asking for help while trying to solve problems."
   },
   {
-    "objectID": "pages/faq.html#r",
-    "href": "pages/faq.html#r",
+    "objectID": "faq.html#r-vs-python",
+    "href": "faq.html#r-vs-python",
     "title": "FAQ",
-    "section": "R",
-    "text": "R\nR vs Python\nR vs other software"
+    "section": "R vs Python",
+    "text": "R vs Python\nR and Python are quite similar tools and have a lot of overlap in their use cases. Generally speaking Python is better for advanced machine learning (such as neural nets and deep learning), and has better infrastructure for making code “production ready”. R on the other hand is better for statistics and data visualisation, and would be a good choice for small to medium size projects.\nUsually I would just go with whatever feels right when using or suits your use case better. If you are looking to get serious about software development or advanced machine learning, give Python a try. If you want an easier time with data wrangling, statistics, and data visualisation, then R is a great place for those tasks. If you can’t decide, try out both and see what feels better."
   },
   {
-    "objectID": "pages/install.html",
-    "href": "pages/install.html",
+    "objectID": "faq.html#r-vs-other-software-such-as-tableauexcelpower-bistataspss",
+    "href": "faq.html#r-vs-other-software-such-as-tableauexcelpower-bistataspss",
+    "title": "FAQ",
+    "section": "R vs other software such as Tableau/Excel/Power Bi/Stata/SPSS",
+    "text": "R vs other software such as Tableau/Excel/Power Bi/Stata/SPSS\nR, like Python, is a programming language. When you compare it to other software such as Excel or Stata, these are applications where functionality is wrapped up in a more user friendly style. The main reasons to use R other application based software are:\n\nIt is better at automation. If you are regularly running and analysis, R will be easier in the long run than software like SPSS or Stata\nR has more flexibility, meaning you can theoretically do almost anything. Application based software like Excel have limitations which can be difficult to overcome. For example, Excel has a row limit.\nR is “open-source”, which means you do not need to pay for a licence to use. This is massive advantage over software like Tableau or Power BI which are expensive.\nR isn’t just for statistics, or wrangling data. You can write reports, websites, presentations, and dashboards just using R. This flexibility isn’t possible in software like SPSS or Excel."
+  },
+  {
+    "objectID": "install.html",
+    "href": "install.html",
     "title": "Installing R and RStudio",
     "section": "",
     "text": "This page is about getting R and RStudio installed on your laptop so you can start using R! Below are step by step instructions for getting the software needed installed."
   },
   {
-    "objectID": "pages/install.html#windows-install",
-    "href": "pages/install.html#windows-install",
+    "objectID": "install.html#windows-install",
+    "href": "install.html#windows-install",
     "title": "Installing R and RStudio",
     "section": "Windows install",
     "text": "Windows install\n\nInstall R\n\nTo install R, you need to download the installer from the R website\nClick on either base or install R for the first time\nClick on the download R for Windows link\nOnce downloaded, open the .exe file and follow the installation instructions on your computer\n\n\n\nInstall RStudio\n\nTo install RStudio we download it from the Posit website\nClick on the Download RStudio Desktop link\nOnce downloaded, open the .exe file and follow the installation instructions on your computer"
   },
   {
-    "objectID": "pages/install.html#mac-install",
-    "href": "pages/install.html#mac-install",
+    "objectID": "install.html#mac-install",
+    "href": "install.html#mac-install",
     "title": "Installing R and RStudio",
     "section": "Mac install",
     "text": "Mac install\n\nInstall R\nTo install R on your Mac you need to know the type of processor your Mac uses. This is straightforward to find out:\n\nOn the top navigation bar on your Mac, click on the apple icon\nFrom the drop down menu, select About This Mac\nIn Overview you will find the information about your Mac. If you have an Intel Mac, you will see the processor row, which has information that includes Intel. If you have an M1 or M2 Mac, you will see chip and M1/M2 in the Overview with something like Chip Apple M1\n\n \n\nM1 or M2 Mac\n\nTo install R, you need to download the installer from the R website\nIf you have a M1 Mac you will need click on the link the contains arm64 to download R. It will look something like R-4.3.1-arm64.pkg\nOnce downloaded, open the .pkg file and follow the installation instructions\n\n\n\nIntel Mac\n\nTo install R, you need to download the installer from the R website\nIf you have a Intel Mac you will need to click on the link that just contains the version of R. It will look something like R-4.3.1.pkg, and can be located a touch further down the page under the header Binaries for legacy macOS/OS X systems:\nOnce downloaded, open the .pkg file and follow the installation instructions\n\n\n\n\nInstall XQuartz\nTo run R on a Mac operating system, XQuartz is required. You can install it by following this link, downloading it and following the installation instructions.\n\n\nInstall RStudio\n\nTo install RStudio we download it from the Posit website\nClick on the Download RStudio Desktop link\nOnce downloaded, open the .dmg file and follow the installation instructions on your computer"
   },
   {
-    "objectID": "pages/install.html#installing-r-and-rstudio-installation-issues",
-    "href": "pages/install.html#installing-r-and-rstudio-installation-issues",
+    "objectID": "install.html#installing-r-and-rstudio-installation-issues",
+    "href": "install.html#installing-r-and-rstudio-installation-issues",
     "title": "Installing R and RStudio",
     "section": "Installing R and RStudio installation issues",
     "text": "Installing R and RStudio installation issues\nIf your installation for R and RStudio did not work, this is likely because your computer is running an older operating system. In these cases you will have to install an older version of the software.\nIt will be simplest, if you have faced installation issues, for you to come to a R workshop for support or book a 1-2-1 support session."
+  },
+  {
+    "objectID": "workshop-materials.html",
+    "href": "workshop-materials.html",
+    "title": "Information about the workshops and how to get the materials",
+    "section": "",
+    "text": "Each workshop is 2 hours long\nYou choose which topic to work on. It is advised to work through the materials in the prescribed order unless you are already familiar with a particular topic\nYou will work with fellow learners, utilising your prior experience and web searches to find solutions, with a R expert on hand if you get stuck\nWorkshop sessions are hands on and practical\nEach worksheet will take on average 1 hour to complete (some longer, some shorter)\n\nTo prepare for the in-person workshops you need to get the materials. Below is information and steps on how to do this, as well as information on what is covered and recommended pathways."
+  },
+  {
+    "objectID": "workshop-materials.html#workshop-format",
+    "href": "workshop-materials.html#workshop-format",
+    "title": "Information about the workshops and how to get the materials",
+    "section": "",
+    "text": "Each workshop is 2 hours long\nYou choose which topic to work on. It is advised to work through the materials in the prescribed order unless you are already familiar with a particular topic\nYou will work with fellow learners, utilising your prior experience and web searches to find solutions, with a R expert on hand if you get stuck\nWorkshop sessions are hands on and practical\nEach worksheet will take on average 1 hour to complete (some longer, some shorter)\n\nTo prepare for the in-person workshops you need to get the materials. Below is information and steps on how to do this, as well as information on what is covered and recommended pathways."
+  },
+  {
+    "objectID": "workshop-materials.html#workshop-pathways",
+    "href": "workshop-materials.html#workshop-pathways",
+    "title": "Information about the workshops and how to get the materials",
+    "section": "Workshop pathways",
+    "text": "Workshop pathways\nThe files for the workshops are broken into four different series: Fundamentals, Intermediate, Data Wrangling, and Data Visualisation. There are several pathways through the workshops depending on your needs and preferences which are shown in the flow diagrams below.\n\n\n\nFlow diagram showing the full R series of workshops and a recommended route\n\n\n\n\n\nFlow diagram showing the pathway for those that are primarily interested in using R for data analysis and visualisation, with an option to do the intermediate series\n\n\n\n\n\nFlow diagram showing the pathway for those that are interested in learning programming with R, with option for those with some interest in also learning about data techniques\n\n\nThese flow diagrams were all made with R using the package DiagrammeR. The code that made them can be found on GitHub."
+  },
+  {
+    "objectID": "workshop-materials.html#workshop-materials",
+    "href": "workshop-materials.html#workshop-materials",
+    "title": "Information about the workshops and how to get the materials",
+    "section": "Workshop materials",
+    "text": "Workshop materials\nDownload the R Markdown files from each series below. Just press the button and the respective materials will download. Save the files where you can later find them.\n\nR Fundamentals\n Download R fundamentals files \n\n\nR Intermediate\n Download R intermediate files \n\n\nR Data Wrangling\n Download R data wrangling files \n\n\nR Data Visualisation\n Download R data visualisation files"
+  },
+  {
+    "objectID": "workshop-materials.html#uncompressing-files-important",
+    "href": "workshop-materials.html#uncompressing-files-important",
+    "title": "Information about the workshops and how to get the materials",
+    "section": "Uncompressing files (important)",
+    "text": "Uncompressing files (important)\nOnce downloaded it is important that you unzip/uncompress the file. The download is a zip file, which a file that has been compressed to save space for easier transfer and storage. You should uncompress these files otherwise it can be hard for some software to use the files inside.\nWindows\nRight-click on the file and choose Extract All, then select a location to save the uncompressed file.\nMac\nDouble click on the file and the uncompressed contents will appear next to your compressed file."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Digital Skills Lab R workshops",
     "section": "",
-    "text": "This website provides and introduction to the R workshops run by the Digital Skills Lab (DSL) at LSE.\nYou can navigate this website using the top bar menu, where you can find information about:\n\nWhy R is a popular programming language and why you should learn it\nHow to install R and RStudio on to your own laptops\nInformation about the workshops which includes download links\nHow to get started with the workshops materials\nFrequently asked questions about the workshops and R\nA testing ground for playing around with R where you can run R through this website"
+    "text": "This website provides and introduction to the R workshops run by the Digital Skills Lab (DSL) at LSE. You can navigate this website using the top bar menu, where you can find information about:\n\nWhy R is a popular programming language and why you should learn it\nHow to install R and RStudio on to your own laptops\nInformation about the workshops which includes download links\nHow to get started with the workshops materials\nFrequently asked questions about the workshops and R\nA testing ground for playing around with R where you can run R through this website"
   },
   {
-    "objectID": "pages/workshop-materials.html",
-    "href": "pages/workshop-materials.html",
-    "title": "Information about the workshops and how to get the materials",
-    "section": "",
-    "text": "Each workshop is 2 hours long\nYou choose which topic to work on. It is advised to work through the materials in the prescribed order unless you are already familiar with a particular topic\nYou will work with fellow learners, utilising your prior experience and web searches to find solutions, with a R expert on hand if you get stuck\nWorkshop sessions are hands on and practical\nEach worksheet will take on average 1 hour to complete (some longer, some shorter)\n\nTo prepare for the in-person workshops you need to get the materials. Below is information and steps on how to do this, as well as information on what is covered and recommended pathways."
-  },
-  {
-    "objectID": "pages/workshop-materials.html#workshop-format",
-    "href": "pages/workshop-materials.html#workshop-format",
-    "title": "Information about the workshops and how to get the materials",
-    "section": "",
-    "text": "Each workshop is 2 hours long\nYou choose which topic to work on. It is advised to work through the materials in the prescribed order unless you are already familiar with a particular topic\nYou will work with fellow learners, utilising your prior experience and web searches to find solutions, with a R expert on hand if you get stuck\nWorkshop sessions are hands on and practical\nEach worksheet will take on average 1 hour to complete (some longer, some shorter)\n\nTo prepare for the in-person workshops you need to get the materials. Below is information and steps on how to do this, as well as information on what is covered and recommended pathways."
-  },
-  {
-    "objectID": "pages/workshop-materials.html#workshop-pathways",
-    "href": "pages/workshop-materials.html#workshop-pathways",
-    "title": "Information about the workshops and how to get the materials",
-    "section": "Workshop pathways",
-    "text": "Workshop pathways\nThe files for the workshops are broken into four different series: Fundamentals, Intermediate, Data Wrangling, and Data Visualisation. There are several pathways through the workshops depending on your needs and preferences which are shown in the flow diagrams below.\n\n\n\nFlow diagram showing the full R series of workshops and a recommended route\n\n\n\n\n\nFlow diagram showing the pathway for those that are primarily interested in using R for data analysis and visualisation, with an option to do the intermediate series\n\n\n\n\n\nFlow diagram showing the pathway for those that are interested in learning programming with R, with option for those with some interest in also learning about data techniques\n\n\nThese flow diagrams were all made with R using the package DiagrammeR. The code that made them can be found on GitHub."
-  },
-  {
-    "objectID": "pages/workshop-materials.html#workshop-materials",
-    "href": "pages/workshop-materials.html#workshop-materials",
-    "title": "Information about the workshops and how to get the materials",
-    "section": "Workshop materials",
-    "text": "Workshop materials\nDownload the R Markdown files from each series below. Just press the button and the respective materials will download. Save the files where you can later find them.\n\nR Fundamentals\n\n\nR Intermediate\n\n\nR Data Wrangling\n\n\nR Data Visualisation"
-  },
-  {
-    "objectID": "pages/workshop-materials.html#uncompressing-files-important",
-    "href": "pages/workshop-materials.html#uncompressing-files-important",
-    "title": "Information about the workshops and how to get the materials",
-    "section": "Uncompressing files (important)",
-    "text": "Uncompressing files (important)\nOnce downloaded it is important that you unzip/uncompress the file. The download is a zip file, which a file that has been compressed to save space for easier transfer and storage. You should uncompress these files otherwise it can be hard for some software to use the files inside.\nWindows\nRight-click on the file and choose Extract All, then select a location to save the uncompressed file.\nMac\nDouble click on the file and the uncompressed contents will appear next to your compressed file."
-  },
-  {
-    "objectID": "pages/example-page.html",
-    "href": "pages/example-page.html",
+    "objectID": "example-page.html",
+    "href": "example-page.html",
     "title": "R Testing ground",
     "section": "",
-    "text": "On this page, you can play around with R through this website!\nBelow is an example:\n🟡 Loading\n  webR...\n\n\n  \n\n\nAnother example looking at some star wars data:\n🟡 Loading\n  webR...\n\n\n  \n\n\n Download R file"
+    "text": "On this page, you can play around with R through this website!\nBelow is an example:\n🟡 Loading\n  webR...\n\n\n  \n\n\nAnother example looking at some star wars data:\n🟡 Loading\n  webR..."
   },
   {
-    "objectID": "pages/whyR.html",
-    "href": "pages/whyR.html",
+    "objectID": "whyR.html",
+    "href": "whyR.html",
     "title": "Why learn R",
     "section": "",
     "text": "There are a lot of reasons why you should learn R, and it is very prevalent in academia, bioinformatics (analysis of biological data), data analyst and data scientist roles\nA lot of LSE courses that involved statistics or data primarily use R. This is because R is a excellent tool for:\nR is an open-source tool, which means you do not need to buy a licence in order to use it, and is a popular programming language, as shown in the PYPL index from 2023"
   },
   {
-    "objectID": "pages/whyR.html#easy-to-learn",
-    "href": "pages/whyR.html#easy-to-learn",
+    "objectID": "whyR.html#easy-to-learn",
+    "href": "whyR.html#easy-to-learn",
     "title": "Why learn R",
     "section": "Easy to learn",
-    "text": "Easy to learn\nA key advantage of R is that it is retentively easy to learn, especially in comparison with other programming languages use for data analysis like Python. A large part of this is due to R being designed to work with data, so it feels natural, and some of the excellent extensions that have been added to R over the years to make it more slick (great examples are the tidyverse and data.table packages).\nFurther, there are the vast amount of online resources in forms of tutorials, blogs, online courses, people sharing code/examples and help available through online discussion forums like stackoverflow and slack.\nSome of the best available resources to learn R are:\n\nR for Data Science book and the first edition is still great\nR for Data Science slack channel has great community support\nCodecademy R course\nR bloggers collates blog posts about R. Some blogs I would recommend checking out are https://www.cedricscherer.com/, https://karaman.is/, https://djnavarro.net/, https://github.com/tashapiro/TidyTuesday, https://www.yan-holtz.com/blog.html, and https://albert-rapp.de/blog.html\nFor data visualisation ggplot2 is the go to tool, and the best way to learn it is to run through this book and using the R graph gallery\nFor getting some open source data to start your own projects I would recommend the tidy Tuesday initiative. All dataset are hosted in github."
+    "text": "Easy to learn\nA key advantage of R is that it is retentively easy to learn, especially in comparison with other programming languages used for data analysis like Python. A large part of this is due to R being designed to work with data, so it feels natural, and some of the excellent extensions that have been added to R over the years to make it more slick (great examples are the tidyverse and data.table packages).\nFurther, there are the vast amount of online resources in forms of tutorials, blogs, online courses, people sharing code/examples and help available through online discussion forums like stackoverflow and slack.\nSome of the best available resources to learn R are:\n\nR for Data Science book and the first edition is still great\nR for Data Science slack channel has great community support\nCodecademy R course\nR bloggers collates blog posts about R. Some blogs I would recommend checking out are https://www.cedricscherer.com/, https://karaman.is/, https://djnavarro.net/, https://github.com/tashapiro/TidyTuesday, https://www.yan-holtz.com/blog.html, and https://albert-rapp.de/blog.html\nFor data visualisation ggplot2 is the go to tool, and the best way to learn it is to run through this book and using the R graph gallery\nFor getting some open source data to start your own projects I would recommend the tidy Tuesday initiative. All dataset are hosted in github."
   },
   {
-    "objectID": "pages/whyR.html#some-cool-things-you-can-do-in-r",
-    "href": "pages/whyR.html#some-cool-things-you-can-do-in-r",
+    "objectID": "whyR.html#some-examples-of-r-being-awesome-for-data-visualisation",
+    "href": "whyR.html#some-examples-of-r-being-awesome-for-data-visualisation",
     "title": "Why learn R",
-    "section": "Some cool things you can do in R",
-    "text": "Some cool things you can do in R\n\n\n\nAnimated gif of rainfall and temperature changes over time in Australian cities\n\n\n\n\n\nRegional map UK showing how each area is doing in terms of gender pay equality for each year data has existed, from 2017-2022\n\n\n\n\n\n\n\n\nFun side note\n\n\n\n\n\nThis webpage was built using R. If you are interested, come to the workshops and chat to one of the instructors about it!\n\n\n\n\n\n\n\nInteractive graphic of Dr Who episodes IMDB rating by actor playing the Doctor\n\n\nBelow is an example of using R through the web using the http://quanteda.io/ package for text analysis, which is developed here at LSE by Ken Benoit. It is a visualisation to show how readable inaugural speeches from presidents have been since 1945. A higher score means the text used in the speech more readable\nPress the Run Code button to get the output. As this is interactive, you can adjust the code for yourself! Try and change the point and text colours from black and white.\nIf the code stops working, just refresh the page to get the previous code back.\n🟡 Loading\n  webR..."
+    "section": "Some examples of R being awesome for Data visualisation",
+    "text": "Some examples of R being awesome for Data visualisation\n\n\n\nAnimated gif of rainfall and temperature changes over time in Australian cities\n\n\n\n\n\nRegional map UK showing how each area is doing in terms of gender pay equality for each year data has existed, from 2017-2022\n\n\n\n\n\n\n\n\nFun side note\n\n\n\n\n\nThis webpage was built using R. If you are interested, come to the workshops and chat to one of the instructors about it!\n\n\n\n\n\n\n\nInteractive graphic of Dr Who episodes IMDB rating by actor playing the Doctor\n\n\nBelow is an example of using the http://quanteda.io/ package for text analysis, which is developed here at LSE by Ken Benoit. It is a visualisation to show how readable inaugural speeches from presidents have been since 1945. A higher score means the text used in the speech more readable.\n\n\nShow the code\n# load libraries\nlibrary(quanteda)\nlibrary(quanteda.textstats)\nlibrary(ggplot2)\n\n# prepare data\ninaugural_readability &lt;- data_corpus_inaugural %&gt;%\n    corpus_subset(Year &gt; 1945) %&gt;% \n    textstat_readability(measure = c(\"Flesch\"))\n\n# calculate readability\navg_readability &lt;- mean(inaugural_readability$Flesch)\n\n# text and point colours\npoint_col &lt;- \"black\"\ntext_col &lt;- \"white\"\n\n# make visual\nggplot(inaugural_readability, \n       aes(x = document, y = Flesch)) +\n  geom_point(size = 6.5, colour = point_col) +\n  geom_hline(yintercept = avg_readability,\n             alpha = 0.75, linetype = 5, linewidth = 1.2) +\n  geom_segment(aes(xend = document, yend = avg_readability),\n               linetype = 3, linewidth = 1.2) +\n  geom_text(aes(label = round(Flesch, 1)), \n            colour = text_col, size = 2.5, family = \"Avenir\") +\n  annotate(geom = \"text\", x = \"2005-Bush\", y = 69,\n           family = \"Avenir\", size = 4,\n           label = paste0(\"Average readability: \", round(avg_readability,2))) +\n  annotate(geom = \"curve\",x = 14.5, y = 66, alpha = 0.6,\n           xend = \"2005-Bush\", yend = avg_readability+0.4,\n           curvature = -0.35, arrow = arrow(length = unit(0.15, \"inches\"))) +\n  coord_flip() +\n    labs(x = NULL, y = \"Readability (Flesch)\",\n         title = \"Readability of inaugural speeches since 1945\",\n         subtitle = \"Higher score means text is more readable\") +\n  theme_minimal(base_family = \"Avenir\") +\n  theme(plot.title.position = \"plot\")"
   }
 ]
