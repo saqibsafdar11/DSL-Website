@@ -1,0 +1,54 @@
+---
+title: "FAQ"
+---
+
+In this page we list some of the most frequently asked questions about R, the workshops, or other more general topics.
+
+## What is R?
+
+R is an open-source, widely used statistical programming language, that is easy to learn and, thanks to its many extensions, can be used as a general-purpose programming language. R was first released in 1993 and has since risen greatly in popularity, being used in academic institutions as well as companies such as the BBC, NHS, Google, Facebook, Twitter, Microsoft, Office of National Statistics (ONS), Wellcome, Sanger Institute, New York Times, Financial Times, and Mozilla.
+
+R is simple to use and easy to read, this makes sharing your code easier and enables you to write your code faster. This is taken further by the Tidyverse ecosystem within R, that provides even easier to read code as well as excellent documentation. R is one of the best choices for data science and machine learning due to its wide pool of libraries for statistics, data manipulation and wrangling, data visualisation, and modelling; it is used across many sectors such as finance, healthcare, technology and retail for these purposes. R is the gold standard choice for data visualisation in data science thanks to the ggplot2 library and its many extensions. R also has one of the best open-source Integrated Development Environments (IDE) available in RStudio, not only does it make programming in R easy, it makes it simple to create documents with your code and outputs in various output formats such as HTML, Word, Powerpoint, and PDF.
+
+## Workshops
+
+### What should I do if I get stuck
+
+1)  Ask your neighbour in the workshop
+2)  Search online:
+
+-   The answer box on the top of Google’s results page
+
+-   https://stackoverflow.com/ (for task-specific solutions)
+
+-   https://www.r-bloggers.com/ (topic based tutorials)
+
+-   https://www.w3schools.com/r/ (w3 schools short tutorials)
+
+-   https://www.geeksforgeeks.org/r-programming-language-introduction/ (geeks for geeks R tutorials)
+
+-   http://www.cookbook-r.com/ (R cookbook)
+
+3)  Don’t struggle too long looking online, ask the trainer if you can’t find a solution!
+
+### Why do we use this style of training?
+
+We prefer a "learner-led" style of teaching, where you work at your own pace supported by trainers. In the real-world, this is similar to how you would learn to use software, searching online and asking for help while trying to solve problems.
+
+## R vs Python
+
+R and Python are quite similar tools and have a lot of overlap in their use cases. Generally speaking Python is better for advanced machine learning (such as neural nets and deep learning), and has better infrastructure for making code "production ready". R on the other hand is better for statistics and data visualisation, and would be a good choice for small to medium size projects.
+
+Usually I would just go with whatever feels right when using or suits your use case better. If you are looking to get serious about software development or advanced machine learning, give Python a try. If you want an easier time with data wrangling, statistics, and data visualisation, then R is a great place for those tasks. If you can't decide, try out both and see what feels better.
+
+## R vs other software such as Tableau/Excel/Power Bi/Stata/SPSS
+
+R, like Python, is a programming language. When you compare it to other software such as Excel or Stata, these are applications where functionality is wrapped up in a more user friendly style. The main reasons to use R other application based software are:
+
+-   It is better at automation. If you are regularly running and analysis, R will be easier in the long run than software like SPSS or Stata
+
+-   R has more flexibility, meaning you can theoretically do almost anything. Application based software like Excel have limitations which can be difficult to overcome. For example, Excel has a row limit.
+
+-   R is "open-source", which means you do not need to pay for a licence to use. This is massive advantage over software like Tableau or Power BI which are expensive.
+
+-   R isn't just for statistics, or wrangling data. You can write reports, websites, presentations, and dashboards just using R. This flexibility isn't possible in software like SPSS or Excel.
