@@ -20,7 +20,7 @@ website:
       - href: workshop-materials.qmd
         text: Workshop Materials
       - href: using-files.qmd
-        text: Using R Markdown files
+        text: Using R files
       - text: Other information
         menu: 
           - href: faq.qmd

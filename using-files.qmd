@@ -1,5 +1,5 @@
 ---
-title: "Using R Markdown files"
+title: "Information on how to use R Scripts and Markdown files"
 ---
 
 ## Opening RStudio
@@ -28,6 +28,37 @@ If your installation of R and RStudio has worked, first RStudio should be open, 
 
 There are three ways of running R code: console, scripts and R Markdown. In the R workshops we use R Markdown. 
 
+## R Scripts
+
+::: callout-tip
+### What are R Scripts?
+
+An R Script file is a text file that contains a set of commands, or code, written in the R programming language. They are simple to use, allowing you to save the code you have written for later.  
+
+An in-depth description can be found in the [R for Data Science](https://r4ds.hadley.nz/workflow-scripts.html) open source book
+:::
+
+### Opening R Scripts
+
+If you move your mouse/curser to the top of your screen you will see a banner with *file*, *edit*, *code* etc. Using `File > Open File...`, find the R script file to load. R script files have the extension `.R`.
+
+To start a new R script file go to `File > New File > R Script`, or use the keyboard shortcut `ctrl/command + shift + N`.
+
+### Using R Scripts
+
+The below image shows an R Script in action. 
+
+![Image of R Script](images/R-script.png){width="90%" fig-align="center"}
+
+There are two main ways of running code in an R Script. 
+
+*   Use `ctrl/command + Enter` to run each line
+*   Highlight a section of code, and use the run button (or press `ctrl/command + Enter`)
+
+You might notice code you have run appears on the console (bottom left), and if you make a variable that will appear in the Environment (top right). 
+
+## R Markdown
+
 ::: callout-tip
 ### What is R Markdown?
 
@@ -36,17 +67,19 @@ An R Markdown file has sections of text and code together in a single document. 
 An in-depth description can be found in the [R for Data Science](https://r4ds.had.co.nz/r-markdown.html) open source book
 :::
 
-## Opening the R Markdown files
+### Opening R Markdown files
 
 Opening a R Markdown file is very similar to opening a file in other software. If you move your mouse/curser to the top of your screen you will see a banner with *file*, *edit*, *code* etc. Using `File > Open File...`, find the R Markdown file to load. R Markdown files have the extension `.Rmd`.
 
-## Using a R Markdown file
+To start a new R markdown file go to `File > New File > R Markdown...`.
+
+### Using a R Markdown file
 
 We are using R Markdown notebooks for these workshops as we can add text around code, which can help us guide you. The image below shows the basic layout of a R Markdown document.
 
 ![Image of R Markdown notebook, indicating the text and code sections](images/R-Markdown.png){width="90%" fig-align="center"}
 
-There are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use `ctrl/command + Enter` to run each like just like you would with an R script.
+There are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use `ctrl/command + Enter` to run each line just like you would with an R script.
 
 The most important thing for you to take note of is the code cells. Each code cell is like a small R script. You'll notice the \`\`\` markings around the code cell. It is important these do not get deleted, so be careful when editing your code!
 
@@ -55,6 +88,8 @@ Finally, you can add your own code cell using `option+command+i` on a Mac or `ct
 Throughout the notebooks you will come across exercises, with empty code cells for you to type your code into. Your task is to test out the examples, then try and do the exercises.
 
 ::: callout-note
-If you have struggled with any of these steps, just come along to the workshops and ask a trainer for support
+If you have struggled with any of these steps ask a trainer for support
 :::
+
+
 

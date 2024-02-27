@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning R at the DSL - Using R Markdown files</title>
+<title>Learning R at the DSL - Information on how to use R Scripts and Markdown files</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./using-files.html" rel="" target="" aria-current="page">
- <span class="menu-text">Using R Markdown files</span></a>
+ <span class="menu-text">Using R files</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other-information" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
@@ -146,8 +146,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users">Windows users</a></li>
   <li><a href="#mac-users" id="toc-mac-users" class="nav-link" data-scroll-target="#mac-users">Mac users</a></li>
   </ul></li>
-  <li><a href="#opening-the-r-markdown-files" id="toc-opening-the-r-markdown-files" class="nav-link" data-scroll-target="#opening-the-r-markdown-files">Opening the R Markdown files</a></li>
+  <li><a href="#r-scripts" id="toc-r-scripts" class="nav-link" data-scroll-target="#r-scripts">R Scripts</a>
+  <ul>
+  <li><a href="#opening-r-scripts" id="toc-opening-r-scripts" class="nav-link" data-scroll-target="#opening-r-scripts">Opening R Scripts</a></li>
+  <li><a href="#using-r-scripts" id="toc-using-r-scripts" class="nav-link" data-scroll-target="#using-r-scripts">Using R Scripts</a></li>
+  </ul></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a>
+  <ul>
+  <li><a href="#opening-r-markdown-files" id="toc-opening-r-markdown-files" class="nav-link" data-scroll-target="#opening-r-markdown-files">Opening R Markdown files</a></li>
   <li><a href="#using-a-r-markdown-file" id="toc-using-a-r-markdown-file" class="nav-link" data-scroll-target="#using-a-r-markdown-file">Using a R Markdown file</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -160,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using R Markdown files</h1>
+<h1 class="title">Information on how to use R Scripts and Markdown files</h1>
 </div>
 
 
@@ -207,6 +215,48 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>There are three ways of running R code: console, scripts and R Markdown. In the R workshops we use R Markdown.</p>
+</section>
+</section>
+<section id="r-scripts" class="level2">
+<h2 class="anchored" data-anchor-id="r-scripts">R Scripts</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are R Scripts?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An R Script file is a text file that contains a set of commands, or code, written in the R programming language. They are simple to use, allowing you to save the code you have written for later.</p>
+<p>An in-depth description can be found in the <a href="https://r4ds.hadley.nz/workflow-scripts.html">R for Data Science</a> open source book</p>
+</div>
+</div>
+<section id="opening-r-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="opening-r-scripts">Opening R Scripts</h3>
+<p>If you move your mouse/curser to the top of your screen you will see a banner with <em>file</em>, <em>edit</em>, <em>code</em> etc. Using <code>File &gt; Open File...</code>, find the R script file to load. R script files have the extension <code>.R</code>.</p>
+<p>To start a new R script file go to <code>File &gt; New File &gt; R Script</code>, or use the keyboard shortcut <code>ctrl/command + shift + N</code>.</p>
+</section>
+<section id="using-r-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="using-r-scripts">Using R Scripts</h3>
+<p>The below image shows an R Script in action.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/R-script.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption class="figure-caption">Image of R Script</figcaption>
+</figure>
+</div>
+<p>There are two main ways of running code in an R Script.</p>
+<ul>
+<li>Use <code>ctrl/command + Enter</code> to run each line</li>
+<li>Highlight a section of code, and use the run button (or press <code>ctrl/command + Enter</code>)</li>
+</ul>
+<p>You might notice code you have run appears on the console (bottom left), and if you make a variable that will appear in the Environment (top right).</p>
+</section>
+</section>
+<section id="r-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -221,14 +271,13 @@ What is R Markdown?
 <p>An in-depth description can be found in the <a href="https://r4ds.had.co.nz/r-markdown.html">R for Data Science</a> open source book</p>
 </div>
 </div>
-</section>
-</section>
-<section id="opening-the-r-markdown-files" class="level2">
-<h2 class="anchored" data-anchor-id="opening-the-r-markdown-files">Opening the R Markdown files</h2>
+<section id="opening-r-markdown-files" class="level3">
+<h3 class="anchored" data-anchor-id="opening-r-markdown-files">Opening R Markdown files</h3>
 <p>Opening a R Markdown file is very similar to opening a file in other software. If you move your mouse/curser to the top of your screen you will see a banner with <em>file</em>, <em>edit</em>, <em>code</em> etc. Using <code>File &gt; Open File...</code>, find the R Markdown file to load. R Markdown files have the extension <code>.Rmd</code>.</p>
+<p>To start a new R markdown file go to <code>File &gt; New File &gt; R Markdown...</code>.</p>
 </section>
-<section id="using-a-r-markdown-file" class="level2">
-<h2 class="anchored" data-anchor-id="using-a-r-markdown-file">Using a R Markdown file</h2>
+<section id="using-a-r-markdown-file" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-r-markdown-file">Using a R Markdown file</h3>
 <p>We are using R Markdown notebooks for these workshops as we can add text around code, which can help us guide you. The image below shows the basic layout of a R Markdown document.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -236,7 +285,7 @@ What is R Markdown?
 <figcaption class="figure-caption">Image of R Markdown notebook, indicating the text and code sections</figcaption>
 </figure>
 </div>
-<p>There are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use <code>ctrl/command + Enter</code> to run each like just like you would with an R script.</p>
+<p>There are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use <code>ctrl/command + Enter</code> to run each line just like you would with an R script.</p>
 <p>The most important thing for you to take note of is the code cells. Each code cell is like a small R script. You’ll notice the ``` markings around the code cell. It is important these do not get deleted, so be careful when editing your code!</p>
 <p>Finally, you can add your own code cell using <code>option+command+i</code> on a Mac or <code>ctrl + alt + i</code> on a Windows machine.</p>
 <p>Throughout the notebooks you will come across exercises, with empty code cells for you to type your code into. Your task is to test out the examples, then try and do the exercises.</p>
@@ -250,11 +299,12 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you have struggled with any of these steps, just come along to the workshops and ask a trainer for support</p>
+<p>If you have struggled with any of these steps ask a trainer for support</p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
