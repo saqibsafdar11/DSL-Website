@@ -9,20 +9,35 @@ website:
   title: "Learning R at the DSL"
   search: true
   reader-mode: true
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: whyR.qmd
-        text: Why learn R
-      - href: install.qmd
-        text: Install R and RStudio
-      - href: workshop-materials.qmd
-        text: Workshop Materials
-      - href: using-files.qmd
-        text: Using R files
-      - text: Other information
-        menu: 
+  sidebar:
+    style: "docked"
+    contents:
+      - section: "📚 Information"
+        contents: 
+        - href: index.qmd
+          text: Home
+        - href: whyR.qmd
+          text: Why learn R
+      - section: "💻 R workshops"
+        contents: 
+          - href: install.qmd
+            text: Install R and RStudio
+          - href: workshop-materials.qmd
+            text: Workshop Materials
+          - href: using-files.qmd
+            text: Using R files
+      - section: "🎓 R Dissertation workshops"
+        contents:
+          - href: R_dissertation_1_first_steps.qmd
+            text: First steps with R
+          - href: R_dissertation_2_data_cleaning.qmd
+            text: Data cleaning
+          - href: R_dissertation_3_exploring_using_visualisation.qmd
+            text: Exploring data using visualisation
+          - href: R_dissertation_4_data_analysis.qmd
+            text: Data analysis
+      - section: "❓ Other information"
+        contents: 
           - href: faq.qmd
             text: FAQ
           - href: example-page.qmd
@@ -39,7 +54,13 @@ format:
     toc: true
     toc-depth: 4
     toc-location: left
+    code-fold: false
     mainfont: roboto
+    grid:
+      sidebar-width: 320px
+    include-in-header: 
+      - progress-bar.html
+    lightbox: auto
     #title-block-banner: "#15BC9B"
     #title-block-banner-color: "#000508"
 

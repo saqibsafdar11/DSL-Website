@@ -1,0 +1,513 @@
+---
+title: "R Dissertation Masterclass 2: Data Cleaning"
+author:
+   - name: Andrew Moles
+     affiliation: Learning Developer, Digital Skills Lab
+date: today
+#format:
+#  html:
+#    toc: true
+#    toc-depth: 4
+#    toc-location: left
+    #toc-expand: false
+#    code-fold: false
+#    keep-md: false
+#    embed-resources: true
+#    number-sections: true
+#    smooth-scroll: true
+#    mainfont: roboto
+#theme: 
+#  - flatly
+#  - css/roboto.css
+#title-block-banner: "#15BC9B"
+#title-block-banner-color: "#000508"
+#css: css/styles.css
+---
+
+# Learning Objectives
+
+As part of a research project you have been given some data that you are expected to clean yourself ready for analysis. The data is health report metrics taken from various London boroughs. 
+
+We have two goals for this project. The first is to clean the dataset, and the second is to make an aggregation on the cleaned data.
+
+Note the data is randomly generated but is based on the kind of dataset would see in the real world; the deprivation data we are using is real.  
+
+Key takeaways from this worksheet:
+
+-   How to use packages in R
+
+-   Loading in datasets with different file extensions
+
+-   Doing calculations across columns in a data frame
+
+-   Using conditional operators (logic) to clean and prepare data
+
+-   Finding and handling missing data
+
+-   Transforming data through mutating joins
+
+-   Exploring data through grouped aggregations
+
+# Project goals   
+
+The first goal is to clean your dataset so it looks like the data shown below. Take a few moments to have a look at the dataset. 
+
+```{r cleaning-solution, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl, quietly = T, warn.conflicts = F)
+library(tidyverse, quietly = T, warn.conflicts = F)
+library(janitor, quietly = T, warn.conflicts = F)
+library(DT, quietly = T, warn.conflicts = F)
+
+# read in data
+health <- read.csv("resources/health_metrics.csv")
+imd <- read_xlsx("resources/IMD2019.xlsx", sheet = 2) |>
+  clean_names()
+
+# fix height and weight columns
+health_check_clean <- transform(health,
+                                height_m = ifelse(height > 8, height / 100,
+                                                  ifelse(height > 4 & height < 8, 
+                                                         height * 0.3048, 
+                                                         height)),
+                                weight_kg = ifelse(weight < 25, weight / 0.1575, weight)
+)
+# make new columns in the health check dataset with your calculations for each person (BMI, WHR, Blood pressure)
+health_check_clean <- transform(health_check_clean,
+                                bmi = weight_kg/(height_m ^ 2),
+                                whr = waist/hip,
+                                blood_pressure = ifelse(systolic_pressure >= 140 & diastolic_pressure >= 90, "high bp",
+                                                        ifelse(systolic_pressure <= 90 & diastolic_pressure <= 60, "low bp", "normal"))
+)
+
+# rename NA values in occupation as "unemployed"
+health_check_clean <- health_check_clean |>
+  transform(
+    occupation = ifelse(is.na(occupation), "Unemployed", occupation)
+  )
+
+# bmi and whr ranges
+health_check_clean <- health_check_clean |>
+  mutate(
+    bmi_risk = case_when(
+      bmi > 25 ~ "Overweight",
+      bmi < 18.5 ~ "Underweight",
+      .default = "Healthy"
+    ),
+    whr_risk = case_when(
+      whr < 0.81 & sex == "F" ~ "Low risk",
+      whr < 0.960 & sex == "M" ~ "Low risk",
+      whr >= 0.810 & whr <= 0.850 & sex == "F" ~ "Moderate risk",
+      whr >= 0.960 & whr <= 1.00 & sex == "M" ~ "Moderate risk",
+      whr > 0.85 & sex == "F" ~ "High risk",
+      whr > 0.99 & sex == "M" ~ "High risk",
+      .default = "Unknown"
+    )
+  )
+
+# join data using lsoa information
+health_check_clean <- health_check_clean |>
+  left_join(imd, by = join_by("lsoa_code" == "lsoa_code_2011"))
+
+# tidy up columns
+health_check_clean <- health_check_clean %>%
+  rename(imd_rank = index_of_multiple_deprivation_imd_rank,
+         imd_decile = index_of_multiple_deprivation_imd_decile,
+         local_auth_district_code = local_authority_district_code_2019) %>%
+  select(-lsoa_name_2011, -local_authority_district_name_2019,
+         -height:-weight)
+
+# write out data
+DT::datatable(health_check_clean)
+```
+
+The second goal is to use that cleaned data to make a grouped aggregation of location vs average BMI and average IMD decile. 
+
+```{r agg-solution, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr, quietly = T, warn.conflicts = F)
+
+health_check <- read.csv("resources/health_metrics_cleaned.csv")
+
+health_check |>
+  group_by(location) |>
+  summarise(n = n(),
+            avg_bmi = mean(bmi, na.rm = TRUE),
+            avg_imd_decile = mean(imd_decile, na.rm = TRUE)) |>
+  arrange(avg_imd_decile) |>
+  ungroup()
+```
+
+
+# Setup
+
+1)    Download the zip file, by clicking the button below, and save on your computer. Try to save it somewhere where you can find it again, ideally not downloads! 
+
+{{< downloadthis resources/project_files.zip label='Download zip file' dname=R_dissertation_2_files icon=folder-fill type=success >}}
+
+2)    Unzip the file. On a Mac you double click, on a Windows you right click and select *extract all*.
+
+3)    Open RStudio and open the `.Rproj` file. To open the project, go to `File > Open Project`.
+
+4)    Once your project is open, click on the `.R` script you should see in the files panel on the right hand side of your screen. 
+
+5)    In the files panel you should also see some data which are called `health_metrics.csv` and `IMD2019.xlsx`. We will be loading these into R later. 
+
+For those that are interested R projects are a really handy way of organising your code. See a full explainer in the [R for Data Science book](https://r4ds.hadley.nz/workflow-scripts.html).
+
+# Installing packages
+
+For this project we are going to need some extra tools that are not included in the base version of R we installed. Packages essentially are collections of functions people have written for everyone to use to make our lives easier, which is very helpful! 
+
+An important thing to note is that when installing a package you only need to do it once. 
+
+For this project there are two packages we recommend you install: `tidyverse` and `janitor`. 
+
+[The tidyverse](https://www.tidyverse.org/) which is a set of tools designed to simplify data cleaning and wrangling tasks. It is a lot of different packages wrapped up in one. The two packages within the tidyverse we recommend using for this project are the [dplyr package](https://dplyr.tidyverse.org/) and the [readxl package](https://readxl.tidyverse.org/). 
+
+The janitor package contains several helpful utility functions that make common tasks easier. The [documentation page](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) has a lot of example use cases. 
+
+To install the packages we recommend you copy the code below and **paste it into the console** (bottom left panel in RStudio), then run it. For context, the `Ncpus` argument is there to speed up the install, which will take a few minutes. 
+
+```{r install-example, eval=FALSE}
+install.packages("tidyverse", Ncpus = 6)
+install.packages("janitor", Ncpus = 6)
+```
+
+# Loading packages 
+
+When using packages in R you need to load them each time you open R. We use the `library()` command for this, and the best practice is to do this at the top of your script. 
+
+At the top of your script use the `library()` command to load the `tidyverse`, `readxl`, and `janitor` packages. 
+
+Note that when loading the tidyverse set of tools it does not load everything it installed, but instead loads a handful of the packages it installed for us. The `readxl` package is not loaded, so we have to load that separately.   
+
+# Lets load the data so we can start cleaning it! 
+
+Load in both data files. Keep in mind that one file is a `.csv` file, and the other is a `.xlsx` file.
+
+When you have them loaded, you should see them appear in the Environment panel (top right of RStudio). 
+
+![](images/data_load.png){width='450'}
+
+Try taking a look at your data using the functions `View()`, `str()`, and `summary()`. 
+
+**Hint:** remember to assign your data a name to store it like we have done with variables. E.g. `some_data <- read.csv("my_data.csv")`.  
+
+**Top tip when loading data:** move your cursor between the quotation marks ('' or "") and press tab. You should see a list of the files you can load! Press tab to select or click using your mouse. 
+
+## Recommended: tidy up the column names of the deprivation (IMD) data
+
+To tidy up the column names we recommend using the janitor package and the `clean_names()` function. Examples can be found [here](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names). 
+
+## A side note on the English indices of deprivation (IMD) data
+
+The `IMD2019.xlsx` dataset is from the [English indices of deprivation website 2019](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019). Indices of deprivation (IMD) measure relative deprivation in small areas in England, where lower decile scores indicate a more deprived area. 
+
+# Some weird stuff is happening in the heights and weights columns...
+
+We have our data loaded which is the first real hurdle, great stuff! However, this dataset is not perfect...
+
+Have a look at the weight and heights column in the health metrics dataset. Do you notice anything strange?
+
+It seems people in this data have given a variety of metrics for weight and height. For height, you'll see a mixture of meters (e.g. 1.75), centimetres (e.g. 175), and feet (e.g. 5.74) responses. For weight you'll see a mixture of stone (e.g. 9.02) or kilograms (e.g. 57.27). 
+
+We need to fix this in order to perform calculations on this data! Your goal here is to add new columns to the data where height is in meters, and weight is in kilograms. The first 5 rows of the new columns you should have made are shown below.
+
+```{r metric-fix, echo=FALSE}
+health_check_clean %>%
+  select(height_m, weight_kg) %>%
+  slice(1:5)
+```
+
+## Tips to help cleaning the height and weight columns
+
+This isn't straightforward to fix so we have to make assumptions which are listed below. 
+
+-   if height is > 8 assume it is in centimetres
+
+-   if height is > 4 and < 8 assume it is in feet
+
+-   if weight is < 25 assume it is in stone
+
+Below are some converting formulas to help you out:
+
+-   centimetres to meters: $centimetres \div 100$
+
+-   feet to meters: $feet \times 0.3048$
+
+-   stone to kilograms: $stone \times 6.35029318$
+
+We are going to need to use conditional operators to find and fix the incorrect data points. The table below contains the conditional operators you can use.
+
+| Operator   | Meaning                  |
+|------------|--------------------------|
+| `>`        | Greater than             |
+| `>=`       | Greater than or equal to |
+| `<`        | Less than                |
+| `<=`       | Less than or equal to    |
+| `==`       | Equal to                 |
+| `!=`       | Not equal to             |
+| `!X`       | NOT X                    |
+| `X | Y`    | X OR Y                   |
+| `X & Y`    | X AND Y                  |
+| `X %in% Y` | is X in Y                |
+
+In R, the easiest way to conditionally fix data is to use the `ifelse()` function, or the `case_when()` function from `dplyr`. To add a new column the `transform()` function or the `mutate()` function from `dplyr` are easiest to use. See below for some examples.
+
+```{r ifelse-example}
+df <- data.frame(
+  x = c(4.26, 6.05, 5.35, 6.49, 7.68, 4.32, 4.92, 4.18, 4.32, 0.61)
+  )
+
+df_clean <- transform(
+  df,
+  x_5 = ifelse(x > 5, x * 100, x)
+  ) 
+
+library(dplyr)
+df_clean <- mutate(
+  df,
+  x_5 = case_when(
+    x > 5 ~ x * 100,
+    .default = x
+    )
+  )
+
+df_clean
+```
+
+# Now that is fixed, we can calculate some health metrics!
+
+Your goal here is to make new columns in your dataset that are calculations of BMI and waist-to-hip ratio.
+
+If all goes well you should end up with the first 5 rows of the new columns you have made looking like below.
+```{r metric-calc, echo=FALSE}
+health_check_clean %>%
+  select(bmi:whr) %>%
+  slice(1:5)
+```
+
+Do you remember from the first worksheet how we calculated BMI and waist-to-hip ratio? How do we do those calculations on columns in a data frame to make a new column?
+
+# Add some meaning with categorisation 
+
+Categorising your data is a helpful way of adding some meaning to the data you have. In the data we are using we might want to create a category that tells us if someone has high, low, or normal blood pressure, as well as health categories for BMI and WHR (waist-to-hip ratio). For example, it is easier to tell that someone has a healthy BMI from a text data point than from a number such as `22.45`.  
+
+Your goal here is to categorise blood pressure, BMI risk, and WHR risk. The first 5 rows of the new columns you should have made are shown below. 
+
+```{r metric-cat, echo=FALSE}
+health_check_clean %>%
+  select(blood_pressure:whr_risk) %>%
+  slice(1:5)
+```
+
+Blood pressure can be categorised into high, low, and normal. 
+
+-   High blood pressure is when systolic pressure is 140 and over, and diastolic pressure is 90 and over.
+
+-   Low blood pressure is when systolic pressure is 90 and under, and diastolic pressure is 60 and under 
+
+The [waist-to-hip ratio (whr)](https://www.healthline.com/health/waist-to-hip-ratio#:~:text=0.9%20or%20less%20in%20men,0.85%20or%20less%20for%20women) metric is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes. See the table below to help you categorise whr scores. **Remember, there are different risk scores associated to men and women!**
+
+| **Health risk** |   **Women**    |    **Men**    |
+|:---------------:|:--------------:|:-------------:|
+|       low       | 0.80 or lower  | 0.95 or lower |
+|    moderate     |   0.81-0.85    |   0.96-1.0    |
+|      high       | 0.86 or higher | 1.0 or higher |
+
+Can you find the BMI risk categories yourself?
+
+## Top tip for multiple categories
+
+When you are making multiple categories things can get messy using the `ifelse()` function as you have to do something called *nested ifelse statements*. 
+
+We would recommend using the `case_when()` function from `dplyr` for multiple categories as it makes things much easier. Check out the [examples in the documentation page](https://dplyr.tidyverse.org/reference/case_when.html#ref-examples) to help you out! 
+
+# Handling some of the missing (NA) values
+
+You may have noticed by now that the dataset has some missing data, particularly in the age and occupation columns. 
+
+There are many ways of dealing with missing values, and it should be case by case how you approach it. Sometimes you need to remove them, sometimes you need replace them with the mean (known as imputation), sometimes you need to change the value from missing to something more useful. 
+
+In this case, the missing values in the occupation column should be `Unemployed` rather than `NA`. 
+
+Using the techniques we have tried so far, change the `NA` values to `Unemployed`. 
+
+Hint: the `is.na()` function is really useful here. 
+
+To check it your conversion has worked, open the viewer by using the `View()` function or clicking on the dataset in the Environment window, and search *Unemployed*. 
+
+![](images/na_change.png){width="450"}
+
+**Congratulations, you've cleaned your dataset. Only one more preparation step to go!**
+
+# Add the deprivation data to our dataset! 
+
+To add the deprivation data we loaded earlier from the `IMD2019.xlsx` file we need to use a technique called a *join*. 
+
+Once you have joined your two datasets we loaded earlier together your final dataset should look like the cleaned dataset below! 
+
+```{r join-solution, echo=FALSE, message=FALSE, warning=FALSE}
+# fix height and weight columns
+join_solution <- transform(health,
+                                height_m = ifelse(height > 8, height / 100,
+                                                  ifelse(height > 4 & height < 8, 
+                                                         height * 0.3048, 
+                                                         height)),
+                                weight_kg = ifelse(weight < 25, weight / 0.1575, weight)
+)
+# make new columns in the health check dataset with your calculations for each person (BMI, WHR, Blood pressure)
+join_solution <- transform(health_check_clean,
+                                bmi = weight_kg/(height_m ^ 2),
+                                whr = waist/hip,
+                                blood_pressure = ifelse(systolic_pressure >= 140 & diastolic_pressure >= 90, "high bp",
+                                                        ifelse(systolic_pressure <= 90 & diastolic_pressure <= 60, "low bp", "normal"))
+)
+
+# rename NA values in occupation as "unemployed"
+join_solution <- health_check_clean |>
+  transform(
+    occupation = ifelse(is.na(occupation), "Unemployed", occupation)
+  )
+
+# bmi and whr ranges
+join_solution <- health_check_clean |>
+  mutate(
+    bmi_risk = case_when(
+      bmi > 25 ~ "Overweight",
+      bmi < 18.5 ~ "Underweight",
+      .default = "Healthy"
+    ),
+    whr_risk = case_when(
+      whr < 0.81 & sex == "F" ~ "Low risk",
+      whr < 0.960 & sex == "M" ~ "Low risk",
+      whr >= 0.810 & whr <= 0.850 & sex == "F" ~ "Moderate risk",
+      whr >= 0.960 & whr <= 1.00 & sex == "M" ~ "Moderate risk",
+      whr > 0.85 & sex == "F" ~ "High risk",
+      whr > 0.99 & sex == "M" ~ "High risk",
+      .default = "Unknown"
+    )
+  )
+
+# join data using lsoa information
+join_solution <- join_solution |>
+  left_join(imd, by = join_by("lsoa_code" == "lsoa_code_2011"))
+
+
+DT::datatable(join_solution)
+```
+
+Another check you can do is see if your column names match those listed below in your final dataset. Particularly the `lsoa_name_2011` through to `index_of_multiple_deprivation_imd_decile` columns. You can use the `names()` function to check your own data. 
+```{r join-result, echo=FALSE}
+names(join_solution)
+```
+
+
+## Information on joins
+
+A join is used to combine rows from two or more tables. There are four main types you are likely to need in R: 
+
+-   `inner join` finds matches between both data frames and drops everything else
+-   `left join` includes all of the data from the left data frame, and matches from the right
+-   `right join` includes all of the data from the right data frame, and matches from the left
+-   `full join` includes all data from both data frames
+
+![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/inner_join.png?raw=true){width="355"} ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/left_join.png?raw=true){width="355"}
+![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/right_join.png?raw=true){width="355"} ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/full_join.png?raw=true){width="355"}
+
+In order to perform a join we need a column in each dataset, in this case `health_metrics.csv` and `IMD2019.xlsx`, to have matching data. Take a look now at the `lsoa_code` column in your health metrics data, and then the `lsoa_code_2011` column in your IMD data. What do you notice? Do you think we can use those to link up the datasets? If so, which join do you think should be used? 
+
+To perform a join using R, we can use the `dplyr` library. Below is some example code for you to look at and play around with. 
+```{r join-example}
+library(dplyr)
+
+person_info <- data.frame(
+  p_id = c(1,2,3,4,5,6),
+  Name = c("Andrew", "Chloe", "Antony", "Cleopatra", "Zoe", "Nathan")
+  )
+
+food_info <- data.frame(
+  p_id = c(1, 4, 7),
+  Fav_Food = c("Pizza", "Pasta con il pesto alla Trapanese", "Egg fried rice")
+)
+
+person_food <- full_join(person_info, food_info,
+                         by = join_by(p_id == p_id))
+person_food
+```
+What do you think would happen to the output if we used a inner join or a left join?
+
+The [dplyr documentation](https://dplyr.tidyverse.org/articles/two-table.html) has a nice guide on joins in R. The [R for Data Science book](https://r4ds.hadley.nz/joins.html#sec-mutating-joins) also has some useful information on this technique for further reading. 
+
+# Lets aggregate! 
+
+Our final goal here is to do a little bit of exploratory analysis on our cleaned data! After looking at your data you might want to find out what the average BMI and average IMD decile is for each location. What location has the best or worst average BMI? Which location is the most or least deprived? 
+
+Your goal here is to have an output that looks like the aggregation we showed in the project summary, also shown below. 
+
+```{r agg-solution-end, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr, quietly = T, warn.conflicts = F)
+
+health_check <- read.csv("resources/health_metrics_cleaned.csv")
+
+loc_agg <- health_check |>
+  group_by(location) |>
+  summarise(n = n(),
+            avg_bmi = mean(bmi, na.rm = TRUE),
+            avg_imd_decile = mean(imd_decile, na.rm = TRUE)) |>
+  arrange(avg_imd_decile) |>
+  ungroup()
+loc_agg
+
+```
+
+## But what is grouped aggregation? And how do I do it in R? 
+
+Grouped aggregation is the computation of summary statistics (such as the mean), giving a single output value from several variables. You can perform more complicated aggregations by *grouping* your data. This is similar to a pivot table in Excel. Have a look at the images below which break down what grouped aggregation is. 
+
+![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/Aggregation.png?raw=true){width="500"}
+
+You can group your data by more than one group. This means when the data is *split*, more subsets are formed for all different possible splits.
+
+![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/Aggregation_twogroup.png?raw=true){width="500"}
+
+The [R for Data Science book](https://r4ds.hadley.nz/data-transform.html#sec-summarize) has some helpful examples on how to do this in R as does the [dplyr documentation](https://dplyr.tidyverse.org/reference/summarise.html#ref-examples). 
+
+*Tip:* you can use the `arrange()` function to order the output in a more meaningful way. 
+
+# Save your cleaned dataset so you can use it later! 
+
+The final task is to save our cleaned dataset. We can then use that data for analysis and visualisation later! 
+
+Before we do that, it would be a good idea to tidy up some of the column names, and remove some of the columns we don't need. The `select()` and `rename()` functions from the `dplyr` package will be really helpful for this. 
+
+To help you out we renamed the following columns:
+
+-   index_of_multiple_deprivation_imd_rank to imd_rank
+
+-   index_of_multiple_deprivation_imd_decile to imd_decile
+
+-   local_authority_district_code_2019 to local_auth_district_code
+
+And we removed the following columns:
+
+-   lsoa_name_2011
+
+-   local_authority_district_name_2019
+
+-   height (as we have converted these to a new column)
+
+-   weight (as we have converted these to a new column)
+
+
+Once you've renamed and selected the columns you need, write (save) your dataset to a `.csv` format. Save it in the same folder where your script and other data is stored, and make sure to give it a meaningful name. 
+
+# Next steps
+
+Great work on cleaning the dataset. When doing data work, most of our time is spent cleaning or preparing a dataset ready for the fun stuff, analysis and visualisation; depending on the data and project it can take up around 50-80% of your time! 
+
+Now you have cleaned the data, we will be using it for our visualisation and analysis worksheets!
+
+# Give us some feedback!
+
+We are always looking to improve and iterate our workshops. Follow the link below to give your feedback. 
+

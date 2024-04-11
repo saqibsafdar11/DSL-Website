@@ -1,0 +1,283 @@
+---
+title: "R Dissertation Masterclass 1: First steps with R"
+author:
+   - name: Andrew Moles
+     affiliation: Learning Developer, Digital Skills Lab
+date: today
+#format:
+#  html:
+#    toc: true
+#    toc-depth: 4
+#    toc-location: left
+    #toc-expand: false
+#    code-fold: false
+#    keep-md: false
+#    embed-resources: true
+#    number-sections: true
+#    smooth-scroll: true
+#    mainfont: roboto
+#theme: 
+#  - flatly
+#  - css/roboto.css
+#title-block-banner: "#15BC9B"
+#title-block-banner-color: "#000508"
+#css: css/styles.css
+---
+
+# Learning Objectives
+
+In this worksheet we are going to take a short tour of key data types in R:
+
+-   Variables
+-   Vectors
+-   Strings
+-   Data frames
+
+Our project for this worksheet is to do some simple health metric analysis. By the end of this worksheet you should have the outputs shown below, and a .csv file with your data you made.
+
+![](images/df_goal.png){width="350"} ![](images/summary_goal.png){width="350"}
+
+![](images/hist_goal.png){width="350"} ![](images/csv_goal.png){width="350"}
+
+We will go through several steps to build up to this!
+
+# Setup
+
+To get started you will need to follow the below steps:
+
+1)  Open RStudio.   
+
+2)  Download the R script provided, which provides you with some structure. 
+
+{{< downloadthis resources/R_dissertation_1.R label='Download R script file' dname=r_dissertation_1 icon=r-circle type=success >}}
+
+3)  Open the R Script `R_dissertation_1.R` you downloaded.    
+
+
+For help getting starting using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html). 
+
+Each section is a small project. You will need to write all the code yourself. 
+
+# Starting off: calculate your own health metrics!
+
+You've started a health kick after watching some inspirational videos online. They suggested a good first step is to keep track of your health metrics via BMI and waist to hip ratio calculations. As you are learning R, it seems like a good place to start.
+
+R is an excellent calculator. See the example where we work out 10 times 5.
+
+```{r calc-example}
+10 * 5
+```
+
+You can find the formula for BMI on the [British Heart Foundation website](https://extras.bhf.org.uk/patientinfo/bmi-v1.01/app/index.html). 
+
+The [waist-to-hip ratio metric](https://www.healthline.com/health/waist-to-hip-ratio#calculate) is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes.
+
+If you don't know what your metrics are, try using the data for Andrew:
+
+-   Height: 1.95 meters\
+-   Weight: 94 kilograms\
+-   Hip width: 107 centimetres\
+-   Waist width: 90 centimetres
+
+```{r calc-solution, eval=FALSE, include=FALSE}
+94/(1.95^2)
+90/107
+```
+
+**Using the data for Andrew you should get the outputs of:**
+
+BMI: `r 94/(1.95^2)`\
+Waist-Hip ratio: `r 90/107`
+
+# Steamlining with variables
+
+Your friend Seb saw what you did and asked you to do the same for him, but he is only interested in BMI for now. Seb, who has done some programming, suggested using variables to streamline your code!
+
+A variable is a way of storing information. For example if we wanted to store the value 7 with a name of `days_in_week`, we would write `days_in_week <- 7`. `days_in_week = 7` will also work.
+
+Use the metrics you used in the last exercise. Seb's metrics are:
+
+-   Height: 1.71 meters\
+-   Weight: 68 kilograms
+
+```{r var-solution, include=FALSE}
+andrew_height <- 1.95
+andrew_weight <- 94
+seb_height <- 1.71
+seb_weight <- 68
+
+andrew_bmi <- andrew_weight/(andrew_height^2)
+andrew_bmi
+seb_bmi <- seb_weight/(seb_height^2)
+seb_bmi
+
+paste0("Andrew has a BMI of ", andrew_bmi, ", and Seb has a BMI of ", seb_bmi)
+
+# numbers are long, we can use a function to round...
+var_out <- paste0("Andrew has a BMI of ", round(andrew_bmi, 2), ", and Seb has a BMI of ", round(seb_bmi, 2))
+```
+
+**Your goal is a text output that is like:** `r var_out`.
+
+::: {.panel-tabset}
+
+## Hint 1
+To make the output we have done something called *string concatenation*. In R you would use the `paste()` or `paste0()` functions for this. For example, `paste("Jim is", 25, "years old")`.
+
+## Hint 2
+We rounded our outputs. You can do the same using the `round()` function. Try running `?round()` to see the documentation for the function to help you use it.
+
+:::
+
+# Using vectors to store more information
+
+You've been telling your family about your coding exploits and they are keen for you to do the same calculations for them.
+
+Now we are using more data, it might start to get cumbersome to use variables. It would be easier to store multiple data in one named variable which are known as vectors in R. The example below stores the days of the week as text. We use the `c()` function to make vectors.
+
+```{r vector-example}
+days_of_week <- c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+days_of_week
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+You get the below information from your family:
+
+-   Names: Andrew, Sam (Mum), Jules (Dad), Ash, Robin\
+-   Heights: 1.95, 5.09, 1.65, 1.91, 186
+-   Weights: 94, 9.135, 9.6075, 89, 81
+:::
+
+::: {.column width="50%"}
+Different family members have used different metrics:
+
+-   Robin has used centimetres for height\
+-   Jules (Dad) has used feet for height\
+-   Sam (Mum) and Jules (Dad) have used stone for weight
+:::
+
+::::
+
+Below are some formulas to help you do the calculations:
+
+-   centimetres to feet: $centimetres \times 0.0328084$\
+-   centimetres to meters: $centimetres \div 100$\
+-   feet to meters: $feet \times 0.3048$
+-   stone to kilograms: $stone \times 6.35029318$
+
+```{r vector-solution, include=FALSE}
+family_names <- c("Andrew", "Sam (Mum)", "Jules (Dad)", "Ash", "Robin")
+family_heights <- c(1.95, 5.09, 1.65, 1.91, 186)
+family_weights <- c(94, 9.135, 9.6075, 89, 81)
+
+family_heights[2] <- family_heights[2] * 0.3048
+family_heights[5] <- family_heights[5] / 100
+family_weights[2:3] <- family_weights[2:3] * 6.35029318
+
+family_bmi <- family_weights/(family_heights^2)
+
+avg_bmi <- mean(family_bmi)
+```
+
+**Your goal has four parts. Make sure to use R to do all the calculations and conversions.**
+
+1)  First, make sure all family heights are in meters with the output:
+
+`r family_heights`.\
+
+2)  Second, make sure all family weights are in kilograms with the output: 
+
+`r family_weights`.\
+
+3)  Third, calculate the BMI for all family members with the output: 
+
+`r family_bmi`.\
+
+4)  Fourth, calculate the average BMI of the family members. You should get an output of: 
+
+`r avg_bmi`.
+
+
+::: {.panel-tabset}
+
+## Hint 1
+You need to make the vectors using the `c()` function from the information provided.
+
+## Hint 2 
+To convert the data, you will need to access the data point you want to convert using a technique called *indexing*. You can do this using square brackets, and the number of the element in the vector you want to change. If I wanted to access Mon in `days_of_week` I would write `days_of_week[1]` because it is the first element.
+
+## Hint 3
+R has lots of useful functions to help you out. For the average try searching online to find a function that can help you calculate the average of `family_bmi`.
+
+:::
+
+# Write out your data for your parents
+
+Your parents are wowed by your skills! They asked if you can give them a csv or Excel file to play around with, they are not ready to learn any programming yet. While you were at it, you thought it would be fun to run some summary statistics and make a histogram on the data you have made!
+
+1)  Make a data frame that looks like the example output below.
+
+```{r data-frame-ex1, echo=FALSE}
+family_data <- data.frame(
+  family_names,
+  family_heights,
+  family_weights,
+  family_bmi
+)
+
+family_data
+```
+
+2)  Save the data frame you made to a csv file (comma separated values, or .csv). Open it outside of R to check it has saved properly.\
+
+```{r data-frame-ex2, eval=FALSE, include=FALSE}
+write.csv(family_data,
+          "family_data.csv",
+          row.names = FALSE)
+```
+
+3)  Use the `str()` and `summary()` functions to have a look at your data. You should get outputs below.
+
+```{r data-frame-ex3, echo=FALSE}
+summary(family_data)
+
+str(family_data)
+```
+
+4)  Make a histogram of the BMI column in your data. An example output is below.
+
+```{r data-frame-ex4, echo=FALSE}
+hist(family_data$family_bmi, 
+     #col = "#22CEC6",
+     col = "purple4",
+     main = "Histogram of family bmi",
+     xlab = "BMI")
+```
+
+:::{.panel-tabset}
+
+## Hint 1
+To save the csv file we recommend you use the `write.csv()`function. To find out more information on how to use this function either type `?write.csv` or search for it in the help menu which is in the bottom right panel in RStudio. 
+
+## Hint 2
+We saved our file without row names. To do this you need to add an argument to the `write.csv()` function. Have a look at the help page, particularly the examples section at the bottom, to see if you can figure out how to do this. 
+
+## Hint 3 
+Use `?hist` to find out more about how to run a histogram and make the changes we did to the output below. We changed the colour, the title (also called main), and the x label.
+
+:::
+
+::: {.callout-tip collapse="false"}
+## Quick side note naming
+
+There is a best practice when naming variables, vectors, data frames, column names etc. Variable names should be lowercase. Use an underscore (\_) to separate words within a name. Generally, variable names should be nouns. Strive for names that are concise and meaningful. For example, `day_one` is good but `dayOne` or `dayone` are less good.
+:::
+
+# Give us some feedback!
+
+We are always looking to improve and iterate our workshops. Follow the link below to give your feedback. 
+
+
+

@@ -1,0 +1,418 @@
+---
+title: "R Dissertation Masterclass 3: Exploring your data using visualisation"
+author:
+   - name: Andrew Moles
+     affiliation: Learning Developer, Digital Skills Lab
+date: today
+#format:
+#  html:
+#    toc: true
+#    toc-depth: 4
+#    toc-location: left
+#    #toc-expand: false
+#    code-fold: false
+#    keep-md: false
+#    embed-resources: true
+#    number-sections: true
+#    smooth-scroll: true
+#    mainfont: roboto
+#theme: 
+#  - flatly
+#  - css/roboto.css
+#title-block-banner: "#15BC9B"
+#title-block-banner-color: "#000508"
+#css: css/styles.css
+---
+
+# Learning Objectives
+
+We will be following on from our previous project where we cleaned health report metrics data taken from various London boroughs for a research project. Now we want to explore the data using visualisation and summary statistics which will help us when we come to analyse the data. 
+
+Key takeaways:
+
+-   Run and review summary statistics    
+
+-   Look at distributions of your data
+
+-   Using counts and ranking to find out more from categorical data
+
+-   Assessing correlations between numeric variables
+
+Throughout this worksheet you'll be making several visualisations of your data. There is also a final project goal, which is to make the visualisation below. 
+
+```{r final-goal, echo=FALSE, message=FALSE, warning=FALSE, out.width='90%'}
+# visualisation where we fix the occupation column
+library(tidyverse)
+
+health <- read_csv("resources/health_metrics_cleaned.csv")
+
+health_occupation <- health %>%
+  mutate(occupation = str_remove(occupation, "\\["),
+         occupation = str_remove(occupation, "\\]")) %>%
+  separate_longer_delim(occupation, delim = ",") %>%
+  mutate(occupation = str_squish(occupation))
+
+occupation_comp <- c("Arts and Entertainment", "Education", "Research", "Health")
+
+final_plot <- health_occupation %>%
+  mutate(bmi_risk = factor(bmi_risk, levels = c("Underweight", "Healthy", "Overweight"))) %>%
+  filter(occupation %in% occupation_comp) %>%
+  ggplot(aes(x = bmi, y = imd_decile)) +
+  geom_point(aes(colour = bmi_risk)) +
+  geom_smooth(method = "lm", se = FALSE, colour = "grey55") +
+  facet_wrap(vars(occupation)) +
+  scale_colour_manual(values = c('#26547c','#ef476f','#ffd166')) +
+  scale_y_continuous(breaks = seq(1,10,1)) + 
+  labs(title = "Is BMI effected by deprivation in different by occupations? ",
+       y = "Index of Multiple Deprivation Decile", x = "bmi",
+       colour = "bmi risk") +
+  theme_minimal(base_size = 12, base_family = "Avenir") +
+  theme(legend.position = "bottom",
+        plot.title.position = "plot")
+final_plot
+```
+
+::: {.callout-note}
+You might be wondering why are we not just analysing the data straight away. Generally, the best practise is to spend some time reviewing your data so you know what you are dealing with. We do this by running some summary statistics, and visualising the data. 
+
+If you are interested here is an [article about the importance of reviewing your data](https://www.research.autodesk.com/publications/same-stats-different-graphs/).  
+:::
+
+# Setup
+
+1. Download the R file provided using the button below
+
+{{< downloadthis resources/R_dissertation_3.R label='Download R script file' dname=r_dissertation_3 icon=r-circle type=success >}}
+
+2. Load the R file
+
+3. Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/) for more information. We recommend installing packages using the command line as you only need to install packages once. 
+
+4. Load in the tidyverse and patchwork packages in your script
+
+5. Load in health metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
+
+{{< downloadthis resources/health_metrics_cleaned.csv label='Download dataset' dname=health_metrics_cleaned icon=database-fill-down type=success >}}
+
+
+::: {.callout-tip}
+We recommend using the `ggplot2` package for making visualisations. It is a great tool and simple to use. You will be loading it when you load the `tidyverse` set of packages. 
+:::
+
+# Starting point, get some summary statistics! 
+
+We have two goals here, the first is to look at the summary statistics, the second is to get counts of categorical data in our dataset. 
+
+Use the `summary()` function on your data. Key things to look at are:
+
+-   Any missing data?
+
+-   Are the means similar to the median? If not it is a sign our data might not be normally distributed or have extreme values.
+
+-   Do the minimum and maximum values make sense? For example, you shouldn't be seeing anyone with an age of 150. 
+
+Use the `table()` function, which returns the number of times a given category is in your data, on your the categorical columns in your data. To use this function you use the dollar sign (`$`) to extract the column you want from your data such as: `table(health$location)`.
+
+Review the `location`, `blood_pressure`, `bmi_risk`, and `whr_risk` columns using `table()`. 
+
+```{r summary-solution, include=FALSE, eval=FALSE}
+library(tidyverse)
+
+health <- read_csv("resources/health_metrics_cleaned.csv")
+
+#to_factor <- c("sex", "location", "blood_pressure", "bmi_risk", "whr_risk")
+#health <- health %>% mutate(across(to_factor, as.factor))
+
+summary(health)
+table(health$location)
+table(health$blood_pressure)
+table(health$bmi_risk)
+table(health$whr_risk)
+
+```
+
+
+::: callout-important
+## Side note on the index of multiple deprivation (IMD) data
+
+Something to remember when looking the IMD deciles is that a score of 1 indicates high deprivation, and a score of 10 indicates low deprivation. Generally the research shows better health outcomes for those in areas of low deprivation (i.e. with a imd decile score between 8 to 10). 
+:::
+
+# Distributions
+
+Distributions are an essential way of looking at the spread of data, telling us how often a value occurs. This is helpful to see trends and if your data has a normal distribution. 
+
+A classic visualisation for this task is the histogram, which shows a distribution of one variable.
+
+**Your goal here is to make at least 2 histograms on columns of your choice.**
+
+We suggest using the ggplot2 package. See some examples of building a [histogram here](https://ggplot2.tidyverse.org/reference/geom_histogram.html#ref-examples). You can also use the [r graph gallery](https://r-graph-gallery.com/) to help make the figures. 
+
+You should end up with several visualisations looking like the image below. 
+
+```{r dist-sol, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(health, aes(x = systolic_pressure)) +
+  geom_histogram()
+```
+
+
+## Side note about distributions and central limit theorm 
+
+Something to keep in mind when looking at distributions of data is central limit theorem, which tells us that if you have a large enough sample your data will always be normally distributed. To help understand this concept have a look at this [interactive explainer](http://mfviz.com/central-limit/).
+
+We can also use R as an example using the `rnorm()` function which randomly generates a distribution. Copy the paste the code below and run it in R a few times. You should see the first histogram with a sample of 50 changes a lot, but the histogram with a sample of 5000 doesn't change much. 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r clt-ex1}
+hist(rnorm(50))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r clt-ex2}
+hist(rnorm(5000))
+```
+:::
+
+::::
+
+
+
+# Distributions between groups
+
+Looking at one variable is great but to provide more information we sometimes need to look at a distribution that is broken down by a category. 
+
+We can still use a histogram here, but there is also the box plot which is used to compare the distribution of several groups. See examples on how to build a [box plot here](https://ggplot2.tidyverse.org/reference/geom_boxplot.html#ref-examples). 
+
+**Your goal here is to create the three visualisations we have made below looking at the distribution of the `imd_decile` column.**
+
+What do you notice anything about the distributions? How does adding the location change how we see the data?
+
+```{r dist-solution1, echo=FALSE, message=FALSE, warning=FALSE}
+#| column: body-inset
+#| layout-nrow: 2
+#| out-width: '60%'
+
+ggplot(health, aes(x=imd_decile)) +
+  geom_histogram(bins = 10, colour = "black") +
+  scale_x_continuous(breaks = 1:10)
+
+ggplot(health, aes(x = imd_decile, y = location)) +
+  geom_boxplot() +
+  scale_x_continuous(breaks = 1:10)
+
+ggplot(health, aes(x=imd_decile)) +
+  geom_histogram(bins = 10, colour = "black") +
+  scale_x_continuous(breaks = 1:10) +
+  facet_wrap(~location)
+```
+
+
+::: {.panel-tabset}
+
+## Hint 1 
+We used the `facet_wrap()` [function](https://ggplot2.tidyverse.org/reference/facet_wrap.html#ref-examples) for the last figure.
+
+## Hint 2 
+We fixed the x axis using `scale_x_continuous()` [function](https://ggplot2.tidyverse.org/reference/scale_continuous.html#ref-examples), using the `breaks` argument. 
+
+## Hint 3 
+You can adjust the number of bins a histogram uses. 
+
+:::
+
+# Looking at counts and ranking of categorical data
+
+When we look at the counts or ranks of categorical data we are trying to see if there are differences between the groups. The classic way of doing this is using a bar plot. Essentially we are wanting to visualise the outcome we got from the `table()` function, or the aggregation we made in the last worksheet. 
+
+**Your goal is to make two visualisations.** One is a basic bar plot of the `bmi_risk` column. The second looks at the `bmi_risk` column against the `sex` column. You should end up with visuals that look like the outputs below. 
+
+```{r count-sol, echo=FALSE}
+#| column: body-inset
+#| layout-nrow: 1
+#| out-width: '70%'
+
+# basic bar
+ggplot(health, aes(y = bmi_risk)) +
+  geom_bar()
+
+# add sex to gain more insights
+ggplot(health, aes(y = bmi_risk, fill = sex)) +
+  geom_bar(position = "dodge")
+```
+
+
+# What about visualising average rankings?
+
+We can also use bar plots to look at the average of a numeric variable per group. In the last worksheet we made some aggregates of our data, like this example below which is finding the average IMD decile per location. 
+
+```{r agg-example}
+health |>
+  group_by(location) |>
+  summarise(avg_imd_decile = mean(imd_decile, na.rm = TRUE))
+```
+
+**Your goal is to, using the code above, make a visualisation that matches the visualisation below. **
+
+```{r agg-bar-sol, echo=FALSE}
+# find average imd decile per location
+health %>%
+  group_by(location) %>%
+  summarise(avg_imd_decile = mean(imd_decile, na.rm = TRUE)) %>%
+  ggplot(aes(x = avg_imd_decile, y = fct_reorder(location, avg_imd_decile))) +
+  geom_col() +
+  labs(x = "Average IMD decile",
+       y = "London boroughs")
+```
+
+::: {.panel-tabset}
+
+## Hint 1 
+You can change the x and y labels in a plot by using the `labs()` function. 
+
+## Hint 2
+You might find the `fct_reorder()` function useful. 
+
+:::
+
+# Relationships and correlations
+
+When we do an analysis like regression we want to compare an independent variable to several dependent variables to test the relationship. 
+
+An important step in this process is to visualise the relationships between variables first, which helps you to decide what dependent variables to test or are worth testing. 
+
+There are two stages we recommend:
+
+-   Stage 1: Build and visualise a correlation matrix
+
+-   Stage 2: Make scatter plots of variables to look at the relationship
+
+**Your goal is to create a correlation matrix and series of scatterplots as shown below. **
+
+```{r relation-sol, echo=FALSE, message=FALSE, warning=FALSE}
+# remove missing value for calculation
+health_no_na <- na.omit(health)
+# correlation matrix
+corr_mat <- health_no_na %>%
+  select(age, waist, hip, height_m:whr, imd_rank:imd_decile) %>%
+  cor()
+corr_mat
+# optional heatmap
+#heatmap(corr_mat, Rowv = NA, Colv = NA)
+
+# scatterplots with lm
+library(patchwork)
+
+imd_r <- ggplot(health, aes(x = imd_rank, y = bmi)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F)
+
+weight <- ggplot(health, aes(x = weight_kg, y = bmi)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F)
+
+height <- ggplot(health, aes(x = height_m, y = bmi)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F)
+
+whr <- ggplot(health, aes(x = whr, y = bmi)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F)
+
+imd_r + weight + height + whr
+
+```
+
+::: {.panel-tabset}
+
+## Hint 1 
+The correlation function, `cor()`, will require you to remove missing values from the dataset
+
+## Hint 2 
+The correlation function only works on numeric data. You will need to select the columns you need
+
+## Hint 3 
+The ggplot documentation on the `geom_smooth()` function should help you out to add the regression line
+
+## Hint 4 
+We used the [patchwork package](https://patchwork.data-imaginist.com/) to combine the images
+
+:::
+
+# Final (hopefully fun!) goal - build a cool visualisation
+
+R is really good at data visualisation and is widely used by various companies and careers for this; data journalism is a good example where R is used a lot by the Financial Times, Economist, and the BBC to make their visuals. 
+
+Your goal is to make this visualisation. We are going to provide some code to guide you. You will have to write the rest of the code! 
+
+```{r show-final, echo=FALSE, message=FALSE, warning=FALSE}
+final_plot
+```
+
+There are several steps:
+
+-   Fixing the occupation column. There is some really nasty data here, check out the data to see what we mean. 
+
+-   Filtering our data to pick out only the occupations we are interested in.
+
+-   Building the visualisation and faceting by the occupations we selected. 
+
+Below is the code for you to use and fix. Anywhere there is a `...` it indicates something you need to add information to such as a dataset or a column name. 
+```{r task-fix, error=TRUE, eval=FALSE}
+# fixing the occupation column by removing parts of a string
+... <- ... %>%
+  mutate(occupation = str_remove(occupation, "\\["),
+         occupation = str_remove(occupation, "\\]")) %>%
+  separate_longer_delim(occupation, delim = ",") %>%
+  mutate(occupation = str_squish(occupation))
+
+# filtering for occupations we want
+my_occupations <- c("Arts and Entertainment", ...)
+
+# building the visualisation
+... %>%
+  mutate(bmi_risk = factor(bmi_risk, 
+                           levels = ...)) %>%
+  filter(occupation %in% ...) %>%
+  ggplot(aes(x = ..., y = ...)) +
+  geom_point(aes(colour = ...)) +
+  geom_smooth(method = "lm", 
+              se = FALSE, 
+              colour = "grey55") +
+  facet_wrap(vars(occupation)) +
+  scale_colour_manual(values = c('#26547c','#ef476f','#ffd166')) +
+  scale_y_continuous(breaks = seq(1, 10, 1)) + 
+  labs(title = ...,
+       y = ..., x = ...,
+       colour = ...) +
+  theme_minimal(base_size = 12, 
+                base_family = "Avenir") +
+  theme(legend.position = "bottom",
+        plot.title.position = "plot")
+```
+
+::: {.callout-note}
+If you want help understanding what is happening in each step of this code, talk to your neighbour to try and figure it out, or ask a trainer
+:::
+
+::: {.callout-tip}
+## Hint 
+A factor is a way of organising and arranging categorical data. The levels determine the order the data is presented, which you can change manually. Check the order of the `bmi_risk` categories and try to match it using the `levels` argument. 
+:::
+
+# Next steps
+
+Excellent work! 
+
+The last worksheet of this project series is on analysis in R. 
+
+# Give us some feedback!
+
+We are always looking to improve and iterate our workshops. Follow the link below to give your feedback. 
+
+
