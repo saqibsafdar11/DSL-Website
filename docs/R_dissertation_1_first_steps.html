@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <li><p>Open RStudio.</p></li>
 <li><p>Download the R script provided, which provides you with some structure.</p></li>
 </ol>
-<p><a href="#dnldts16601" onclick="fetch('data:text/plain;base64,IyBUaGlzIGlzIGEgY29tbWVudC4gTm90aWNlIHRoZSBoYXNodGFnCiMgc29tZSBleGFtcGxlIGNvZGUgdG8gaGVscCB5b3Ugb3V0CjEgKyAxCmEgPC0gNQpiIDwtIDIKYyA8LSBhICogYgoKIyBCTUkgY2FsY3VsYXRpb24gLS0tLQoKCiMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIC0tLS0KCgojIFVzaW5nIHZhcmlhYmxlcyAtLS0tCgoKCiMgVXNpbmcgdmVjdG9ycyAtLS0tCgoKCiMgVXNpbmcgZGF0YSBmcmFtZXMgLS0tLQ==').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts49664" onclick="fetch('data:text/plain;base64,IyBUaGlzIGlzIGEgY29tbWVudC4gTm90aWNlIHRoZSBoYXNodGFnCiMgc29tZSBleGFtcGxlIGNvZGUgdG8gaGVscCB5b3Ugb3V0CjEgKyAxCmEgPC0gNQpiIDwtIDIKYyA8LSBhICogYgoKIyBCTUkgY2FsY3VsYXRpb24gLS0tLQoKCiMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIC0tLS0KCgojIFVzaW5nIHZhcmlhYmxlcyAtLS0tCgoKCiMgVXNpbmcgdmVjdG9ycyAtLS0tCgoKCiMgVXNpbmcgZGF0YSBmcmFtZXMgLS0tLQ==').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function() {
       a.download = 'r_dissertation_1.R'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-success downloadthis  " id="dnldts16601"><i class="bi bi-r-circle"></i> Download R script file </button></a></p>
+        });"><button class="btn btn-success downloadthis  " id="dnldts49664"><i class="bi bi-r-circle"></i> Download R script file </button></a></p>
 <ol start="3" type="1">
 <li>Open the R Script <code>R_dissertation_1.R</code> you downloaded.</li>
 </ol>
@@ -544,7 +544,7 @@ Waist-Hip ratio: 0.8411215</p>
 <p>To save the csv file we recommend you use the <code>write.csv()</code>function. To find out more information on how to use this function either type <code>?write.csv</code> or search for it in the help menu which is in the bottom right panel in RStudio.</p>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<p>We saved our file without row names. To do this you need to add an argument to the <code>write.csv()</code> function. Have a look at the help page, particularly the examples section at the bottom to see if you can figure out how to do this.</p>
+<p>We saved our file without row names. To do this you need to add an argument to the <code>write.csv()</code> function. Have a look at the help page, particularly the examples section at the bottom, to see if you can figure out how to do this.</p>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <p>Use <code>?hist</code> to find out more about how to run a histogram and make the changes we did to the output below. We changed the colour, the title (also called main), and the x label.</p>
