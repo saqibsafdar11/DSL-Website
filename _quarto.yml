@@ -9,39 +9,41 @@ website:
   title: "Learning R at the DSL"
   search: true
   reader-mode: true
+  favicon: "images/colourful_flora.png"
   sidebar:
     style: "docked"
+    logo: "images/DigitalSkillsLab.png"
     contents:
       - section: "📚 Information"
         contents: 
         - href: index.qmd
-          text: Home
+          text: 🏠 Home
         - href: whyR.qmd
-          text: Why learn R
+          text: 📊 Why learn R
       - section: "💻 R workshops"
         contents: 
           - href: install.qmd
-            text: Install R and RStudio
+            text: 🛠️ Install R and RStudio
           - href: workshop-materials.qmd
-            text: Workshop Materials
+            text: 📖 Workshop Materials
           - href: using-files.qmd
-            text: Using R files
+            text: 📁 Using R files
       - section: "🎓 R Dissertation workshops"
         contents:
           - href: R_dissertation_1_first_steps.qmd
-            text: First steps with R
+            text: 🎓 First steps with R
           - href: R_dissertation_2_data_cleaning.qmd
-            text: Data cleaning
+            text: 🎓 Data cleaning
           - href: R_dissertation_3_exploring_using_visualisation.qmd
-            text: Exploring data using visualisation
+            text: 🎓 Exploring data using visualisation
           - href: R_dissertation_4_data_analysis.qmd
-            text: Data analysis
+            text: 🎓 Data analysis
       - section: "❓ Other information"
         contents: 
           - href: faq.qmd
-            text: FAQ
+            text: ℹ️ FAQ
           - href: example-page.qmd
-            text: R Testing Ground
+            text: 🧪 R Testing Ground
       - icon: github
         href: https://github.com/andrewmoles2
 
