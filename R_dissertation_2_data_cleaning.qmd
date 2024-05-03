@@ -190,7 +190,16 @@ When you have them loaded, you should see them appear in the Environment panel (
 
 Try taking a look at your data using the functions `View()`, `str()`, and `summary()`. 
 
-**Hint:** remember to assign your data a name to store it like we have done with variables. E.g. `some_data <- read.csv("my_data.csv")`.  
+::: {.panel-tabset}
+
+## Hint 1
+Remember to assign your data a name to store it like we have done with variables. E.g. `some_data <- read.csv("my_data.csv")`.  
+
+## Hint 2
+Remember that Excel files have different sheets. Which sheet in the `IMD2019.xlsx` file holds the data? If you are not sure try opening the file to check. How can you use that information to load the data from that sheet?
+
+:::
+
 
 **Top tip when loading data:** move your cursor between the quotation marks ('' or "") and press tab. You should see a list of the files you can load! Press tab to select or click using your mouse. 
 
@@ -202,7 +211,7 @@ To tidy up the column names we recommend using the janitor package and the `clea
 
 The `IMD2019.xlsx` dataset is from the [English indices of deprivation website 2019](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019). Indices of deprivation (IMD) measure relative deprivation in small areas in England, where lower decile scores indicate a more deprived area. 
 
-# Some weird stuff is happening in the heights and weights columns...
+# Some weird stuff is happening in the heights and weights columns...{#sec-fixcols}
 
 We have our data loaded which is the first real hurdle, great stuff! However, this dataset is not perfect...
 
@@ -210,7 +219,9 @@ Have a look at the weight and heights column in the health metrics dataset. Do y
 
 It seems people in this data have given a variety of metrics for weight and height. For height, you'll see a mixture of meters (e.g. 1.75), centimetres (e.g. 175), and feet (e.g. 5.74) responses. For weight you'll see a mixture of stone (e.g. 9.02) or kilograms (e.g. 57.27). 
 
-We need to fix this in order to perform calculations on this data! Your goal here is to add new columns to the data where height is in meters, and weight is in kilograms. The first 5 rows of the new columns you should have made are shown below.
+We need to fix this in order to perform calculations on this data! Your goal here is to add new columns to the data where height is in meters, and weight is in kilograms. 
+
+The first 5 rows of the new columns you should have made are shown below.
 
 ```{r metric-fix, echo=FALSE}
 health_check_clean %>%
@@ -251,8 +262,9 @@ We are going to need to use conditional operators to find and fix the incorrect 
 | `X & Y`    | X AND Y                  |
 | `X %in% Y` | is X in Y                |
 
-In R, the easiest way to conditionally fix data is to use the `ifelse()` function, or the `case_when()` function from `dplyr`. To add a new column the `transform()` function or the `mutate()` function from `dplyr` are easiest to use. See below for some examples.
+In R, the easiest way to conditionally fix data is to use the `ifelse()` function, or the `case_when()` function from `dplyr`. To add a new column the `transform()` function or the `mutate()` function from `dplyr` are easiest to use. See below for some examples. Remember, to see what your data should look like see the output in @sec-fixcols. 
 
+Note this is just an example to help you out using some random data. 
 ```{r ifelse-example}
 df <- data.frame(
   x = c(4.26, 6.05, 5.35, 6.49, 7.68, 4.32, 4.92, 4.18, 4.32, 0.61)

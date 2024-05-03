@@ -154,7 +154,7 @@ You get the below information from your family:
 Different family members have used different metrics:
 
 -   Robin has used centimetres for height\
--   Jules (Dad) has used feet for height\
+-   Sam (Mum) has used feet for height\
 -   Sam (Mum) and Jules (Dad) have used stone for weight
 :::
 
