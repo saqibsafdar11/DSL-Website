@@ -415,6 +415,6 @@ The last worksheet of this project series is on analysis in R.
 
 # Give us some feedback!
 
-We are always looking to improve and iterate our workshops. Follow the link below to give your feedback. 
+We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%3:%Exploring%your%data%using%visualisation&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/Ea6r1ThAIkxDpvq3l503Pa8B2XrPZkVJYRxAHvNph98-2A?e=w9qbra). 
 
-
+Solutions are available at the end of the survey. 
