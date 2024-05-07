@@ -80,15 +80,17 @@ If you are interested here is an [article about the importance of reviewing your
 
 # Setup
 
-1. Download the R file provided using the button below
+1.Download the R script provided, which provides you with some structure. You can also use a R Markdown file if you prefer, which can be downloaded from the second button. 
 
 {{< downloadthis resources/R_dissertation_3.R label='Download R script file' dname=r_dissertation_3 icon=r-circle type=success >}}
 
-2. Load the R file
+{{< downloadthis resources/R_dissertation_3.Rmd label='Download R markdown file' dname=r_dissertation_3 icon=r-circle type=success >}}
 
-3. Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/) for more information. We recommend installing packages using the command line as you only need to install packages once. 
+2. Load the R script or R markdown file
 
-4. Load in the tidyverse and patchwork packages in your script
+3. Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/) for more information. **We recommend installing packages using the console as you only need to install packages once**. 
+
+4. Load in the tidyverse and patchwork packages
 
 5. Load in health metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
 

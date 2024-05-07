@@ -51,9 +51,13 @@ You will also be given the opportunity to explore one of the example datasets pr
 
 # Setup
 
-1. This time you will be opening your own R script. To do so you can either go to `File > New File > R Script` or use the keyboard shortcut `shift + command/control + N`.
+1. This time you will be opening your own R script or R Markdown file. 
 
-2. Install the `broom`, `easystats`, and `stargazer` libraries which we will be using for reporting. We recommend installing packages using the command line as you only need to install packages once. 
+-   To open a script you can either go to `File > New File > R Script` or use the keyboard shortcut `shift + command/control + N`.
+
+-   To open a new R markdown file go to `File > New File > R Markdown`. When opening we recommend you change the title to `R_dissertation_4`. Then when the file is open we suggest deleting everything after line 6 or under the second `---`. You'll need to add your own headings using the `#` and add code cells using `option+command+i` on a Mac or `ctrl + alt + i` on a Windows machine.
+
+2. Install the `broom`, `easystats`, and `stargazer` libraries which we will be using for reporting. **We recommend installing packages using the command line as you only need to install packages once**. 
 
 3. Load tidyverse, easystats, broom, and stargazer. 
 
@@ -77,7 +81,9 @@ LSE Life [Quant advisers](https://info.lse.ac.uk/current-students/lse-life/event
 
 [Modern stats with R](https://www.modernstatisticswithr.com/regression.html#) book provides some useful examples       
 
-[R statistics tutorials](https://r-statistics.co/Statistical-Tests-in-R.html )    
+[R tutor](https://www.r-tutor.com/elementary-statistics) which provides short examples of lots of statistical tests. 
+
+[R statistics tutorials](https://r-statistics.co/Statistical-Tests-in-R.html ) which are longer tutorials on models like regression.     
 
 # Exploring tests of difference: t-test and ANOVA
 

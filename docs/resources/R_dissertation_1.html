@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Andrew moles">
+<meta name="dcterms.date" content="2024-05-07">
 
-<title>Learning R at the DSL - Information on how to use R Scripts and Markdown files</title>
+<title>Learning R at the DSL - R_dissertation_1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/colourful_flora.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/colourful_flora.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -89,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../css/styles.css">
 
 
 
@@ -101,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./install.html">💻 R workshops</a></li><li class="breadcrumb-item"><a href="./using-files.html">📁 Using R files</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">R_dissertation_1</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -115,8 +148,8 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/DigitalSkillsLab.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/DigitalSkillsLab.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -144,13 +177,13 @@ document.addEventListener("DOMContentLoaded", function() {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🏠 Home</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./whyR.html" class="sidebar-item-text sidebar-link">
+  <a href="../whyR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📊 Why learn R</span></a>
   </div>
 </li>
@@ -167,19 +200,19 @@ document.addEventListener("DOMContentLoaded", function() {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./install.html" class="sidebar-item-text sidebar-link">
+  <a href="../install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🛠️ Install R and RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workshop-materials.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📖 Workshop Materials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./using-files.html" class="sidebar-item-text sidebar-link active">
+  <a href="../using-files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📁 Using R files</span></a>
   </div>
 </li>
@@ -196,25 +229,25 @@ document.addEventListener("DOMContentLoaded", function() {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_dissertation_1_first_steps.html" class="sidebar-item-text sidebar-link">
+  <a href="../R_dissertation_1_first_steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎓 First steps with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_dissertation_2_data_cleaning.html" class="sidebar-item-text sidebar-link">
+  <a href="../R_dissertation_2_data_cleaning.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎓 Data cleaning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_dissertation_3_exploring_using_visualisation.html" class="sidebar-item-text sidebar-link">
+  <a href="../R_dissertation_3_exploring_using_visualisation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎓 Exploring data using visualisation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_dissertation_4_data_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../R_dissertation_4_data_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎓 Data analysis</span></a>
   </div>
 </li>
@@ -231,13 +264,13 @@ document.addEventListener("DOMContentLoaded", function() {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ℹ️ FAQ</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example-page.html" class="sidebar-item-text sidebar-link">
+  <a href="../example-page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🧪 R Testing Ground</span></a>
   </div>
 </li>
@@ -249,21 +282,12 @@ document.addEventListener("DOMContentLoaded", function() {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#opening-rstudio" id="toc-opening-rstudio" class="nav-link active" data-scroll-target="#opening-rstudio">Opening RStudio</a>
-  <ul>
-  <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users">Windows users</a></li>
-  <li><a href="#mac-users" id="toc-mac-users" class="nav-link" data-scroll-target="#mac-users">Mac users</a></li>
-  </ul></li>
-  <li><a href="#r-scripts" id="toc-r-scripts" class="nav-link" data-scroll-target="#r-scripts">R Scripts</a>
-  <ul>
-  <li><a href="#opening-r-scripts" id="toc-opening-r-scripts" class="nav-link" data-scroll-target="#opening-r-scripts">Opening R Scripts</a></li>
-  <li><a href="#using-r-scripts" id="toc-using-r-scripts" class="nav-link" data-scroll-target="#using-r-scripts">Using R Scripts</a></li>
-  </ul></li>
-  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a>
-  <ul>
-  <li><a href="#opening-r-markdown-files" id="toc-opening-r-markdown-files" class="nav-link" data-scroll-target="#opening-r-markdown-files">Opening R Markdown files</a></li>
-  <li><a href="#using-a-r-markdown-file" id="toc-using-a-r-markdown-file" class="nav-link" data-scroll-target="#using-a-r-markdown-file">Using a R Markdown file</a></li>
-  </ul></li>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#bmi-calculation" id="toc-bmi-calculation" class="nav-link" data-scroll-target="#bmi-calculation">BMI calculation</a></li>
+  <li><a href="#waist-to-hip-calculation" id="toc-waist-to-hip-calculation" class="nav-link" data-scroll-target="#waist-to-hip-calculation">Waist to Hip calculation</a></li>
+  <li><a href="#using-variables" id="toc-using-variables" class="nav-link" data-scroll-target="#using-variables">Using variables</a></li>
+  <li><a href="#using-vectors" id="toc-using-vectors" class="nav-link" data-scroll-target="#using-vectors">Using vectors</a></li>
+  <li><a href="#using-data-frames" id="toc-using-data-frames" class="nav-link" data-scroll-target="#using-data-frames">Using data frames</a></li>
   </ul>
 </nav>
 </nav>
@@ -274,16 +298,28 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./install.html">💻 R workshops</a></li><li class="breadcrumb-item"><a href="./using-files.html">📁 Using R files</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Information on how to use R Scripts and Markdown files</h1>
+<h1 class="title">R_dissertation_1</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andrew moles </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 7, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -293,143 +329,38 @@ document.addEventListener("DOMContentLoaded", function() {
 </header>
 
 
-<section id="opening-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="opening-rstudio">Opening RStudio</h2>
-<p>If you have not done so already, open RStudio!</p>
-<section id="windows-users" class="level3">
-<h3 class="anchored" data-anchor-id="windows-users">Windows users</h3>
-<ul>
-<li>Type <code>RStudio</code> in the search bar (bottom left, next to windows symbol)</li>
-<li>If you prefer, open the start menu (click windows symbol), then scroll until you find RStudio</li>
-</ul>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Below are some example code for you to run.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> a <span class="sc">*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note you can add your own code cell using option+command+i on a Mac or ctrl + alt + i on a Windows machine.</p>
 </section>
-<section id="mac-users" class="level3">
-<h3 class="anchored" data-anchor-id="mac-users">Mac users</h3>
-<ul>
-<li>Hit command + space and type in <code>RStudio</code></li>
-<li>If you prefer to look for RStudio in an applications folder (open finder and select Applications on the left panel), you should be looking for this icon: <img src="images/rs.png" class="img-fluid"></li>
-</ul>
-<p>When RStudio opens you should see a layout with 3 panels, similar to the image below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/rstudio.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="RStudio, image from 2023"><img src="images/rstudio.png" class="img-fluid figure-img" alt="RStudio, image from 2023"></a></p>
-<figcaption>RStudio, image from 2023</figcaption>
-</figure>
-</div>
-<p>The largest panel on the left with the <code>&gt;</code> is the console. On the bottom right there is the files/plot panel, and top right is the environment panel.</p>
-<p>If your installation of R and RStudio has worked, first RStudio should be open, and second you should see a message in your console panel telling you the version of R you have installed, like the image below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/r-version.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="R version displayed in RStudio console"><img src="images/r-version.png" class="img-fluid figure-img" alt="R version displayed in RStudio console"></a></p>
-<figcaption>R version displayed in RStudio console</figcaption>
-</figure>
-</div>
-<p>There are three ways of running R code: console, scripts and R Markdown. In the R workshops we use R Markdown.</p>
+<section id="bmi-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="bmi-calculation">BMI calculation</h2>
 </section>
+<section id="waist-to-hip-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="waist-to-hip-calculation">Waist to Hip calculation</h2>
 </section>
-<section id="r-scripts" class="level2">
-<h2 class="anchored" data-anchor-id="r-scripts">R Scripts</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What are R Scripts?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>An R Script file is a text file that contains a set of commands, or code, written in the R programming language. They are simple to use, allowing you to save the code you have written for later.</p>
-<p>An in-depth description can be found in the <a href="https://r4ds.hadley.nz/workflow-scripts.html">R for Data Science</a> open source book</p>
-</div>
-</div>
-<section id="opening-r-scripts" class="level3">
-<h3 class="anchored" data-anchor-id="opening-r-scripts">Opening R Scripts</h3>
-<p>If you move your mouse/curser to the top of your screen you will see a banner with <em>file</em>, <em>edit</em>, <em>code</em> etc. Using <code>File &gt; Open File...</code>, find the R script file to load. R script files have the extension <code>.R</code>.</p>
-<p>To start a new R script file go to <code>File &gt; New File &gt; R Script</code>, or use the keyboard shortcut <code>ctrl/command + shift + N</code>.</p>
+<section id="using-variables" class="level2">
+<h2 class="anchored" data-anchor-id="using-variables">Using variables</h2>
 </section>
-<section id="using-r-scripts" class="level3">
-<h3 class="anchored" data-anchor-id="using-r-scripts">Using R Scripts</h3>
-<p>The below image shows an R Script in action.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/R-script.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Image of R Script"><img src="images/R-script.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Image of R Script"></a></p>
-</figure>
-</div>
-<figcaption>Image of R Script</figcaption>
-</figure>
-</div>
-<p>There are two main ways of running code in an R Script.</p>
-<ul>
-<li>Use <code>ctrl/command + Enter</code> to run each line</li>
-<li>Highlight a section of code, and use the run button (or press <code>ctrl/command + Enter</code>)</li>
-</ul>
-<p>You might notice code you have run appears on the console (bottom left), and if you make a variable that will appear in the Environment (top right).</p>
+<section id="using-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="using-vectors">Using vectors</h2>
 </section>
-</section>
-<section id="r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What is R Markdown?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>An R Markdown file has sections of text and code together in a single document. This is helpful for tutorials, documentation, and writing reports.</p>
-<p>An in-depth description can be found in the <a href="https://r4ds.had.co.nz/r-markdown.html">R for Data Science</a> open source book</p>
-</div>
-</div>
-<section id="opening-r-markdown-files" class="level3">
-<h3 class="anchored" data-anchor-id="opening-r-markdown-files">Opening R Markdown files</h3>
-<p>Opening a R Markdown file is very similar to opening a file in other software. If you move your mouse/curser to the top of your screen you will see a banner with <em>file</em>, <em>edit</em>, <em>code</em> etc. Using <code>File &gt; Open File...</code>, find the R Markdown file to load. R Markdown files have the extension <code>.Rmd</code>.</p>
-<p>To start a new R markdown file go to <code>File &gt; New File &gt; R Markdown...</code>.</p>
-</section>
-<section id="using-a-r-markdown-file" class="level3">
-<h3 class="anchored" data-anchor-id="using-a-r-markdown-file">Using a R Markdown file</h3>
-<p>We are using R Markdown notebooks for these workshops as we can add text around code, which can help us guide you. The image below shows the basic layout of a R Markdown document.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/R-Markdown.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Image of R Markdown notebook, indicating the text and code sections"><img src="images/R-Markdown.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Image of R Markdown notebook, indicating the text and code sections"></a></p>
-</figure>
-</div>
-<figcaption>Image of R Markdown notebook, indicating the text and code sections</figcaption>
-</figure>
-</div>
-<p>There are three ways to run code in a code cell. The two ways mentioned in the image (Run and play button), and third is to use <code>ctrl/command + Enter</code> to run each line just like you would with an R script.</p>
-<p>The most important thing for you to take note of is the code cells. Each code cell is like a small R script. You’ll notice the ``` markings around the code cell. It is important these do not get deleted, so be careful when editing your code!</p>
-<p>A top tip is to change the mode of your R Markdown file from <code>source</code> to <code>visual</code> which provides a more pleasing environment to code in. To do this you will find the option near the <strong><em>top right of your RStudio window</em></strong>.</p>
-<p>Finally, you can add your own code cell using <code>option+command+i</code> on a Mac or <code>ctrl + alt + i</code> on a Windows machine.</p>
-<p>Throughout the notebooks you will come across exercises, with empty code cells for you to type your code into. Your task is to test out the examples, then try and do the exercises.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you have struggled with any of these steps ask a trainer for support</p>
-</div>
-</div>
+<section id="using-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="using-data-frames">Using data frames</h2>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">RStudio, image from 2023</span>
-<span class="glightbox-desc lightbox-desc-2">R version displayed in RStudio console</span>
-<span class="glightbox-desc lightbox-desc-3">Image of R Script</span>
-<span class="glightbox-desc lightbox-desc-4">Image of R Markdown notebook, indicating the text and code sections</span>
-</div>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -843,31 +774,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 

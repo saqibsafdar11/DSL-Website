@@ -147,7 +147,7 @@ health_check |>
 
 3)    Open RStudio and open the `.Rproj` file. To open the project, go to `File > Open Project`.
 
-4)    Once your project is open, click on the `.R` script you should see in the files panel on the right hand side of your screen. 
+4)    Once your project is open, click on the `.R` script or `.Rmd` file you should see in the files panel on the right hand side of your screen. It is up to you which you use. 
 
 5)    In the files panel you should also see some data which are called `health_metrics.csv` and `IMD2019.xlsx`. We will be loading these into R later. 
 
@@ -174,9 +174,9 @@ install.packages("janitor", Ncpus = 6)
 
 # Loading packages 
 
-When using packages in R you need to load them each time you open R. We use the `library()` command for this, and the best practice is to do this at the top of your script. 
+When using packages in R you need to load them each time you open R. We use the `library()` command for this, and the best practice is to do this at the top of your script/R markdown file. 
 
-At the top of your script use the `library()` command to load the `tidyverse`, `readxl`, and `janitor` packages. 
+At the top of your script/R markdown file use the `library()` command to load the `tidyverse`, `readxl`, and `janitor` packages. 
 
 Note that when loading the tidyverse set of tools it does not load everything it installed, but instead loads a handful of the packages it installed for us. The `readxl` package is not loaded, so we have to load that separately.   
 
@@ -511,7 +511,7 @@ And we removed the following columns:
 -   weight (as we have converted these to a new column)
 
 
-Once you've renamed and selected the columns you need, write (save) your dataset to a `.csv` format. Save it in the same folder where your script and other data is stored, and make sure to give it a meaningful name. 
+Once you've renamed and selected the columns you need, write (save) your dataset to a `.csv` format. Save it in the same folder where your script/R markdown file and other data is stored, and make sure to give it a meaningful name. 
 
 # Next steps
 

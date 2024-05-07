@@ -83,6 +83,8 @@ There are three ways to run code in a code cell. The two ways mentioned in the i
 
 The most important thing for you to take note of is the code cells. Each code cell is like a small R script. You'll notice the \`\`\` markings around the code cell. It is important these do not get deleted, so be careful when editing your code!
 
+A top tip is to change the mode of your R Markdown file from `source` to `visual` which provides a more pleasing environment to code in. To do this you will find the option near the ***top right of your RStudio window***. 
+
 Finally, you can add your own code cell using `option+command+i` on a Mac or `ctrl + alt + i` on a Windows machine.
 
 Throughout the notebooks you will come across exercises, with empty code cells for you to type your code into. Your task is to test out the examples, then try and do the exercises.

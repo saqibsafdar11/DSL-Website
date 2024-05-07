@@ -47,12 +47,13 @@ To get started you will need to follow the below steps:
 
 1)  Open RStudio.   
 
-2)  Download the R script provided, which provides you with some structure. 
+2)  Download the R script provided, which provides you with some structure. You can also use a R Markdown file if you prefer, which can be downloaded from the second button. 
 
 {{< downloadthis resources/R_dissertation_1.R label='Download R script file' dname=r_dissertation_1 icon=r-circle type=success >}}
 
-3)  Open the R Script `R_dissertation_1.R` you downloaded.    
+{{< downloadthis resources/R_dissertation_1.Rmd label='Download R markdown file' dname=r_dissertation_1 icon=r-circle type=success >}}
 
+3)  Open the R Script `R_dissertation_1.R` or `R_dissertation_1.Rmd` file you downloaded.    
 
 For help getting starting using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html). 
 

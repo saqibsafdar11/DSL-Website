@@ -1,0 +1,57 @@
+---
+title: "R_dissertation_1"
+author: "Andrew moles"
+date: "2024-05-07"
+output: html_document
+---
+
+## Example
+
+Below are some example code for you to run. 
+
+```{r}
+1 + 1
+```
+
+```{r}
+a <- 5
+b <- 2
+c <- a * b
+```
+
+Note you can add your own code cell using option+command+i on a Mac or ctrl + alt + i on a Windows machine. 
+
+## BMI calculation 
+
+```{r}
+
+```
+
+
+## Waist to Hip calculation 
+
+```{r}
+
+```
+
+
+## Using variables 
+
+```{r}
+
+```
+
+
+## Using vectors 
+
+```{r}
+
+```
+
+
+## Using data frames 
+
+```{r}
+
+```
+

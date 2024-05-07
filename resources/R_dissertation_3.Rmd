@@ -1,0 +1,49 @@
+---
+title: "R_dissertation_3"
+author: "Andrew moles"
+date: "2024-05-07"
+output: html_document
+---
+
+# Load libraries 
+
+```{r}
+
+```
+
+# Load data
+
+```{r}
+
+```
+
+# Summary statistics
+
+```{r}
+
+```
+
+# Distributions
+
+```{r}
+
+```
+
+# Counts and rankings
+
+```{r}
+
+```
+
+# Relationships and correlations
+
+```{r}
+
+```
+
+# Building a visualisation
+
+```{r}
+
+```
+
