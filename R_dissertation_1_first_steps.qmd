@@ -55,7 +55,7 @@ To get started you will need to follow the below steps:
 
 3)  Open the R Script `R_dissertation_1.R` or `R_dissertation_1.Rmd` file you downloaded.    
 
-For help getting starting using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html). 
+For help getting started using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html). 
 
 Each section is a small project. You will need to write all the code yourself. 
 
@@ -123,7 +123,7 @@ var_out <- paste0("Andrew has a BMI of ", round(andrew_bmi, 2), ", and Seb has a
 ::: {.panel-tabset}
 
 ## Hint 1
-To make the output we have done something called *string concatenation*. In R you would use the `paste()` or `paste0()` functions for this. For example, `paste("Jim is", 25, "years old")`.
+To make the output we have done something called *string concatenation*. In R you would use the `paste()` or `paste0()` functions for this. For example, we would create a variable `age <- 25`, then put it in the paste function like: `paste("Jim is", age, "years old")` which prints *"Jim is 25 years old"*.
 
 ## Hint 2
 We rounded our outputs. You can do the same using the `round()` function. Try running `?round()` to see the documentation for the function to help you use it.
@@ -207,10 +207,13 @@ avg_bmi <- mean(family_bmi)
 You need to make the vectors using the `c()` function from the information provided.
 
 ## Hint 2 
-To convert the data, you will need to access the data point you want to convert using a technique called *indexing*. You can do this using square brackets, and the number of the element in the vector you want to change. If I wanted to access Mon in `days_of_week` I would write `days_of_week[1]` because it is the first element.
+To convert the data, you will need to access the data point you want to convert using a technique called ***indexing***. You can do this using square brackets, and the number of the element in the vector you want to change. If I wanted to access Mon in `days_of_week` I would write `days_of_week[1]` because it is the first element.
 
 ## Hint 3
-R has lots of useful functions to help you out. For the average try searching online to find a function that can help you calculate the average of `family_bmi`.
+Once you've accessed the item in the vector you want, to change it you need to *assign* the result back to that item in the vector. For example, if I wanted to times the first item in the vector by ten I would do `vector[1] <- vector[1] * 10`. 
+
+## Hint 4
+R has lots of useful functions to help you out. The `mean()` function will help you calculate the average of `family_bmi`. To see how it works look at the file explorer in RStudio (bottom right), click on the *Help* tab and search for mean. 
 
 :::
 
@@ -260,12 +263,15 @@ hist(family_data$family_bmi,
 :::{.panel-tabset}
 
 ## Hint 1
-To save the csv file we recommend you use the `write.csv()`function. To find out more information on how to use this function either type `?write.csv` or search for it in the help menu which is in the bottom right panel in RStudio. 
+To make a data frame we can use the `data.frame()` function. Simply add the vectors you made for names, height, weight, and bmi. Remember to assign your data frame to a name such as `family_data <- data.frame(family_names, ...)`. 
 
 ## Hint 2
+To save the csv file we recommend you use the `write.csv()`function. To find out more information on how to use this function either type `?write.csv` or search for it in the help menu which is in the bottom right panel in RStudio. The function needs two elements, the data you want to write, and the file plus extension. For example, if our dataset was called my_data then we could do `write.csv(my_data, "my_data.csv)`. 
+
+## Hint 3
 We saved our file without row names. To do this you need to add an argument to the `write.csv()` function. Have a look at the help page, particularly the examples section at the bottom, to see if you can figure out how to do this. 
 
-## Hint 3 
+## Hint 4 
 Use `?hist` to find out more about how to run a histogram and make the changes we did to the output below. We changed the colour, the title (also called main), and the x label.
 
 :::

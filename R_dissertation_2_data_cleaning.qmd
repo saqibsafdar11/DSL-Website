@@ -180,6 +180,8 @@ At the top of your script/R markdown file use the `library()` command to load th
 
 Note that when loading the tidyverse set of tools it does not load everything it installed, but instead loads a handful of the packages it installed for us. The `readxl` package is not loaded, so we have to load that separately.   
 
+*Hint: You will need to use the library function for each package you are loading.*
+
 # Lets load the data so we can start cleaning it! 
 
 Load in both data files. Keep in mind that one file is a `.csv` file, and the other is a `.xlsx` file.
@@ -188,7 +190,7 @@ When you have them loaded, you should see them appear in the Environment panel (
 
 ![](images/data_load.png){width='450'}
 
-Try taking a look at your data using the functions `View()`, `str()`, and `summary()`. 
+Try taking a look at your data using the functions `View()`, `str()`, and `summary()` once the data is loaded. 
 
 ::: {.panel-tabset}
 
@@ -196,7 +198,7 @@ Try taking a look at your data using the functions `View()`, `str()`, and `summa
 Remember to assign your data a name to store it like we have done with variables. E.g. `some_data <- read.csv("my_data.csv")`.  
 
 ## Hint 2
-Remember that Excel files have different sheets. Which sheet in the `IMD2019.xlsx` file holds the data? If you are not sure try opening the file to check. How can you use that information to load the data from that sheet?
+Remember that Excel files have different sheets. Which sheet in the `IMD2019.xlsx` file holds the data? If you are not sure try opening the file to check. How can you use that information to load the data from that sheet? 
 
 :::
 
@@ -264,6 +266,16 @@ We are going to need to use conditional operators to find and fix the incorrect 
 
 In R, the easiest way to conditionally fix data is to use the `ifelse()` function, or the `case_when()` function from `dplyr`. To add a new column the `transform()` function or the `mutate()` function from `dplyr` are easiest to use. See below for some examples. Remember, to see what your data should look like see the output in @sec-fixcols. 
 
+To help you get started you can copy and paste the scaffolding code below. You'll need to fill in the spaces where the `...` is. It is recommended you look up the `ifelse()` function in the help menu (bottom right, help tab). 
+```{r, eval=FALSE}
+health <- mutate(health,
+                    height_m = ifelse(..., ...,
+                                      ifelse(... & ..., 
+                                             ..., ...)),
+                    weight_kg = ifelse(weight < 25, ... / 0.1575, weight))
+```
+
+<!--
 Note this is just an example to help you out using some random data. 
 ```{r ifelse-example}
 df <- data.frame(
@@ -286,6 +298,7 @@ df_clean <- mutate(
 
 df_clean
 ```
+-->
 
 # Now that is fixed, we can calculate some health metrics!
 
@@ -299,6 +312,8 @@ health_check_clean %>%
 ```
 
 Do you remember from the first worksheet how we calculated BMI and waist-to-hip ratio? How do we do those calculations on columns in a data frame to make a new column?
+
+*Hint: when using the mutate function to add columns you can add multiple columns in a single mutate function. See the previous exercise where we added height_m and weight_kg.*
 
 # Add some meaning with categorisation 
 
@@ -330,7 +345,7 @@ Can you find the BMI risk categories yourself?
 
 ## Top tip for multiple categories
 
-When you are making multiple categories things can get messy using the `ifelse()` function as you have to do something called *nested ifelse statements*. 
+When you are making multiple categories things can get messy using the `ifelse()` function as you have to do something called *nested ifelse statements*. The `ifelse()` function works best on one or two categories. 
 
 We would recommend using the `case_when()` function from `dplyr` for multiple categories as it makes things much easier. Check out the [examples in the documentation page](https://dplyr.tidyverse.org/reference/case_when.html#ref-examples) to help you out! 
 
