@@ -51,17 +51,17 @@ You will also be given the opportunity to explore one of the example datasets pr
 
 # Setup
 
-1. This time you will be opening your own R script or R Markdown file. 
+1) This time you will be opening your own R script or R Markdown file. First, make sure you are in the RStudio project we setup in the data cleaning worksheet. Then follow the instructions below. 
 
 -   To open a script you can either go to `File > New File > R Script` or use the keyboard shortcut `shift + command/control + N`.
 
 -   To open a new R markdown file go to `File > New File > R Markdown`. When opening we recommend you change the title to `R_dissertation_4`. Then when the file is open we suggest deleting everything after line 6 or under the second `---`. You'll need to add your own headings using the `#` and add code cells using `option+command+i` on a Mac or `ctrl + alt + i` on a Windows machine.
 
-2. Install the `broom`, `easystats`, and `stargazer` libraries which we will be using for reporting. **We recommend installing packages using the command line as you only need to install packages once**. 
+2) Install the `broom`, `easystats`, and `stargazer` libraries which we will be using for reporting. **We recommend installing packages using the command line as you only need to install packages once**. 
 
-3. Load tidyverse, easystats, broom, and stargazer. 
+3) Load tidyverse, easystats, broom, and stargazer. 
 
-4. Load in the heath metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
+4) Load in the heath metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
 
 {{< downloadthis resources/health_metrics_cleaned.csv label='Download dataset' dname=health_metrics_cleaned icon=database-fill-down type=success >}}
 
@@ -337,7 +337,7 @@ For our last challenge we have provided a few example datasets for you to explor
 
 **Pick one of the datasets to work with.** Can you apply what you have covered so far to a fresh dataset?
 
-We are not going to dictate what you do or how you approach this. We will be available to support you and answer questions however. 
+We are not going to dictate what you do or how you approach this. We will be available to support you and answer questions. 
 
 Some things for you to think about:
 

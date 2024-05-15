@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andrew Moles">
-<meta name="dcterms.date" content="2024-05-13">
+<meta name="dcterms.date" content="2024-05-15">
 
 <title>Learning R at the DSL - R Dissertation Masterclass 1: First steps with R</title>
 <style>
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-sidebar docked"><div id="progress-bar" style="width: 0%; height:2px; background-color: rgb(210 46 46);; position: fixed; top: 0px; z-index: 2000;"></div>
+</head><body class="nav-sidebar docked"><div id="progress-bar" style="width: 0%; height:3px; background-color: rgb(210 46 46);; position: fixed; top: 0px; z-index: 2000;"></div>
 
 <script id="progressbar" type="text/javascript">
 
@@ -358,7 +358,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 13, 2024</p>
+      <p class="date">May 15, 2024</p>
     </div>
   </div>
   
@@ -391,7 +391,7 @@ window.Quarto = {
 <li><p>Open RStudio.</p></li>
 <li><p>Download the R script provided, which provides you with some structure. You can also use a R Markdown file if you prefer, which can be downloaded from the second button.</p></li>
 </ol>
-<p><a href="#dnldts34317" onclick="fetch('data:text/plain;base64,IyBUaGlzIGlzIGEgY29tbWVudC4gTm90aWNlIHRoZSBoYXNodGFnCiMgc29tZSBleGFtcGxlIGNvZGUgdG8gaGVscCB5b3Ugb3V0CjEgKyAxCmEgPC0gNQpiIDwtIDIKYyA8LSBhICogYgoKIyBCTUkgY2FsY3VsYXRpb24gLS0tLQoKCiMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIC0tLS0KCgojIFVzaW5nIHZhcmlhYmxlcyAtLS0tCgoKCiMgVXNpbmcgdmVjdG9ycyAtLS0tCgoKCiMgVXNpbmcgZGF0YSBmcmFtZXMgLS0tLQ==').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts15596" onclick="fetch('data:text/plain;base64,IyBUaGlzIGlzIGEgY29tbWVudC4gTm90aWNlIHRoZSBoYXNodGFnCiMgc29tZSBleGFtcGxlIGNvZGUgdG8gaGVscCB5b3Ugb3V0CjEgKyAxCmEgPC0gNQpiIDwtIDIKYyA8LSBhICogYgoKIyBCTUkgY2FsY3VsYXRpb24gLS0tLQoKCiMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIC0tLS0KCgojIFVzaW5nIHZhcmlhYmxlcyAtLS0tCgoKCiMgVXNpbmcgdmVjdG9ycyAtLS0tCgoKCiMgVXNpbmcgZGF0YSBmcmFtZXMgLS0tLQ==').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -399,8 +399,8 @@ window.Quarto = {
       a.download = 'r_dissertation_1.R'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-success downloadthis  " id="dnldts34317"><i class="bi bi-r-circle"></i> Download R script file </button></a></p>
-<p><a href="#dnldts14714" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiUl9kaXNzZXJ0YXRpb25fMSIKYXV0aG9yOiAiQW5kcmV3IG1vbGVzIgpkYXRlOiAiMjAyNC0wNS0wNyIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgRXhhbXBsZQoKQmVsb3cgYXJlIHNvbWUgZXhhbXBsZSBjb2RlIGZvciB5b3UgdG8gcnVuLiAKCmBgYHtyfQoxICsgMQpgYGAKCmBgYHtyfQphIDwtIDUKYiA8LSAyCmMgPC0gYSAqIGIKYGBgCgpOb3RlIHlvdSBjYW4gYWRkIHlvdXIgb3duIGNvZGUgY2VsbCB1c2luZyBvcHRpb24rY29tbWFuZCtpIG9uIGEgTWFjIG9yIGN0cmwgKyBhbHQgKyBpIG9uIGEgV2luZG93cyBtYWNoaW5lLiAKCiMjIEJNSSBjYWxjdWxhdGlvbiAKCmBgYHtyfQoKYGBgCgoKIyMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIAoKYGBge3J9CgpgYGAKCgojIyBVc2luZyB2YXJpYWJsZXMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIHZlY3RvcnMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIGRhdGEgZnJhbWVzIAoKYGBge3J9CgpgYGAKCg==').then(res => res.blob()).then(blob => {
+        });"><button class="btn btn-success downloadthis  " id="dnldts15596"><i class="bi bi-r-circle"></i> Download R script file </button></a></p>
+<p><a href="#dnldts57382" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiUl9kaXNzZXJ0YXRpb25fMSIKYXV0aG9yOiAiQW5kcmV3IG1vbGVzIgpkYXRlOiAiMjAyNC0wNS0wNyIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgRXhhbXBsZQoKQmVsb3cgYXJlIHNvbWUgZXhhbXBsZSBjb2RlIGZvciB5b3UgdG8gcnVuLiAKCmBgYHtyfQoxICsgMQpgYGAKCmBgYHtyfQphIDwtIDUKYiA8LSAyCmMgPC0gYSAqIGIKYGBgCgpOb3RlIHlvdSBjYW4gYWRkIHlvdXIgb3duIGNvZGUgY2VsbCB1c2luZyBvcHRpb24rY29tbWFuZCtpIG9uIGEgTWFjIG9yIGN0cmwgKyBhbHQgKyBpIG9uIGEgV2luZG93cyBtYWNoaW5lLiAKCiMjIEJNSSBjYWxjdWxhdGlvbiAKCmBgYHtyfQoKYGBgCgoKIyMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIAoKYGBge3J9CgpgYGAKCgojIyBVc2luZyB2YXJpYWJsZXMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIHZlY3RvcnMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIGRhdGEgZnJhbWVzIAoKYGBge3J9CgpgYGAKCg==').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -408,9 +408,10 @@ window.Quarto = {
       a.download = 'r_dissertation_1.Rmd'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-success downloadthis  " id="dnldts14714"><i class="bi bi-r-circle"></i> Download R markdown file </button></a></p>
+        });"><button class="btn btn-success downloadthis  " id="dnldts57382"><i class="bi bi-r-circle"></i> Download R markdown file </button></a></p>
 <ol start="3" type="1">
-<li>Open the R Script <code>R_dissertation_1.R</code> or <code>R_dissertation_1.Rmd</code> file you downloaded.</li>
+<li><p>Make a new folder on your computer and give it a meaningful name. Put your downloaded file in that new folder.</p></li>
+<li><p>Open the R Script <code>R_dissertation_1.R</code> or <code>R_dissertation_1.Rmd</code> file you downloaded.</p></li>
 </ol>
 <p>For help getting started using RStudio and either script or R Markdown files, we have <a href="https://andrewmoles2.github.io/DSL-R-Website/using-files.html">written a guide to help you out</a>.</p>
 <p>Each section is a small project. You will need to write all the code yourself.</p>
@@ -544,7 +545,7 @@ Waist-Hip ratio: 0.8411215</p>
 </section>
 <section id="write-out-your-data-for-your-parents" class="level1">
 <h1>Write out your data for your parents</h1>
-<p>Your parents are wowed by your skills! They asked if you can give them a csv or Excel file to play around with, they are not ready to learn any programming yet. While you were at it, you thought it would be fun to run some summary statistics and make a histogram on the data you have made!</p>
+<p>Your parents are wowed by your skills! They asked if you can give them a csv (comma separated values) or Excel file to play around with, they are not ready to learn any programming yet. While you were at it, you thought it would be fun to run some summary statistics and make a histogram on the data you have made!</p>
 <ol type="1">
 <li>Make a data frame that looks like the example output below.</li>
 </ol>
@@ -561,7 +562,7 @@ Waist-Hip ratio: 0.8411215</p>
 <ol start="2" type="1">
 <li><p>Save the data frame you made to a csv file (comma separated values, or .csv). Open it outside of R to check it has saved properly.<br>
 </p></li>
-<li><p>Use the <code>str()</code> and <code>summary()</code> functions to have a look at your data. You should get outputs below.</p></li>
+<li><p>Use the <code>str()</code> (stands for structure) and <code>summary()</code> functions to have a look at your data. You should get outputs below.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1046,7 +1047,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

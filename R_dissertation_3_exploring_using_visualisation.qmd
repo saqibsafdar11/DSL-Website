@@ -80,19 +80,21 @@ If you are interested here is an [article about the importance of reviewing your
 
 # Setup
 
-1.Download the R script provided, which provides you with some structure. You can also use a R Markdown file if you prefer, which can be downloaded from the second button. 
+1) Download the R script provided, which provides you with some structure. You can also use a R Markdown file if you prefer, which can be downloaded from the second button. 
 
 {{< downloadthis resources/R_dissertation_3.R label='Download R script file' dname=r_dissertation_3 icon=r-circle type=success >}}
 
 {{< downloadthis resources/R_dissertation_3.Rmd label='Download R markdown file' dname=r_dissertation_3 icon=r-circle type=success >}}
 
-2. Load the R script or R markdown file
+2) Move the downloaded file to your project folder we used in the data cleaning worksheet.
 
-3. Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/) for more information. **We recommend installing packages using the console as you only need to install packages once**. 
+3) Open the R script or R markdown file in RStudio. 
 
-4. Load in the tidyverse and patchwork packages
+4) Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/) for more information. **We recommend installing packages using the console as you only need to install packages once**. 
 
-5. Load in health metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
+5) Load in the tidyverse and patchwork packages. 
+
+6) Load in health metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
 
 {{< downloadthis resources/health_metrics_cleaned.csv label='Download dataset' dname=health_metrics_cleaned icon=database-fill-down type=success >}}
 
@@ -146,9 +148,9 @@ Distributions are an essential way of looking at the spread of data, telling us 
 
 A classic visualisation for this task is the histogram, which shows a distribution of one variable.
 
-**Your goal here is to make at least 2 histograms on columns of your choice.**
+**Your goal here is to make** ***at least*** **2 histograms on columns of your choice.**
 
-We suggest using the ggplot2 package. See some examples of building a [histogram here](https://ggplot2.tidyverse.org/reference/geom_histogram.html#ref-examples). You can also use the [r graph gallery](https://r-graph-gallery.com/) to help make the figures. 
+We suggest using the ggplot2 package. See some examples of building a histogram [in the ggplot documentation](https://ggplot2.tidyverse.org/reference/geom_histogram.html#ref-examples) or use the [r graph gallery](https://r-graph-gallery.com/) to help you make the figures. 
 
 You should end up with several visualisations looking like the image below. 
 
@@ -162,7 +164,9 @@ ggplot(health, aes(x = systolic_pressure)) +
 
 Something to keep in mind when looking at distributions of data is central limit theorem, which tells us that if you have a large enough sample your data will always be normally distributed. To help understand this concept have a look at this [interactive explainer](http://mfviz.com/central-limit/).
 
-We can also use R as an example using the `rnorm()` function which randomly generates a distribution. Copy the paste the code below and run it in R a few times. You should see the first histogram with a sample of 50 changes a lot, but the histogram with a sample of 5000 doesn't change much. 
+We can also use R as an example using the `rnorm()` function which randomly generates a distribution. 
+
+Copy the paste the code below and run it in R a few times. You should see the first histogram with a sample of 50 changes a lot, but the histogram with a sample of 5000 doesn't change much. 
 
 :::: {.columns}
 
@@ -189,7 +193,7 @@ hist(rnorm(5000))
 
 Looking at one variable is great but to provide more information we sometimes need to look at a distribution that is broken down by a category. 
 
-We can still use a histogram here, but there is also the box plot which is used to compare the distribution of several groups. See examples on how to build a [box plot here](https://ggplot2.tidyverse.org/reference/geom_boxplot.html#ref-examples). 
+We can still use a histogram here, and there is also the box plot which is used to compare the distribution of several groups. See examples on how to build a box plot in the [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/geom_boxplot.html#ref-examples) or on the [R graph gallery](https://r-graph-gallery.com/262-basic-boxplot-with-ggplot2.html). 
 
 **Your goal here is to create the three visualisations we have made below looking at the distribution of the `imd_decile` column.**
 
@@ -278,7 +282,7 @@ health %>%
 You can change the x and y labels in a plot by using the `labs()` function. 
 
 ## Hint 2
-You might find the `fct_reorder()` function useful. 
+You might find the `fct_reorder()` function useful. You'll find more information on [the package webpage](https://forcats.tidyverse.org/articles/forcats.html#ordering-by-another-variable).
 
 :::
 
@@ -333,16 +337,16 @@ imd_r + weight + height + whr
 ::: {.panel-tabset}
 
 ## Hint 1 
-The correlation function, `cor()`, will require you to remove missing values from the dataset
+The correlation function, `cor()`, will require you to remove missing values from the dataset. We would strongly recommend when removing missing data to create a subset rather than removing the values from the dataset; put simply assign the result to a new dataset. The `na.omit()` function will help you remove the values. 
 
 ## Hint 2 
-The correlation function only works on numeric data. You will need to select the columns you need
+The correlation function only works on numeric data. You will need to select the columns you need.
 
 ## Hint 3 
-The ggplot documentation on the `geom_smooth()` function should help you out to add the regression line
+The ggplot documentation on the `geom_smooth()` function should help you out to add the regression line. We have used the `lm` method. 
 
 ## Hint 4 
-We used the [patchwork package](https://patchwork.data-imaginist.com/) to combine the images
+We used the [patchwork package](https://patchwork.data-imaginist.com/) to combine the images.
 
 :::
 
@@ -367,10 +371,10 @@ There are several steps:
 Below is the code for you to use and fix. Anywhere there is a `...` it indicates something you need to add information to such as a dataset or a column name. 
 ```{r task-fix, error=TRUE, eval=FALSE}
 # fixing the occupation column by removing parts of a string
-... <- ... %>%
+... <- ... |>
   mutate(occupation = str_remove(occupation, "\\["),
-         occupation = str_remove(occupation, "\\]")) %>%
-  separate_longer_delim(occupation, delim = ",") %>%
+         occupation = str_remove(occupation, "\\]")) |>
+  separate_longer_delim(occupation, delim = ",") |>
   mutate(occupation = str_squish(occupation))
 
 # filtering for occupations we want
@@ -379,8 +383,8 @@ my_occupations <- c("Arts and Entertainment", ...)
 # building the visualisation
 ... %>%
   mutate(bmi_risk = factor(bmi_risk, 
-                           levels = ...)) %>%
-  filter(occupation %in% ...) %>%
+                           levels = ...)) |>
+  filter(occupation %in% ...) |>
   ggplot(aes(x = ..., y = ...)) +
   geom_point(aes(colour = ...)) +
   geom_smooth(method = "lm", 
@@ -409,9 +413,9 @@ A factor is a way of organising and arranging categorical data. The levels deter
 
 # Next steps
 
-Excellent work! 
+Excellent work! So far you have done some challenging data cleaning and made some visualisations from that data. 
 
-The last worksheet of this project series is on analysis in R. 
+The last worksheet of this series is on analysis in R. 
 
 # Give us some feedback!
 

@@ -53,7 +53,9 @@ To get started you will need to follow the below steps:
 
 {{< downloadthis resources/R_dissertation_1.Rmd label='Download R markdown file' dname=r_dissertation_1 icon=r-circle type=success >}}
 
-3)  Open the R Script `R_dissertation_1.R` or `R_dissertation_1.Rmd` file you downloaded.    
+3)  Make a new folder on your computer and give it a meaningful name. Put your downloaded file in that new folder. 
+
+4)  Open the R Script `R_dissertation_1.R` or `R_dissertation_1.Rmd` file you downloaded.    
 
 For help getting started using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html). 
 
@@ -219,7 +221,7 @@ R has lots of useful functions to help you out. The `mean()` function will help 
 
 # Write out your data for your parents
 
-Your parents are wowed by your skills! They asked if you can give them a csv or Excel file to play around with, they are not ready to learn any programming yet. While you were at it, you thought it would be fun to run some summary statistics and make a histogram on the data you have made!
+Your parents are wowed by your skills! They asked if you can give them a csv (comma separated values) or Excel file to play around with, they are not ready to learn any programming yet. While you were at it, you thought it would be fun to run some summary statistics and make a histogram on the data you have made!
 
 1)  Make a data frame that looks like the example output below.
 
@@ -242,7 +244,7 @@ write.csv(family_data,
           row.names = FALSE)
 ```
 
-3)  Use the `str()` and `summary()` functions to have a look at your data. You should get outputs below.
+3)  Use the `str()` (stands for structure) and `summary()` functions to have a look at your data. You should get outputs below.
 
 ```{r data-frame-ex3, echo=FALSE}
 summary(family_data)

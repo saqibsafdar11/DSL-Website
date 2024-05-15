@@ -50,7 +50,7 @@ Key takeaways from this worksheet:
 
 # Project goals   
 
-The first goal is to clean your dataset so it looks like the data shown below. Take a few moments to have a look at the dataset. 
+The first goal is to clean your dataset so it looks like the data shown below. Take a few moments to have a look at the dataset. You can scroll to the right to view all the columns. 
 
 ```{r cleaning-solution, echo=FALSE, message=FALSE, warning=FALSE}
 library(readxl, quietly = T, warn.conflicts = F)
@@ -155,7 +155,7 @@ For those that are interested R projects are a really handy way of organising yo
 
 # Installing packages
 
-For this project we are going to need some extra tools that are not included in the base version of R we installed. Packages essentially are collections of functions people have written for everyone to use to make our lives easier, which is very helpful! 
+For this project we are going to need some extra tools that are not included in the base version of R. Packages essentially are collections of functions people have written for everyone to use to make our lives easier, which is very helpful! 
 
 An important thing to note is that when installing a package you only need to do it once. 
 
@@ -180,7 +180,7 @@ At the top of your script/R markdown file use the `library()` command to load th
 
 Note that when loading the tidyverse set of tools it does not load everything it installed, but instead loads a handful of the packages it installed for us. The `readxl` package is not loaded, so we have to load that separately.   
 
-*Hint: You will need to use the library function for each package you are loading.*
+*Hint: You will need to use the library function for each package you are loading!*
 
 # Lets load the data so we can start cleaning it! 
 
@@ -207,7 +207,9 @@ Remember that Excel files have different sheets. Which sheet in the `IMD2019.xls
 
 ## Recommended: tidy up the column names of the deprivation (IMD) data
 
-To tidy up the column names we recommend using the janitor package and the `clean_names()` function. Examples can be found [here](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names). 
+To tidy up the column names of the IMD data we recommend using the janitor package and the `clean_names()` function. Examples can be found [here](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names). This makes the column names more R friendly which will make working with the dataset easier. 
+
+The health dataset already has R friendly column names so we do not need to change that. 
 
 ## A side note on the English indices of deprivation (IMD) data
 
@@ -223,7 +225,7 @@ It seems people in this data have given a variety of metrics for weight and heig
 
 We need to fix this in order to perform calculations on this data! Your goal here is to add new columns to the data where height is in meters, and weight is in kilograms. 
 
-The first 5 rows of the new columns you should have made are shown below.
+The first 5 rows of the new columns you should have made are shown below. You can check this by viewing your cleaned dataset (try the `View()` function). 
 
 ```{r metric-fix, echo=FALSE}
 health_check_clean %>%
@@ -233,6 +235,9 @@ health_check_clean %>%
 
 ## Tips to help cleaning the height and weight columns
 
+:::: {.columns}
+
+::: {.column width="50%"}
 This isn't straightforward to fix so we have to make assumptions which are listed below. 
 
 -   if height is > 8 assume it is in centimetres
@@ -240,7 +245,9 @@ This isn't straightforward to fix so we have to make assumptions which are liste
 -   if height is > 4 and < 8 assume it is in feet
 
 -   if weight is < 25 assume it is in stone
+:::
 
+::: {.column width="50%"}
 Below are some converting formulas to help you out:
 
 -   centimetres to meters: $centimetres \div 100$
@@ -248,6 +255,10 @@ Below are some converting formulas to help you out:
 -   feet to meters: $feet \times 0.3048$
 
 -   stone to kilograms: $stone \times 6.35029318$
+:::
+
+::::
+
 
 We are going to need to use conditional operators to find and fix the incorrect data points. The table below contains the conditional operators you can use.
 
@@ -264,9 +275,9 @@ We are going to need to use conditional operators to find and fix the incorrect 
 | `X & Y`    | X AND Y                  |
 | `X %in% Y` | is X in Y                |
 
-In R, the easiest way to conditionally fix data is to use the `ifelse()` function, or the `case_when()` function from `dplyr`. To add a new column the `transform()` function or the `mutate()` function from `dplyr` are easiest to use. See below for some examples. Remember, to see what your data should look like see the output in @sec-fixcols. 
+In R, the easiest way to conditionally fix data is to use the `ifelse()` function, or the `case_when()` function from `dplyr`. To add a new column the `transform()` function or the `mutate()` function from `dplyr` are easiest to use. 
 
-To help you get started you can copy and paste the scaffolding code below. You'll need to fill in the spaces where the `...` is. It is recommended you look up the `ifelse()` function in the help menu (bottom right, help tab). 
+To help you get started you can copy and paste the scaffolding code below. You'll need to fill in the spaces where the `...` is. It is recommended you look up the `ifelse()` function online or in the help menu (bottom right, help tab). 
 ```{r, eval=FALSE}
 health <- mutate(health,
                     height_m = ifelse(..., ...,
@@ -274,6 +285,8 @@ health <- mutate(health,
                                              ..., ...)),
                     weight_kg = ifelse(weight < 25, ... / 0.1575, weight))
 ```
+
+Remember, to see what your data should look like see the output in @sec-fixcols. 
 
 <!--
 Note this is just an example to help you out using some random data. 
@@ -311,7 +324,7 @@ health_check_clean %>%
   slice(1:5)
 ```
 
-Do you remember from the first worksheet how we calculated BMI and waist-to-hip ratio? How do we do those calculations on columns in a data frame to make a new column?
+Do you remember from the [first worksheet how we calculated BMI and waist-to-hip ratio](https://andrewmoles2.github.io/DSL-R-Website/R_dissertation_1_first_steps.html#starting-off-calculate-your-own-health-metrics)? How do we do those calculations on columns in a data frame to make a new column?
 
 *Hint: when using the mutate function to add columns you can add multiple columns in a single mutate function. See the previous exercise where we added height_m and weight_kg.*
 
@@ -347,7 +360,7 @@ Can you find the BMI risk categories yourself?
 
 When you are making multiple categories things can get messy using the `ifelse()` function as you have to do something called *nested ifelse statements*. The `ifelse()` function works best on one or two categories. 
 
-We would recommend using the `case_when()` function from `dplyr` for multiple categories as it makes things much easier. Check out the [examples in the documentation page](https://dplyr.tidyverse.org/reference/case_when.html#ref-examples) to help you out! 
+We would recommend using the `case_when()` function from `dplyr` for multiple categories as it makes things much easier. Check out the [examples in the documentation page](https://dplyr.tidyverse.org/reference/case_when.html#ref-examples) to help you out! The 6th example shown will be particularly helpful. 
 
 # Handling some of the missing (NA) values
 
@@ -359,9 +372,9 @@ In this case, the missing values in the occupation column should be `Unemployed`
 
 Using the techniques we have tried so far, change the `NA` values to `Unemployed`. 
 
-Hint: the `is.na()` function is really useful here. 
+*Hint:* the `is.na()` function is really useful here. 
 
-To check it your conversion has worked, open the viewer by using the `View()` function or clicking on the dataset in the Environment window, and search *Unemployed*. 
+To check if your conversion has worked, open the viewer by using the `View()` function or clicking on the dataset in the Environment window, and search *Unemployed*. 
 
 ![](images/na_change.png){width="450"}
 
@@ -369,7 +382,9 @@ To check it your conversion has worked, open the viewer by using the `View()` fu
 
 # Add the deprivation data to our dataset! 
 
-To add the deprivation data we loaded earlier from the `IMD2019.xlsx` file we need to use a technique called a *join*. 
+To add the deprivation data we loaded earlier from the `IMD2019.xlsx` file we need to use a technique called a ***join***. 
+
+Your goal here is to use the join technique to bring both the datasets together. See the next section for help! 
 
 Once you have joined your two datasets we loaded earlier together your final dataset should look like the cleaned dataset below! 
 
@@ -441,7 +456,9 @@ A join is used to combine rows from two or more tables. There are four main type
 ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/inner_join.png?raw=true){width="355"} ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/left_join.png?raw=true){width="355"}
 ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/right_join.png?raw=true){width="355"} ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/full_join.png?raw=true){width="355"}
 
-In order to perform a join we need a column in each dataset, in this case `health_metrics.csv` and `IMD2019.xlsx`, to have matching data. Take a look now at the `lsoa_code` column in your health metrics data, and then the `lsoa_code_2011` column in your IMD data. What do you notice? Do you think we can use those to link up the datasets? If so, which join do you think should be used? 
+In order to perform a join we need a column in each dataset, in this case `health_metrics.csv` and `IMD2019.xlsx`, to have matching data. Take a look now at the `lsoa_code` column in your health metrics data, and then the `lsoa_code_2011` column in your IMD data. 
+
+What do you notice? Do you think we can use those to link up the datasets? If so, which join do you think should be used? 
 
 To perform a join using R, we can use the `dplyr` library. Below is some example code for you to look at and play around with. 
 ```{r join-example}
@@ -509,24 +526,24 @@ Before we do that, it would be a good idea to tidy up some of the column names, 
 
 To help you out we renamed the following columns:
 
--   index_of_multiple_deprivation_imd_rank to imd_rank
+-   `index_of_multiple_deprivation_imd_rank` to `imd_rank`
 
--   index_of_multiple_deprivation_imd_decile to imd_decile
+-   `index_of_multiple_deprivation_imd_decile` to `imd_decile`
 
--   local_authority_district_code_2019 to local_auth_district_code
+-   `local_authority_district_code_2019` to `local_auth_district_code`
 
 And we removed the following columns:
 
--   lsoa_name_2011
+-   `lsoa_name_2011`
 
--   local_authority_district_name_2019
+-   `local_authority_district_name_2019`
 
--   height (as we have converted these to a new column)
+-   `height` (as we have converted these to a new column)
 
--   weight (as we have converted these to a new column)
+-   `weight` (as we have converted these to a new column)
 
 
-Once you've renamed and selected the columns you need, write (save) your dataset to a `.csv` format. Save it in the same folder where your script/R markdown file and other data is stored, and make sure to give it a meaningful name. 
+Once you've renamed and selected the columns you need, write (save) your dataset to a `.csv` format. Save it in the same folder where your script/R markdown file and other data is stored, and make sure to give it a meaningful name such as `health_data_cleaned` for example. 
 
 # Next steps
 
