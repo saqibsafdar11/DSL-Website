@@ -262,7 +262,7 @@
     "href": "R_dissertation_3_exploring_using_visualisation.html#side-note-about-distributions-and-central-limit-theorm",
     "title": "R Dissertation Masterclass 3: Exploring your data using visualisation",
     "section": "Side note about distributions and central limit theorm",
-    "text": "Side note about distributions and central limit theorm\nSomething to keep in mind when looking at distributions of data is central limit theorem, which tells us that if you have a large enough sample your data will always be normally distributed. To help understand this concept have a look at this interactive explainer.\nWe can also use R as an example using the rnorm() function which randomly generates a distribution.\nCopy the paste the code below and run it in R a few times. You should see the first histogram with a sample of 50 changes a lot, but the histogram with a sample of 5000 doesn’t change much.\n\n\n\nhist(rnorm(50))\n\n\n\n\n\n\n\n\n\n\nhist(rnorm(5000))",
+    "text": "Side note about distributions and central limit theorm\nSomething to keep in mind when looking at distributions of data is central limit theorem, which tells us that if you have a large enough sample your data will always be normally distributed. To help understand this concept have a look at this interactive explainer.\nWe can also use R as an example using the rnorm() function which randomly generates a distribution.\nCopy the paste the two bits of code below and run it in R a few times. What is the difference between the sample with 50 and the sample with 5000?\n\n\n\n\nhist(rnorm(50))\n\n\n\n\n\n\n\n\n\n\nhist(rnorm(5000))",
     "crumbs": [
       "🎓 R Dissertation workshops",
       "🎓 Exploring data using visualisation"
@@ -368,7 +368,7 @@
     "href": "R_dissertation_4_data_analysis.html#pokémon-video-game-data",
     "title": "R Dissertation Masterclass 4: Data Analysis",
     "section": "Pokémon video game data",
-    "text": "Pokémon video game data\nPokémon is a card game, TV series, and video game. This dataset is based on the video game. Data has been collected and made available through this GitHub page\nUse the code below to load the datasets.\n\npokemon_stats &lt;- read.csv(\"https://raw.githubusercontent.com/andrewmoles2/pokemon-video-games/main/data/pokemon_stats.csv\")\npokemon_types &lt;- read.csv(\"https://raw.githubusercontent.com/andrewmoles2/pokemon-video-games/main/data/pokemon_types.csv\")",
+    "text": "Pokémon video game data\nPokémon is a card game, TV series, and video game. This dataset is based on the video game. Data has been collected and made available through this GitHub page.\nUse the code below to load the datasets.\n\npokemon_stats &lt;- read.csv(\"https://raw.githubusercontent.com/andrewmoles2/pokemon-video-games/main/data/pokemon_stats.csv\")\npokemon_types &lt;- read.csv(\"https://raw.githubusercontent.com/andrewmoles2/pokemon-video-games/main/data/pokemon_types.csv\")",
     "crumbs": [
       "🎓 R Dissertation workshops",
       "🎓 Data analysis"

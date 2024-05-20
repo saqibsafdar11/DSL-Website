@@ -63,9 +63,9 @@ final_plot <- health_occupation %>%
   facet_wrap(vars(occupation)) +
   scale_colour_manual(values = c('#26547c','#ef476f','#ffd166')) +
   scale_y_continuous(breaks = seq(1,10,1)) + 
-  labs(title = "Is BMI effected by deprivation in different by occupations? ",
-       y = "Index of Multiple Deprivation Decile", x = "bmi",
-       colour = "bmi risk") +
+  labs(title = "Is BMI effected by Index of Multiple Deprivation in different by occupations? ",
+       y = "Index of Multiple Deprivation Decile", x = "BMI",
+       colour = "BMI risk") +
   theme_minimal(base_size = 12, base_family = "Avenir") +
   theme(legend.position = "bottom",
         plot.title.position = "plot")
@@ -75,7 +75,7 @@ final_plot
 ::: {.callout-note}
 You might be wondering why are we not just analysing the data straight away. Generally, the best practise is to spend some time reviewing your data so you know what you are dealing with. We do this by running some summary statistics, and visualising the data. 
 
-If you are interested here is an [article about the importance of reviewing your data](https://www.research.autodesk.com/publications/same-stats-different-graphs/).  
+If you are interested here is an [article about the importance of reviewing your data](https://www.research.autodesk.com/publications/same-stats-different-graphs/){target="_blank"}.  
 :::
 
 # Setup
@@ -90,7 +90,7 @@ If you are interested here is an [article about the importance of reviewing your
 
 3) Open the R script or R markdown file in RStudio. 
 
-4) Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/) for more information. **We recommend installing packages using the console as you only need to install packages once**. 
+4) Install the `patchwork` package which is used to combine multiple plots. See the [package page](https://patchwork.data-imaginist.com/){target="_blank"} for more information. **We recommend installing packages using the console as you only need to install packages once**. 
 
 5) Load in the tidyverse and patchwork packages. 
 
@@ -107,7 +107,7 @@ We recommend using the `ggplot2` package for making visualisations. It is a grea
 
 We have two goals here, the first is to look at the summary statistics, the second is to get counts of categorical data in our dataset. 
 
-Use the `summary()` function on your data. Key things to look at are:
+Use the `summary()` function on your data. Make note of the following using comments (if using a script) or in the non-code areas (if using R Markdown):
 
 -   Any missing data?
 
@@ -118,6 +118,12 @@ Use the `summary()` function on your data. Key things to look at are:
 Use the `table()` function, which returns the number of times a given category is in your data, on your the categorical columns in your data. To use this function you use the dollar sign (`$`) to extract the column you want from your data such as: `table(health$location)`.
 
 Review the `location`, `blood_pressure`, `bmi_risk`, and `whr_risk` columns using `table()`. 
+
+Again, make note of the following using comments (if using a script) or in the non-code areas (if using R Markdown):
+
+-   Are we seeing similar proportions of each category you looked at? 
+
+-   Are any of the values particularly high or low? If so, do they seem to make sense to you? 
 
 ```{r summary-solution, include=FALSE, eval=FALSE}
 library(tidyverse)
@@ -132,7 +138,6 @@ table(health$location)
 table(health$blood_pressure)
 table(health$bmi_risk)
 table(health$whr_risk)
-
 ```
 
 
@@ -150,7 +155,7 @@ A classic visualisation for this task is the histogram, which shows a distributi
 
 **Your goal here is to make** ***at least*** **2 histograms on columns of your choice.**
 
-We suggest using the ggplot2 package. See some examples of building a histogram [in the ggplot documentation](https://ggplot2.tidyverse.org/reference/geom_histogram.html#ref-examples) or use the [r graph gallery](https://r-graph-gallery.com/) to help you make the figures. 
+We suggest using the ggplot2 package. See some examples of building a histogram [in the ggplot documentation](https://ggplot2.tidyverse.org/reference/geom_histogram.html#ref-examples){target="_blank"} or use the [r graph gallery](https://r-graph-gallery.com/){target="_blank"} to help you make the figures. 
 
 You should end up with several visualisations looking like the image below. 
 
@@ -162,11 +167,13 @@ ggplot(health, aes(x = systolic_pressure)) +
 
 ## Side note about distributions and central limit theorm 
 
-Something to keep in mind when looking at distributions of data is central limit theorem, which tells us that if you have a large enough sample your data will always be normally distributed. To help understand this concept have a look at this [interactive explainer](http://mfviz.com/central-limit/).
+Something to keep in mind when looking at distributions of data is central limit theorem, which tells us that if you have a large enough sample your data will always be normally distributed. To help understand this concept have a look at this [interactive explainer](http://mfviz.com/central-limit/){target="_blank"}.
 
 We can also use R as an example using the `rnorm()` function which randomly generates a distribution. 
 
-Copy the paste the code below and run it in R a few times. You should see the first histogram with a sample of 50 changes a lot, but the histogram with a sample of 5000 doesn't change much. 
+Copy the paste the two bits of code below and run it in R a few times. **What is the difference between the sample with 50 and the sample with 5000?**
+
+<!--You should see the first histogram with a sample of 50 changes a lot, but the histogram with a sample of 5000 doesn't change much. -->
 
 :::: {.columns}
 
@@ -193,7 +200,7 @@ hist(rnorm(5000))
 
 Looking at one variable is great but to provide more information we sometimes need to look at a distribution that is broken down by a category. 
 
-We can still use a histogram here, and there is also the box plot which is used to compare the distribution of several groups. See examples on how to build a box plot in the [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/geom_boxplot.html#ref-examples) or on the [R graph gallery](https://r-graph-gallery.com/262-basic-boxplot-with-ggplot2.html). 
+We can still use a histogram here, and there is also the box plot which is used to compare the distribution of several groups. See examples on how to build a box plot in the [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/geom_boxplot.html#ref-examples){target="_blank"} or on the [R graph gallery](https://r-graph-gallery.com/262-basic-boxplot-with-ggplot2.html){target="_blank"}. 
 
 **Your goal here is to create the three visualisations we have made below looking at the distribution of the `imd_decile` column.**
 
@@ -222,10 +229,10 @@ ggplot(health, aes(x=imd_decile)) +
 ::: {.panel-tabset}
 
 ## Hint 1 
-We used the `facet_wrap()` [function](https://ggplot2.tidyverse.org/reference/facet_wrap.html#ref-examples) for the last figure.
+We used the `facet_wrap()` [function](https://ggplot2.tidyverse.org/reference/facet_wrap.html#ref-examples){target="_blank"} for the last figure.
 
 ## Hint 2 
-We fixed the x axis using `scale_x_continuous()` [function](https://ggplot2.tidyverse.org/reference/scale_continuous.html#ref-examples), using the `breaks` argument. 
+We fixed the x axis using `scale_x_continuous()` [function](https://ggplot2.tidyverse.org/reference/scale_continuous.html#ref-examples){target="_blank"}, using the `breaks` argument. 
 
 ## Hint 3 
 You can adjust the number of bins a histogram uses. 
@@ -282,7 +289,7 @@ health %>%
 You can change the x and y labels in a plot by using the `labs()` function. 
 
 ## Hint 2
-You might find the `fct_reorder()` function useful. You'll find more information on [the package webpage](https://forcats.tidyverse.org/articles/forcats.html#ordering-by-another-variable).
+You might find the `fct_reorder()` function useful. You'll find more information on [the package webpage](https://forcats.tidyverse.org/articles/forcats.html#ordering-by-another-variable){target="_blank"}.
 
 :::
 
@@ -298,7 +305,7 @@ There are two stages we recommend:
 
 -   Stage 2: Make scatter plots of variables to look at the relationship
 
-**Your goal is to create a correlation matrix and series of scatterplots as shown below. **
+**Your goal is to create a correlation matrix and series of scatter plots as shown below. **
 
 ```{r relation-sol, echo=FALSE, message=FALSE, warning=FALSE}
 # remove missing value for calculation
@@ -308,10 +315,10 @@ corr_mat <- health_no_na %>%
   select(age, waist, hip, height_m:whr, imd_rank:imd_decile) %>%
   cor()
 corr_mat
-# optional heatmap
-#heatmap(corr_mat, Rowv = NA, Colv = NA)
+# optional heat map
+#heat map(corr_mat, Rowv = NA, Colv = NA)
 
-# scatterplots with lm
+# scatter plots with lm
 library(patchwork)
 
 imd_r <- ggplot(health, aes(x = imd_rank, y = bmi)) +
@@ -346,7 +353,7 @@ The correlation function only works on numeric data. You will need to select the
 The ggplot documentation on the `geom_smooth()` function should help you out to add the regression line. We have used the `lm` method. 
 
 ## Hint 4 
-We used the [patchwork package](https://patchwork.data-imaginist.com/) to combine the images.
+We used the [patchwork package](https://patchwork.data-imaginist.com/){target="_blank"} to combine the images.
 
 :::
 
@@ -419,6 +426,6 @@ The last worksheet of this series is on analysis in R.
 
 # Give us some feedback!
 
-We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%3:%Exploring%your%data%using%visualisation&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/Ea6r1ThAIkxDpvq3l503Pa8B2XrPZkVJYRxAHvNph98-2A?e=w9qbra). 
+We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%3:%Exploring%your%data%using%visualisation&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/Ea6r1ThAIkxDpvq3l503Pa8B2XrPZkVJYRxAHvNph98-2A?e=w9qbra){target="_blank"}. 
 
 Solutions are available at the end of the survey. 

@@ -151,7 +151,7 @@ health_check |>
 
 5)    In the files panel you should also see some data which are called `health_metrics.csv` and `IMD2019.xlsx`. We will be loading these into R later. 
 
-For those that are interested R projects are a really handy way of organising your code. See a full explainer in the [R for Data Science book](https://r4ds.hadley.nz/workflow-scripts.html).
+For those that are interested R projects are a really handy way of organising your code. See a full explainer in the [R for Data Science book](https://r4ds.hadley.nz/workflow-scripts.html){target="_blank"}.
 
 # Installing packages
 
@@ -161,9 +161,9 @@ An important thing to note is that when installing a package you only need to do
 
 For this project there are two packages we recommend you install: `tidyverse` and `janitor`. 
 
-[The tidyverse](https://www.tidyverse.org/) which is a set of tools designed to simplify data cleaning and wrangling tasks. It is a lot of different packages wrapped up in one. The two packages within the tidyverse we recommend using for this project are the [dplyr package](https://dplyr.tidyverse.org/) and the [readxl package](https://readxl.tidyverse.org/). 
+[The tidyverse](https://www.tidyverse.org/){target="_blank"} which is a set of tools designed to simplify data cleaning and wrangling tasks. It is a lot of different packages wrapped up in one. The two packages within the tidyverse we recommend using for this project are the [dplyr package](https://dplyr.tidyverse.org/){target="_blank"} and the [readxl package](https://readxl.tidyverse.org/){target="_blank"}. 
 
-The janitor package contains several helpful utility functions that make common tasks easier. The [documentation page](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) has a lot of example use cases. 
+The janitor package contains several helpful utility functions that make common tasks easier. The [documentation page](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html){target="_blank"} has a lot of example use cases. 
 
 To install the packages we recommend you copy the code below and **paste it into the console** (bottom left panel in RStudio), then run it. For context, the `Ncpus` argument is there to speed up the install, which will take a few minutes. 
 
@@ -207,13 +207,13 @@ Remember that Excel files have different sheets. Which sheet in the `IMD2019.xls
 
 ## Recommended: tidy up the column names of the deprivation (IMD) data
 
-To tidy up the column names of the IMD data we recommend using the janitor package and the `clean_names()` function. Examples can be found [here](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names). This makes the column names more R friendly which will make working with the dataset easier. 
+To tidy up the column names of the IMD data we recommend using the janitor package and the `clean_names()` function. Examples can be found [here](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names){target="_blank"}. This makes the column names more R friendly which will make working with the dataset easier. 
 
 The health dataset already has R friendly column names so we do not need to change that. 
 
 ## A side note on the English indices of deprivation (IMD) data
 
-The `IMD2019.xlsx` dataset is from the [English indices of deprivation website 2019](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019). Indices of deprivation (IMD) measure relative deprivation in small areas in England, where lower decile scores indicate a more deprived area. 
+The `IMD2019.xlsx` dataset is from the [English indices of deprivation website 2019](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019){target="_blank"}. Indices of deprivation (IMD) measure relative deprivation in small areas in England, where lower decile scores indicate a more deprived area. 
 
 # Some weird stuff is happening in the heights and weights columns...{#sec-fixcols}
 
@@ -324,7 +324,7 @@ health_check_clean %>%
   slice(1:5)
 ```
 
-Do you remember from the [first worksheet how we calculated BMI and waist-to-hip ratio](https://andrewmoles2.github.io/DSL-R-Website/R_dissertation_1_first_steps.html#starting-off-calculate-your-own-health-metrics)? How do we do those calculations on columns in a data frame to make a new column?
+Do you remember from the [first worksheet how we calculated BMI and waist-to-hip ratio](https://andrewmoles2.github.io/DSL-R-Website/R_dissertation_1_first_steps.html#starting-off-calculate-your-own-health-metrics){target="_blank"}? How do we do those calculations on columns in a data frame to make a new column?
 
 *Hint: when using the mutate function to add columns you can add multiple columns in a single mutate function. See the previous exercise where we added height_m and weight_kg.*
 
@@ -346,7 +346,7 @@ Blood pressure can be categorised into high, low, and normal.
 
 -   Low blood pressure is when systolic pressure is 90 and under, and diastolic pressure is 60 and under 
 
-The [waist-to-hip ratio (whr)](https://www.healthline.com/health/waist-to-hip-ratio#:~:text=0.9%20or%20less%20in%20men,0.85%20or%20less%20for%20women) metric is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes. See the table below to help you categorise whr scores. **Remember, there are different risk scores associated to men and women!**
+The [waist-to-hip ratio (whr)](https://www.healthline.com/health/waist-to-hip-ratio#:~:text=0.9%20or%20less%20in%20men,0.85%20or%20less%20for%20women){target="_blank"} metric is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes. See the table below to help you categorise whr scores. **Remember, there are different risk scores associated to men and women!**
 
 | **Health risk** |   **Women**    |    **Men**    |
 |:---------------:|:--------------:|:-------------:|
@@ -360,7 +360,7 @@ Can you find the BMI risk categories yourself?
 
 When you are making multiple categories things can get messy using the `ifelse()` function as you have to do something called *nested ifelse statements*. The `ifelse()` function works best on one or two categories. 
 
-We would recommend using the `case_when()` function from `dplyr` for multiple categories as it makes things much easier. Check out the [examples in the documentation page](https://dplyr.tidyverse.org/reference/case_when.html#ref-examples) to help you out! The 6th example shown will be particularly helpful. 
+We would recommend using the `case_when()` function from `dplyr` for multiple categories as it makes things much easier. Check out the [examples in the documentation page](https://dplyr.tidyverse.org/reference/case_when.html#ref-examples){target="_blank"} to help you out! The 6th example shown will be particularly helpful. 
 
 # Handling some of the missing (NA) values
 
@@ -480,7 +480,7 @@ person_food
 ```
 What do you think would happen to the output if we used a inner join or a left join?
 
-The [dplyr documentation](https://dplyr.tidyverse.org/articles/two-table.html) has a nice guide on joins in R. The [R for Data Science book](https://r4ds.hadley.nz/joins.html#sec-mutating-joins) also has some useful information on this technique for further reading. 
+The [dplyr documentation](https://dplyr.tidyverse.org/articles/two-table.html){target="_blank"} has a nice guide on joins in R. The [R for Data Science book](https://r4ds.hadley.nz/joins.html#sec-mutating-joins){target="_blank"} also has some useful information on this technique for further reading. 
 
 # Lets aggregate! 
 
@@ -514,7 +514,7 @@ You can group your data by more than one group. This means when the data is *spl
 
 ![](https://github.com/andrewmoles2/rTrainIntroduction/blob/main/r-data-wrangling-3/images/Aggregation_twogroup.png?raw=true){width="500"}
 
-The [R for Data Science book](https://r4ds.hadley.nz/data-transform.html#sec-summarize) has some helpful examples on how to do this in R as does the [dplyr documentation](https://dplyr.tidyverse.org/reference/summarise.html#ref-examples). 
+The [R for Data Science book](https://r4ds.hadley.nz/data-transform.html#sec-summarize){target="_blank"} has some helpful examples on how to do this in R as does the [dplyr documentation](https://dplyr.tidyverse.org/reference/summarise.html#ref-examples){target="_blank"}. 
 
 *Tip:* you can use the `arrange()` function to order the output in a more meaningful way. 
 
@@ -553,6 +553,6 @@ Now you have cleaned the data, we will be using it for our visualisation and ana
 
 # Give us some feedback!
 
-We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%2:%Data%cleaning&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/Edgg9b6Z8h5AutxeNn76ptsBlc7R5nbQxzcuYZgjD4EAdA?e=hv9Mti). 
+We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%2:%Data%cleaning&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/Edgg9b6Z8h5AutxeNn76ptsBlc7R5nbQxzcuYZgjD4EAdA?e=hv9Mti){target="_blank"}. 
 
 Solutions are available at the end of the survey. 

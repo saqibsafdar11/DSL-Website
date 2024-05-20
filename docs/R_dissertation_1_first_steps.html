@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andrew Moles">
-<meta name="dcterms.date" content="2024-05-15">
+<meta name="dcterms.date" content="2024-05-20">
 
 <title>Learning R at the DSL - R Dissertation Masterclass 1: First steps with R</title>
 <style>
@@ -358,7 +358,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 15, 2024</p>
+      <p class="date">May 20, 2024</p>
     </div>
   </div>
   
@@ -391,7 +391,7 @@ window.Quarto = {
 <li><p>Open RStudio.</p></li>
 <li><p>Download the R script provided, which provides you with some structure. You can also use a R Markdown file if you prefer, which can be downloaded from the second button.</p></li>
 </ol>
-<p><a href="#dnldts15596" onclick="fetch('data:text/plain;base64,IyBUaGlzIGlzIGEgY29tbWVudC4gTm90aWNlIHRoZSBoYXNodGFnCiMgc29tZSBleGFtcGxlIGNvZGUgdG8gaGVscCB5b3Ugb3V0CjEgKyAxCmEgPC0gNQpiIDwtIDIKYyA8LSBhICogYgoKIyBCTUkgY2FsY3VsYXRpb24gLS0tLQoKCiMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIC0tLS0KCgojIFVzaW5nIHZhcmlhYmxlcyAtLS0tCgoKCiMgVXNpbmcgdmVjdG9ycyAtLS0tCgoKCiMgVXNpbmcgZGF0YSBmcmFtZXMgLS0tLQ==').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts49512" onclick="fetch('data:text/plain;base64,IyBUaGlzIGlzIGEgY29tbWVudC4gTm90aWNlIHRoZSBoYXNodGFnCiMgc29tZSBleGFtcGxlIGNvZGUgdG8gaGVscCB5b3Ugb3V0CjEgKyAxCmEgPC0gNQpiIDwtIDIKYyA8LSBhICogYgoKIyBCTUkgY2FsY3VsYXRpb24gLS0tLQoKCiMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIC0tLS0KCgojIFVzaW5nIHZhcmlhYmxlcyAtLS0tCgoKCiMgVXNpbmcgdmVjdG9ycyAtLS0tCgoKCiMgVXNpbmcgZGF0YSBmcmFtZXMgLS0tLQ==').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -399,8 +399,8 @@ window.Quarto = {
       a.download = 'r_dissertation_1.R'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-success downloadthis  " id="dnldts15596"><i class="bi bi-r-circle"></i> Download R script file </button></a></p>
-<p><a href="#dnldts57382" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiUl9kaXNzZXJ0YXRpb25fMSIKYXV0aG9yOiAiQW5kcmV3IG1vbGVzIgpkYXRlOiAiMjAyNC0wNS0wNyIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgRXhhbXBsZQoKQmVsb3cgYXJlIHNvbWUgZXhhbXBsZSBjb2RlIGZvciB5b3UgdG8gcnVuLiAKCmBgYHtyfQoxICsgMQpgYGAKCmBgYHtyfQphIDwtIDUKYiA8LSAyCmMgPC0gYSAqIGIKYGBgCgpOb3RlIHlvdSBjYW4gYWRkIHlvdXIgb3duIGNvZGUgY2VsbCB1c2luZyBvcHRpb24rY29tbWFuZCtpIG9uIGEgTWFjIG9yIGN0cmwgKyBhbHQgKyBpIG9uIGEgV2luZG93cyBtYWNoaW5lLiAKCiMjIEJNSSBjYWxjdWxhdGlvbiAKCmBgYHtyfQoKYGBgCgoKIyMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIAoKYGBge3J9CgpgYGAKCgojIyBVc2luZyB2YXJpYWJsZXMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIHZlY3RvcnMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIGRhdGEgZnJhbWVzIAoKYGBge3J9CgpgYGAKCg==').then(res => res.blob()).then(blob => {
+        });"><button class="btn btn-success downloadthis  " id="dnldts49512"><i class="bi bi-r-circle"></i> Download R script file </button></a></p>
+<p><a href="#dnldts58759" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiUl9kaXNzZXJ0YXRpb25fMSIKYXV0aG9yOiAiQW5kcmV3IG1vbGVzIgpkYXRlOiAiMjAyNC0wNS0wNyIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgRXhhbXBsZQoKQmVsb3cgYXJlIHNvbWUgZXhhbXBsZSBjb2RlIGZvciB5b3UgdG8gcnVuLiAKCmBgYHtyfQoxICsgMQpgYGAKCmBgYHtyfQphIDwtIDUKYiA8LSAyCmMgPC0gYSAqIGIKYGBgCgpOb3RlIHlvdSBjYW4gYWRkIHlvdXIgb3duIGNvZGUgY2VsbCB1c2luZyBvcHRpb24rY29tbWFuZCtpIG9uIGEgTWFjIG9yIGN0cmwgKyBhbHQgKyBpIG9uIGEgV2luZG93cyBtYWNoaW5lLiAKCiMjIEJNSSBjYWxjdWxhdGlvbiAKCmBgYHtyfQoKYGBgCgoKIyMgV2Fpc3QgdG8gSGlwIGNhbGN1bGF0aW9uIAoKYGBge3J9CgpgYGAKCgojIyBVc2luZyB2YXJpYWJsZXMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIHZlY3RvcnMgCgpgYGB7cn0KCmBgYAoKCiMjIFVzaW5nIGRhdGEgZnJhbWVzIAoKYGBge3J9CgpgYGAKCg==').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -408,12 +408,12 @@ window.Quarto = {
       a.download = 'r_dissertation_1.Rmd'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-success downloadthis  " id="dnldts57382"><i class="bi bi-r-circle"></i> Download R markdown file </button></a></p>
+        });"><button class="btn btn-success downloadthis  " id="dnldts58759"><i class="bi bi-r-circle"></i> Download R markdown file </button></a></p>
 <ol start="3" type="1">
 <li><p>Make a new folder on your computer and give it a meaningful name. Put your downloaded file in that new folder.</p></li>
 <li><p>Open the R Script <code>R_dissertation_1.R</code> or <code>R_dissertation_1.Rmd</code> file you downloaded.</p></li>
 </ol>
-<p>For help getting started using RStudio and either script or R Markdown files, we have <a href="https://andrewmoles2.github.io/DSL-R-Website/using-files.html">written a guide to help you out</a>.</p>
+<p>For help getting started using RStudio and either script or R Markdown files, we have <a href="https://andrewmoles2.github.io/DSL-R-Website/using-files.html" target="_blank">written a guide to help you out</a>.</p>
 <p>Each section is a small project. You will need to write all the code yourself.</p>
 </section>
 <section id="starting-off-calculate-your-own-health-metrics" class="level1">
@@ -426,8 +426,8 @@ window.Quarto = {
 <pre><code>[1] 50</code></pre>
 </div>
 </div>
-<p>You can find the formula for BMI on the <a href="https://extras.bhf.org.uk/patientinfo/bmi-v1.01/app/index.html">British Heart Foundation website</a>.</p>
-<p>The <a href="https://www.healthline.com/health/waist-to-hip-ratio#calculate">waist-to-hip ratio metric</a> is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes.</p>
+<p>You can find the formula for BMI on the <a href="https://extras.bhf.org.uk/patientinfo/bmi-v1.01/app/index.html" target="_blank">British Heart Foundation website</a>.</p>
+<p>The <a href="https://www.healthline.com/health/waist-to-hip-ratio#calculate" target="_blank">waist-to-hip ratio metric</a> is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes.</p>
 <p>If you don’t know what your metrics are, try using the data for Andrew:</p>
 <ul>
 <li>Height: 1.95 meters<br>
@@ -630,7 +630,7 @@ Quick side note naming
 </section>
 <section id="give-us-some-feedback" class="level1">
 <h1>Give us some feedback!</h1>
-<p>We are always looking to improve and iterate our workshops. <a href="https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%1:%First%Steps%with%R&amp;topic=R&amp;prog=DS&amp;version=23-24&amp;link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EXDUe2MvnfdNjo47CUpNbywBtqTcv236awhvCIiAAwmIgw?e=2amczd">Follow the link to give your feedback</a>.</p>
+<p>We are always looking to improve and iterate our workshops. <a href="https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%1:%First%Steps%with%R&amp;topic=R&amp;prog=DS&amp;version=23-24&amp;link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EXDUe2MvnfdNjo47CUpNbywBtqTcv236awhvCIiAAwmIgw?e=2amczd" target="_blank">Follow the link to give your feedback</a>.</p>
 <p>Solutions are available at the end of the survey.</p>
 
 
@@ -1047,7 +1047,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

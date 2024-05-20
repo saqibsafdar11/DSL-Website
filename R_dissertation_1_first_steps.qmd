@@ -57,7 +57,7 @@ To get started you will need to follow the below steps:
 
 4)  Open the R Script `R_dissertation_1.R` or `R_dissertation_1.Rmd` file you downloaded.    
 
-For help getting started using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html). 
+For help getting started using RStudio and either script or R Markdown files, we have [written a guide to help you out](https://andrewmoles2.github.io/DSL-R-Website/using-files.html){target="_blank"}. 
 
 Each section is a small project. You will need to write all the code yourself. 
 
@@ -71,9 +71,9 @@ R is an excellent calculator. See the example where we work out 10 times 5.
 10 * 5
 ```
 
-You can find the formula for BMI on the [British Heart Foundation website](https://extras.bhf.org.uk/patientinfo/bmi-v1.01/app/index.html). 
+You can find the formula for BMI on the [British Heart Foundation website](https://extras.bhf.org.uk/patientinfo/bmi-v1.01/app/index.html){target="_blank"}. 
 
-The [waist-to-hip ratio metric](https://www.healthline.com/health/waist-to-hip-ratio#calculate) is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes.
+The [waist-to-hip ratio metric](https://www.healthline.com/health/waist-to-hip-ratio#calculate){target="_blank"} is another measure of health that is designed to look for people at higher risk of conditions like heart disease or type 2 diabetes.
 
 If you don't know what your metrics are, try using the data for Andrew:
 
@@ -286,7 +286,7 @@ There is a best practice when naming variables, vectors, data frames, column nam
 
 # Give us some feedback!
 
-We are always looking to improve and iterate our workshops. [Follow the link to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%1:%First%Steps%with%R&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EXDUe2MvnfdNjo47CUpNbywBtqTcv236awhvCIiAAwmIgw?e=2amczd).
+We are always looking to improve and iterate our workshops. [Follow the link to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%1:%First%Steps%with%R&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EXDUe2MvnfdNjo47CUpNbywBtqTcv236awhvCIiAAwmIgw?e=2amczd){target="_blank"}.
 
 Solutions are available at the end of the survey. 
 

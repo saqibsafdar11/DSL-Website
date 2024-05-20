@@ -70,20 +70,20 @@ You will also be given the opportunity to explore one of the example datasets pr
 
 Throughout this session we will be working with statistics but explaining these statistical tests is beyond the scope of this workshop. As such here are some recommended resources around statistical help. 
 
-LSE Life [Quant advisers](https://info.lse.ac.uk/current-students/lse-life/events/one-to-one-sessions) offer 1-2-1 support around quantitative methods.    
+LSE Life [Quant advisers](https://info.lse.ac.uk/current-students/lse-life/events/one-to-one-sessions){target="_blank"} offer 1-2-1 support around quantitative methods.    
 
-[Statquest](https://www.youtube.com/@statquest) is a YouTube channel that provides clear explanations of statistical methods, and how do do them in R.
+[Statquest](https://www.youtube.com/@statquest){target="_blank"} is a YouTube channel that provides clear explanations of statistical methods, and how do do them in R.
 
--   Take this example of how to do a [linear regression in R](https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=5)  
+-   Take this example of how to do a [linear regression in R](https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=5){target="_blank"}  
 
--   Or this for a [multiple linear regression in R](https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=7) 
+-   Or this for a [multiple linear regression in R](https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=7){target="_blank"} 
 
 
-[Modern stats with R](https://www.modernstatisticswithr.com/regression.html#) book provides some useful examples       
+[Modern stats with R](https://www.modernstatisticswithr.com/regression.html#){target="_blank"} book provides some useful examples       
 
-[R tutor](https://www.r-tutor.com/elementary-statistics) which provides short examples of lots of statistical tests. 
+[R tutor](https://www.r-tutor.com/elementary-statistics){target="_blank"} which provides short examples of lots of statistical tests. 
 
-[R statistics tutorials](https://r-statistics.co/Statistical-Tests-in-R.html ) which are longer tutorials on models like regression.     
+[R statistics tutorials](https://r-statistics.co/Statistical-Tests-in-R.html ){target="_blank"} which are longer tutorials on models like regression.     
 
 # Exploring tests of difference: t-test and ANOVA
 
@@ -91,7 +91,7 @@ Tests of difference such as t-tests and ANOVAs are designed to statistically mea
 
 There are many versions of these tests and it is beyond the scope of this workshop to cover those. Instead we will pick one or two which match our data, and figure out how to run these tests in R! 
 
-The reason we run statistical tests is that we have questions we want to answer. In science we call this hypothesis testing. We form a question via a hypothesis, then we use a statistical test to help answer it. See this article for a quick [intro to creating a hypothesis](https://scientific-publishing.webshop.elsevier.com/manuscript-preparation/what-how-write-good-hypothesis-research/). 
+The reason we run statistical tests is that we have questions we want to answer. In science we call this hypothesis testing. We form a question via a hypothesis, then we use a statistical test to help answer it. See this article for a quick [intro to creating a hypothesis](https://scientific-publishing.webshop.elsevier.com/manuscript-preparation/what-how-write-good-hypothesis-research/){target="_blank"}. 
 
 ## t-test
 
@@ -216,7 +216,7 @@ For example, if we give people a choice of three ice cream flavours and they tel
 
 When you look your regression output you will see all the different categories apart from your comparison/reference variable. 
 
-You do not need to create dummy variables in R, this is handled automatically using factors. There is a useful explanation of dummy variables in this [book](https://www.modernstatisticswithr.com/regression.html#linearmodels).
+You do not need to create dummy variables in R, this is handled automatically using factors. There is a useful explanation of dummy variables in this [book](https://www.modernstatisticswithr.com/regression.html#linearmodels){target="_blank"}.
 
 An important thing to note about using factors as dummy variables is **the first level in that factor will be used as your reference**. To change this you need to change the order of your factor levels. 
 
@@ -272,15 +272,15 @@ There are several options here which will vary in usefulness depending on your s
 
 **easystats**   
 
-The [easystats ecosystem](https://easystats.github.io/easystats/) has lots of different options to suit your needs when it comes to statistics or reporting. For our purposes the [report package](https://easystats.github.io/report/) is a good place to start. When you come to your analysis journey check back with easystats to see if there is a tool to make your life easier in there. 
+The [easystats ecosystem](https://easystats.github.io/easystats/){target="_blank"} has lots of different options to suit your needs when it comes to statistics or reporting. For our purposes the [report package](https://easystats.github.io/report/){target="_blank"} is a good place to start. When you come to your analysis journey check back with easystats to see if there is a tool to make your life easier in there. 
 
 **Stargazer**
 
-The [stargazer package](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf) is a tool to make tables from your analysis in a publication ready format. This is a [helpful tutorial](https://rpubs.com/ayyildiz/759651) to get started. 
+The [stargazer package](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf){target="_blank"} is a tool to make tables from your analysis in a publication ready format. This is a [helpful tutorial](https://rpubs.com/ayyildiz/759651){target="_blank"} to get started. 
 
 **Broom**
 
-The [broom package](https://broom.tidymodels.org/) is a helper tool designed to tidy up the output you get from statistical models in R. It will convert these to a data frame object which will be easier to work with and present. 
+The [broom package](https://broom.tidymodels.org/){target="_blank"} is a helper tool designed to tidy up the output you get from statistical models in R. It will convert these to a data frame object which will be easier to work with and present. 
 
 Our goal here is the following:
 
@@ -374,7 +374,7 @@ city_table <- html_nodes(webpage, "table") %>%
 
 ## UK Gender pay gap data
 
-This [data provides information](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/genderpaygapintheuk/2023) on differences in pay between men and women in the UK. Data is from the Office of National Statistics and was collected from one of their [data pages](https://gender-pay-gap.service.gov.uk/viewing/download). 
+This [data provides information](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/genderpaygapintheuk/2023){target="_blank"} on differences in pay between men and women in the UK. Data is from the Office of National Statistics and was collected from one of their [data pages](https://gender-pay-gap.service.gov.uk/viewing/download){target="_blank"}. 
 
 Use the code below to load the data.
 ```{r}
@@ -383,7 +383,7 @@ paygap <- read.csv("https://raw.githubusercontent.com/andrewmoles2/TidyTuesday/m
 
 ## Eurovision song contest
 
-The [Eurovision song contest](https://eurovision.tv/) is a music competition that runs every year. Data was collected and made available through this [GitHub page](https://github.com/andrewmoles2/eurovision-contest). 
+The [Eurovision song contest](https://eurovision.tv/){target="_blank"} is a music competition that runs every year. Data was collected and made available through this [GitHub page](https://github.com/andrewmoles2/eurovision-contest){target="_blank"}. 
 
 Use the code below to load the data.
 ```{r}
@@ -392,7 +392,7 @@ eurovision <- read.csv("https://raw.githubusercontent.com/andrewmoles2/eurovisio
 
 ## Pokémon video game data
 
-Pokémon is a card game, TV series, and video game. This dataset is based on the video game. Data has been collected and made available through this [GitHub page](https://github.com/andrewmoles2/pokemon-video-games)
+Pokémon is a card game, TV series, and video game. This dataset is based on the video game. Data has been collected and made available through this [GitHub page](https://github.com/andrewmoles2/pokemon-video-games){target="_blank"}.
 
 Use the code below to load the datasets.
 ```{r}
@@ -407,14 +407,14 @@ If you want to use something other than Microsoft Word to write your dissertatio
 
 Links to sign up or express interest in the courses are below. 
 
-[LaTeX](https://apps.lse.ac.uk/training-system/home/search?textFilter=latex&roleName=ALL_ROLES&trainingProviderId=&fromDate=date.struct&fromDate_day=&fromDate_month=&fromDate_year=&fromDate_datepicker=&toDate=date.struct&toDate_day=&toDate_month=&toDate_year=&toDate_datepicker=)
+[LaTeX](https://apps.lse.ac.uk/training-system/home/search?textFilter=latex&roleName=ALL_ROLES&trainingProviderId=&fromDate=date.struct&fromDate_day=&fromDate_month=&fromDate_year=&fromDate_datepicker=&toDate=date.struct&toDate_day=&toDate_month=&toDate_year=&toDate_datepicker=){target="_blank"}
 
-[Report Writing with Markdown](https://apps.lse.ac.uk/training-system/home/search?textFilter=latex&roleName=ALL_ROLES&trainingProviderId=&fromDate=date.struct&fromDate_day=&fromDate_month=&fromDate_year=&fromDate_datepicker=&toDate=date.struct&toDate_day=&toDate_month=&toDate_year=&toDate_datepicker=)
+[Report Writing with Markdown](https://apps.lse.ac.uk/training-system/home/search?textFilter=latex&roleName=ALL_ROLES&trainingProviderId=&fromDate=date.struct&fromDate_day=&fromDate_month=&fromDate_year=&fromDate_datepicker=&toDate=date.struct&toDate_day=&toDate_month=&toDate_year=&toDate_datepicker=){target="_blank"}
 
-We are also offering [1-2-1 sessions](https://info.lse.ac.uk/current-students/digital-skills-lab/drop-in-sessions) throughout the summer period which you can book through student hub. 
+We are also offering [1-2-1 sessions](https://info.lse.ac.uk/current-students/digital-skills-lab/drop-in-sessions){target="_blank"} throughout the summer period which you can book through student hub. 
 
 # Give us some feedback! 
 
-We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%4:%Data%analysis&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EVZS7bpU_gZElOQg922p9KMBRH0NOttxEmUPvt6TJY_bKg?e=nzwPzl). 
+We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%4:%Data%analysis&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EVZS7bpU_gZElOQg922p9KMBRH0NOttxEmUPvt6TJY_bKg?e=nzwPzl){target="_blank"}. 
 
 Solutions are available at the end of the survey. 
