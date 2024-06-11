@@ -30,9 +30,9 @@ date: today
 
 -   Perform linear regression
 
--   Pick a dataset to clean, explore, and analyse! 
+-   Pick a dataset to clean, explore, and analyse!
 
-Our project for this worksheet is to run some analysis on the data we have been cleaning and visualising! By the end of the worksheet you will have performed a t-test, ANOVA, and multiple linear regression on the dataset. 
+Our project for this worksheet is to run some analysis on the data we have been cleaning and visualising! By the end of the worksheet you will have performed a t-test, ANOVA, and multiple linear regression on the dataset.
 
 ```{r example-report, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -47,55 +47,53 @@ lm_mod <- lm(imd_decile ~ whr, data = health)
 # report(lm_mod)
 ```
 
-You will also be given the opportunity to explore one of the example datasets provided, with a trainer on hand to help if needed. 
+You will also be given the opportunity to explore one of the example datasets provided, with a trainer on hand to help if needed.
 
 # Setup
 
-1) This time you will be opening your own R script or R Markdown file. First, make sure you are in the RStudio project we setup in the data cleaning worksheet. Then follow the instructions below. 
+1)  This time you will be opening your own R script or R Markdown file. First, make sure you are in the RStudio project we setup in the data cleaning worksheet. Then follow the instructions below.
 
 -   To open a script you can either go to `File > New File > R Script` or use the keyboard shortcut `shift + command/control + N`.
 
 -   To open a new R markdown file go to `File > New File > R Markdown`. When opening we recommend you change the title to `R_dissertation_4`. Then when the file is open we suggest deleting everything after line 6 or under the second `---`. You'll need to add your own headings using the `#` and add code cells using `option+command+i` on a Mac or `ctrl + alt + i` on a Windows machine.
 
-2) Install the `broom`, `easystats`, and `stargazer` libraries which we will be using for reporting. **We recommend installing packages using the command line as you only need to install packages once**. 
+2)  Install the `broom`, `easystats`, and `stargazer` libraries which we will be using for reporting. **We recommend installing packages using the command line as you only need to install packages once**.
 
-3) Load tidyverse, easystats, broom, and stargazer. 
+3)  Load tidyverse, easystats, broom, and stargazer.
 
-4) Load in the heath metrics dataset. You should already have it, but if you can't find it we have provided a download of it below. 
+4)  Load in the heath metrics dataset. You should already have it, but if you can't find it we have provided a download of it below.
 
 {{< downloadthis resources/health_metrics_cleaned.csv label='Download dataset' dname=health_metrics_cleaned icon=database-fill-down type=success >}}
 
-
 # Recommended resources
 
-Throughout this session we will be working with statistics but explaining these statistical tests is beyond the scope of this workshop. As such here are some recommended resources around statistical help. 
+Throughout this session we will be working with statistics but explaining these statistical tests is beyond the scope of this workshop. As such here are some recommended resources around statistical help.
 
-LSE Life [Quant advisers](https://info.lse.ac.uk/current-students/lse-life/events/one-to-one-sessions){target="_blank"} offer 1-2-1 support around quantitative methods.    
+LSE Life [Quant advisers](https://info.lse.ac.uk/current-students/lse-life/events/one-to-one-sessions){target="_blank"} offer 1-2-1 support around quantitative methods.
 
 [Statquest](https://www.youtube.com/@statquest){target="_blank"} is a YouTube channel that provides clear explanations of statistical methods, and how do do them in R.
 
--   Take this example of how to do a [linear regression in R](https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=5){target="_blank"}  
+-   Take this example of how to do a [linear regression in R](https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=5){target="_blank"}
 
--   Or this for a [multiple linear regression in R](https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=7){target="_blank"} 
+-   Or this for a [multiple linear regression in R](https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUJJpBNfk8_YadPwDTO2SCbx&index=7){target="_blank"}
 
+[Modern stats with R](https://www.modernstatisticswithr.com/regression.html#){target="_blank"} book provides some useful examples
 
-[Modern stats with R](https://www.modernstatisticswithr.com/regression.html#){target="_blank"} book provides some useful examples       
+[R tutor](https://www.r-tutor.com/elementary-statistics){target="_blank"} which provides short examples of lots of statistical tests.
 
-[R tutor](https://www.r-tutor.com/elementary-statistics){target="_blank"} which provides short examples of lots of statistical tests. 
-
-[R statistics tutorials](https://r-statistics.co/Statistical-Tests-in-R.html ){target="_blank"} which are longer tutorials on models like regression.     
+[R statistics tutorials](https://r-statistics.co/Statistical-Tests-in-R.html){target="_blank"} which are longer tutorials on models like regression.
 
 # Exploring tests of difference: t-test and ANOVA
 
-Tests of difference such as t-tests and ANOVAs are designed to statistically measure the differences between groups or samples. These tests are usually based around a comparison between average values. 
+Tests of difference such as t-tests and ANOVAs are designed to statistically measure the differences between groups or samples. These tests are usually based around a comparison between average values.
 
-There are many versions of these tests and it is beyond the scope of this workshop to cover those. Instead we will pick one or two which match our data, and figure out how to run these tests in R! 
+There are many versions of these tests and it is beyond the scope of this workshop to cover those. Instead we will pick one or two which match our data, and figure out how to run these tests in R!
 
-The reason we run statistical tests is that we have questions we want to answer. In science we call this hypothesis testing. We form a question via a hypothesis, then we use a statistical test to help answer it. See this article for a quick [intro to creating a hypothesis](https://scientific-publishing.webshop.elsevier.com/manuscript-preparation/what-how-write-good-hypothesis-research/){target="_blank"}. 
+The reason we run statistical tests is that we have questions we want to answer. In science we call this hypothesis testing. We form a question via a hypothesis, then we use a statistical test to help answer it. See this article for a quick [intro to creating a hypothesis](https://scientific-publishing.webshop.elsevier.com/manuscript-preparation/what-how-write-good-hypothesis-research/){target="_blank"}.
 
 ## t-test
 
-A t-test is used to compare the means of two groups. We have two questions we want to answer where a t-test is a good test to use. 
+A t-test is used to compare the means of two groups. We have two questions we want to answer where a t-test is a good test to use.
 
 **Question 1:** is there a statistical difference of average index of multiple deprivation (IMD) decile between those who have high or normal blood pressure?
 
@@ -107,17 +105,17 @@ bp_imd_t <- stats::t.test(imd_decile ~ factor(blood_pressure), data = health)
 bp_imd_t
 ```
 
-:::{.callout-tip}
-Factors are important when it comes to running statistical tests using R. To compare by groups you might need to convert your grouping variable (i.e. blood pressure) to a factor using `factor()`.  
+::: callout-tip
+Factors are important when it comes to running statistical tests using R. To compare by groups you might need to convert your grouping variable (i.e. blood pressure) to a factor using `factor()`.
 :::
 
-:::{.callout-note}
-The output gives you lots of useful information. To know if there is a statistical difference you need to look at the `t` and the `p-value`. Generally a `t` over 2-2.5 will give you a significant difference, and you are looking for a `p-value` under 0.05. 
+::: callout-note
+The output gives you lots of useful information. To know if there is a statistical difference you need to look at the `t` and the `p-value`. Generally a `t` over 2-2.5 will give you a significant difference, and you are looking for a `p-value` under 0.05.
 :::
 
 **Question 2:** is there a statistical difference in IMD decile between people who are from Hackney and Westminster?
 
-You should end up with a result like the output below. 
+You should end up with a result like the output below.
 
 ```{r t-test2, echo=FALSE}
 # compare means of location
@@ -127,21 +125,22 @@ loc_imd <- t.test(hackney$imd_decile, westminster$imd_decile)
 loc_imd
 ```
 
-:::{.callout-tip}
-You will need to create a data frame for people who are from Hackney and people who are from Westminster. 
+::: callout-tip
+You will need to create a data frame for people who are from Hackney and people who are from Westminster.
 :::
 
-:::{.callout-note}
-A `p-value` of 2.2e-16 represents a very small value in scientific notation. In decimal form, it is equivalent to 0.00000000000000022. 
+::: callout-note
+A `p-value` of 2.2e-16 represents a very small value in scientific notation. In decimal form, it is equivalent to 0.00000000000000022.
 :::
 
 ## ANOVA
 
-Analysis of variance (ANOVA) is a statistical test (or set of statistical models) used to compare the difference between means of groups. 
+Analysis of variance (ANOVA) is a statistical test (or set of statistical models) used to compare the difference between means of groups.
 
-In our previous t-test we wanted to know if there was a difference average IMD decile between people from Hackney and Westminster. What if we wanted to know if there is a statistical difference across all locations? We can use an ANOVA to test this difference! 
+In our previous t-test we wanted to know if there was a difference average IMD decile between people from Hackney and Westminster. What if we wanted to know if there is a statistical difference across all locations? We can use an ANOVA to test this difference!
 
-We have looked at the difference between these groups previously. Have a look at the visual below. Do you think we might see a statistical difference between locations and the average IMD decile? 
+We have looked at the difference between these groups previously. Have a look at the visual below. Do you think we might see a statistical difference between locations and the average IMD decile?
+
 ```{r anova-p1, echo=FALSE}
 library(tidyverse)
 
@@ -153,9 +152,9 @@ health %>%
   geom_col()
 ```
 
-**Our question we want to answer:** is there a difference in average IMD decile between London Boroughs? 
+**Our question we want to answer:** is there a difference in average IMD decile between London Boroughs?
 
-You should end up with results like the outputs below. 
+You should end up with results like the outputs below.
 
 ```{r anova-p2, echo=FALSE}
 health$location <- factor(health$location)
@@ -163,49 +162,52 @@ loc_anova <- aov(imd_decile ~ location, data = health)
 summary(loc_anova)
 TukeyHSD(loc_anova)
 ```
-:::{.panel-tabset}
-## Hint 1 
-Location needs to be made a factor for the test to run. 
 
-## Hint 2 
+::: panel-tabset
+## Hint 1
+
+Location needs to be made a factor for the test to run.
+
+## Hint 2
+
 We used the following functions: `aov()`, `summary()`, and `TukeyHSD()`.
 :::
 
-:::{.callout-note}
-The test we have done here is called a one-way ANOVA. The key statistics we look for in an ANOVA test are the `F value` and the `Pr(>F)`. 
+::: callout-note
+The test we have done here is called a one-way ANOVA. The key statistics we look for in an ANOVA test are the `F value` and the `Pr(>F)`.
 
-The higher the F-value in an ANOVA, the higher the variation between sample means relative to the variation within the samples. The higher the F-value, the lower the corresponding p-value. 
+The higher the F-value in an ANOVA, the higher the variation between sample means relative to the variation within the samples. The higher the F-value, the lower the corresponding p-value.
 
-The *Tukey multiple comparisons of means* shows us all the different comparisons and which were or were not significantly different. 
+The *Tukey multiple comparisons of means* shows us all the different comparisons and which were or were not significantly different.
 :::
 
 # Regression
 
-A regression can come in many forms. The most common is the ordinary least squares regression (OLS) which is also known as a linear regression. It is called linear because a straight line is used to estimate the relationship between two variables. In statistics regressions are used to estimate the relationship between a dependent variable and one or more independent variables. 
+A regression can come in many forms. The most common is the ordinary least squares regression (OLS) which is also known as a linear regression. It is called linear because a straight line is used to estimate the relationship between two variables. In statistics regressions are used to estimate the relationship between a dependent variable and one or more independent variables.
 
 As building regression models is similar across different models in R we will focus on linear regression. The key take ways are:
 
--   Basic code and formula building which is similar across all regression functions in R.   
+-   Basic code and formula building which is similar across all regression functions in R.
 
--   How to interpret the output.   
+-   How to interpret the output.
 
--   Building multiple linear regressions (as in using multiple independent variables).   
+-   Building multiple linear regressions (as in using multiple independent variables).
 
--   How are dummy variables used.    
+-   How are dummy variables used.
 
 ## Side note on dummy variables
 
 Dummy variables are *artificial* variables that take values of 0 or 1 to indicate the absence or presence of something.
 
-0 = absent    
+0 = absent
 
-1 = present     
+1 = present
 
-By convention if you have two or more variables, one variable is not coded so we have a comparison point (also known as a reference). 
+By convention if you have two or more variables, one variable is not coded so we have a comparison point (also known as a reference).
 
 For example, if we give people a choice of three ice cream flavours and they tell us their favourite (Vanilla, Chocolate, or Pistachio), we would use two dummy variables. In the table below we have used vanilla as our comparison point with dummy variables for pistachio and chocolate.
 
-| **Favourite\_ice_cream** | **dummy_pistachio** | **dummy_chocolate** |
+| **Favourite_ice_cream** | **dummy_pistachio** | **dummy_chocolate** |
 |-------------------------|---------------------|---------------------|
 | Vanilla                 | 0                   | 0                   |
 | Chocolate               | 0                   | 1                   |
@@ -214,33 +216,32 @@ For example, if we give people a choice of three ice cream flavours and they tel
 | Vanilla                 | 0                   | 0                   |
 | Chocolate               | 0                   | 1                   |
 
-When you look your regression output you will see all the different categories apart from your comparison/reference variable. 
+When you look your regression output you will see all the different categories apart from your comparison/reference variable.
 
 You do not need to create dummy variables in R, this is handled automatically using factors. There is a useful explanation of dummy variables in this [book](https://www.modernstatisticswithr.com/regression.html#linearmodels){target="_blank"}.
 
-An important thing to note about using factors as dummy variables is **the first level in that factor will be used as your reference**. To change this you need to change the order of your factor levels. 
+An important thing to note about using factors as dummy variables is **the first level in that factor will be used as your reference**. To change this you need to change the order of your factor levels.
 
 ## Building regression models
 
-Our question is around the IMD decile. We want to know what the relationship is with the IMD decile with other variables in our dataset. As IMD decile is our focus this will be our dependent variable. 
+Our question is around the IMD decile. We want to know what the relationship is with the IMD decile with other variables in our dataset. As IMD decile is our focus this will be our dependent variable.
 
 **Model 1**: Simple linear regression
 
-For our first model we are wanting to know the relationship between our dependent variable IMD decile and an independent variable of waist to hip ratio (whr). 
+For our first model we are wanting to know the relationship between our dependent variable IMD decile and an independent variable of waist to hip ratio (whr).
 
-You should end up with result like the output below. 
+You should end up with result like the output below.
 
 ```{r simple-reg, echo=FALSE}
 lm_mod <- lm(imd_decile ~ whr, data = health)
 summary(lm_mod)
 ```
 
+**Model 2**: Multiple linear regression
 
-**Model 2**: Multiple linear regression 
+For our second model we are wanting to know the relationship between our dependent variable IMD decile, `imd_decile`, and an independent variables of location, BMI, waist to hip ratio, and age.
 
-For our second model we are wanting to know the relationship between our dependent variable IMD decile, `imd_decile`, and an independent variables of location, BMI, waist to hip ratio, and age.   
- 
-You should end up with result like the output below. 
+You should end up with result like the output below.
 
 ```{r multi-reg, echo=FALSE}
 # change reference point to city of london - the highest imd decile average
@@ -251,40 +252,41 @@ lm_mod_1 <- lm(imd_decile ~ location + bmi + whr + age, data = health)
 summary(lm_mod_1)
 ```
 
-:::{.panel-tabset}
-## Hint 1 
-For our model we moved our dummy variable reference to `City of London` by changing the order of the factor levels. This is because City of London has the highest IMD decile average. 
+::: panel-tabset
+## Hint 1
+
+For our model we moved our dummy variable reference to `City of London` by changing the order of the factor levels. This is because City of London has the highest IMD decile average.
 
 ## Hint 2
-The `lm()` function is the simplest way to run OLS models in R. 
+
+The `lm()` function is the simplest way to run OLS models in R.
 :::
 
-:::{.callout-note} 
-If you want to just look at the coefficients of the model we can use the `coefficients()` function. 
-If we wanted to use a different modelling family to OLS we would use the `glm()` function and specify which model family to use such as *binomial* which is a logit model. Across R the way of building models is very similar to using the `lm()` function.
+::: callout-note
+If you want to just look at the coefficients of the model we can use the `coefficients()` function. If we wanted to use a different modelling family to OLS we would use the `glm()` function and specify which model family to use such as *binomial* which is a logit model. Across R the way of building models is very similar to using the `lm()` function.
 :::
 
 # Writing your results in a publication ready format
 
-We have done some analysis which is great, but we can also use R to get our results in a format to put into our dissertations! 
+We have done some analysis which is great, but we can also use R to get our results in a format to put into our dissertations!
 
-There are several options here which will vary in usefulness depending on your situation. We have recommended three below, but there are many other options. 
+There are several options here which will vary in usefulness depending on your situation. We have recommended three below, but there are many other options.
 
-**easystats**   
+**easystats**
 
-The [easystats ecosystem](https://easystats.github.io/easystats/){target="_blank"} has lots of different options to suit your needs when it comes to statistics or reporting. For our purposes the [report package](https://easystats.github.io/report/){target="_blank"} is a good place to start. When you come to your analysis journey check back with easystats to see if there is a tool to make your life easier in there. 
+The [easystats ecosystem](https://easystats.github.io/easystats/){target="_blank"} has lots of different options to suit your needs when it comes to statistics or reporting. For our purposes the [report package](https://easystats.github.io/report/){target="_blank"} is a good place to start. When you come to your analysis journey check back with easystats to see if there is a tool to make your life easier in there.
 
 **Stargazer**
 
-The [stargazer package](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf){target="_blank"} is a tool to make tables from your analysis in a publication ready format. This is a [helpful tutorial](https://rpubs.com/ayyildiz/759651){target="_blank"} to get started. 
+The [stargazer package](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf){target="_blank"} is a tool to make tables from your analysis in a publication ready format. This is a [helpful tutorial](https://rpubs.com/ayyildiz/759651){target="_blank"} to get started.
 
 **Broom**
 
-The [broom package](https://broom.tidymodels.org/){target="_blank"} is a helper tool designed to tidy up the output you get from statistical models in R. It will convert these to a data frame object which will be easier to work with and present. 
+The [broom package](https://broom.tidymodels.org/){target="_blank"} is a helper tool designed to tidy up the output you get from statistical models in R. It will convert these to a data frame object which will be easier to work with and present.
 
 Our goal here is the following:
 
-1.   Use the report library from easystats to make a verbal report on both your regression results! The example below is for the simple linear regression.
+1.  Use the report library from easystats to make a verbal report on both your regression results! The example below is for the simple linear regression.
 
 ```{r report, echo=FALSE}
 # report
@@ -293,8 +295,7 @@ library(easystats)
 report(lm_mod)
 ```
 
-
-2.   Use broom to make nice results for your t-test and anova to make it easier to write out your results. Below is an example of our t-test on difference in IMD decile between people who are from Hackney and Westminster. 
+2.  Use broom to make nice results for your t-test and anova to make it easier to write out your results. Below is an example of our t-test on difference in IMD decile between people who are from Hackney and Westminster.
 
 ```{r broom, echo=FALSE}
 # broom output
@@ -303,8 +304,7 @@ library(broom)
 broom::tidy(loc_imd)
 ```
 
-
-3.   Use stargazer to make a nice table for your regression results. The example below is for the simple linear regression.
+3.  Use stargazer to make a nice table for your regression results. The example below is for the simple linear regression.
 
 ```{r star, echo=FALSE}
 # stargazer output
@@ -313,8 +313,8 @@ library(stargazer)
 stargazer(lm_mod, type = 'text', title = "IMD Decile regression results")
 ```
 
-:::{.callout-note}
-For stargazer we used `type = 'text'` to get our output. There are several different outputs formats you can choose. 
+::: callout-note
+For stargazer we used `type = 'text'` to get our output. There are several different outputs formats you can choose.
 :::
 
 ```{r eval=FALSE, include=FALSE}
@@ -330,28 +330,64 @@ broom::glance(lm_mod_1)
 stargazer(lm_mod_1, type = 'text', title = "IMD Decile regression results")
 ```
 
+## Other options for making nice outputs for reports
 
-# Final challenge! 
+The options we have outlined above are just a few of the many options out there!
+
+A good option for those who are writing reports that use APA referencing style is the [apaTables](https://dstanley4.github.io/apaTables/articles/apaTables.html){target="_blank"} package. A useful feature is the tables produced can be outputted in multiple different formats such as Word or LaTeX.
+
+If you have some specific output you need then you can write some code yourself to achieve that. For example, say I wanted to make a table of descriptive statistics where the rows of the table are column names and columns are the descriptives (mean, min etc.) I could write some code to do just that. 
+
+```{r desc-ex, echo=FALSE}
+descriptive_tab <- function(df, cols, round_digits = 2) {
+  
+  # cols needs to be a vector
+  # cols <- c('col1', 'col2', 'col3')
+  
+  tab <- data.frame(
+    t(
+      apply(
+        df[, cols],
+        MARGIN = 2,
+        function (x) c(
+          mean = round(mean(x, na.rm = TRUE), round_digits),
+          median = round(median(x, na.rm = TRUE), round_digits),
+          min = round(min(x, na.rm = TRUE), round_digits),
+          max = round(max(x, na.rm = TRUE), round_digits),
+          standard_deviation = round(sd(x, na.rm = TRUE), round_digits)
+        )
+      )
+    )
+  )
+  return(tab)
+}
+
+descriptive_tab(health, c('bmi', 'age', 'imd_decile'))
+```
+
+Here is the [function I wrote for this example](https://gist.github.com/andrewmoles2/ac88ac877131d93067d340b857c8f3af){target="_blank"} which you are welcome to use and adjust!
+
+# Final challenge!
 
 For our last challenge we have provided a few example datasets for you to explore and analyse!
 
 **Pick one of the datasets to work with.** Can you apply what you have covered so far to a fresh dataset?
 
-We are not going to dictate what you do or how you approach this. We will be available to support you and answer questions. 
+We are not going to dictate what you do or how you approach this. We will be available to support you and answer questions.
 
 Some things for you to think about:
 
--   What steps do you need to go through to have your data ready for analysis? 
+-   What steps do you need to go through to have your data ready for analysis?
 
 -   What data visualisations can you make, and what would be useful or interesting to look at?
 
--   How do you decide what analysis to do? 
+-   How do you decide what analysis to do?
 
 ## Wiki temperature data
 
-This dataset is a list, taken from Wikipedia, of the average temperatures of world cities. To get the data, use the code provided below. 
+This dataset is a list, taken from Wikipedia, of the average temperatures of world cities. To get the data, use the code provided below.
 
-The `rvest` package should have been installed when you installed the tidyverse set of packages. It is used to scrape data from the web using R. 
+The `rvest` package should have been installed when you installed the tidyverse set of packages. It is used to scrape data from the web using R.
 
 ```{r city-temp, message=FALSE, warning=FALSE}
 library(rvest)
@@ -371,21 +407,22 @@ city_table <- html_nodes(webpage, "table") %>%
 
 ```
 
-
 ## UK Gender pay gap data
 
-This [data provides information](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/genderpaygapintheuk/2023){target="_blank"} on differences in pay between men and women in the UK. Data is from the Office of National Statistics and was collected from one of their [data pages](https://gender-pay-gap.service.gov.uk/viewing/download){target="_blank"}. 
+This [data provides information](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/genderpaygapintheuk/2023){target="_blank"} on differences in pay between men and women in the UK. Data is from the Office of National Statistics and was collected from one of their [data pages](https://gender-pay-gap.service.gov.uk/viewing/download){target="_blank"}.
 
 Use the code below to load the data.
+
 ```{r}
 paygap <- read.csv("https://raw.githubusercontent.com/andrewmoles2/TidyTuesday/master/paygap-2022-06-28/data/paygap.csv")
 ```
 
 ## Eurovision song contest
 
-The [Eurovision song contest](https://eurovision.tv/){target="_blank"} is a music competition that runs every year. Data was collected and made available through this [GitHub page](https://github.com/andrewmoles2/eurovision-contest){target="_blank"}. 
+The [Eurovision song contest](https://eurovision.tv/){target="_blank"} is a music competition that runs every year. Data was collected and made available through this [GitHub page](https://github.com/andrewmoles2/eurovision-contest){target="_blank"}.
 
 Use the code below to load the data.
+
 ```{r}
 eurovision <- read.csv("https://raw.githubusercontent.com/andrewmoles2/eurovision-contest/main/data/eurovision_data.csv")
 ```
@@ -395,26 +432,26 @@ eurovision <- read.csv("https://raw.githubusercontent.com/andrewmoles2/eurovisio
 Pokémon is a card game, TV series, and video game. This dataset is based on the video game. Data has been collected and made available through this [GitHub page](https://github.com/andrewmoles2/pokemon-video-games){target="_blank"}.
 
 Use the code below to load the datasets.
+
 ```{r}
 pokemon_stats <- read.csv("https://raw.githubusercontent.com/andrewmoles2/pokemon-video-games/main/data/pokemon_stats.csv")
 pokemon_types <- read.csv("https://raw.githubusercontent.com/andrewmoles2/pokemon-video-games/main/data/pokemon_types.csv")
 ```
 
-
 # Next steps
 
-If you want to use something other than Microsoft Word to write your dissertation we recommend coming to our Introduction to LaTeX or Report Writing with Markdown workshops. These workshops use a more programmic style for writing reports that gets around the many issues you commonly face using MS Word to write longer documents like a dissertation! If you go for the Report Writing with Markdown workshop we can teach you how to write your analysis and your dissertation in one document for maximum efficiency. 
+If you want to use something other than Microsoft Word to write your dissertation we recommend coming to our Introduction to LaTeX or Report Writing with Markdown workshops. These workshops use a more programmic style for writing reports that gets around the many issues you commonly face using MS Word to write longer documents like a dissertation! If you go for the Report Writing with Markdown workshop we can teach you how to write your analysis and your dissertation in one document for maximum efficiency.
 
-Links to sign up or express interest in the courses are below. 
+Links to sign up or express interest in the courses are below.
 
 [LaTeX](https://apps.lse.ac.uk/training-system/home/search?textFilter=latex&roleName=ALL_ROLES&trainingProviderId=&fromDate=date.struct&fromDate_day=&fromDate_month=&fromDate_year=&fromDate_datepicker=&toDate=date.struct&toDate_day=&toDate_month=&toDate_year=&toDate_datepicker=){target="_blank"}
 
 [Report Writing with Markdown](https://apps.lse.ac.uk/training-system/home/search?textFilter=latex&roleName=ALL_ROLES&trainingProviderId=&fromDate=date.struct&fromDate_day=&fromDate_month=&fromDate_year=&fromDate_datepicker=&toDate=date.struct&toDate_day=&toDate_month=&toDate_year=&toDate_datepicker=){target="_blank"}
 
-We are also offering [1-2-1 sessions](https://info.lse.ac.uk/current-students/digital-skills-lab/drop-in-sessions){target="_blank"} throughout the summer period which you can book through student hub. 
+We are also offering [1-2-1 sessions](https://info.lse.ac.uk/current-students/digital-skills-lab/drop-in-sessions){target="_blank"} throughout the summer period which you can book through student hub.
 
-# Give us some feedback! 
+# Give us some feedback!
 
-We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%4:%Data%analysis&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EVZS7bpU_gZElOQg922p9KMBRH0NOttxEmUPvt6TJY_bKg?e=nzwPzl){target="_blank"}. 
+We are always looking to improve and iterate our workshops. [Follow the link below to give your feedback](https://lse.eu.qualtrics.com/jfe/form/SV_6eSrOVWuit28qcS?coursename=R%Dissertation%Masterclass%4:%Data%analysis&topic=R&prog=DS&version=23-24&link=https://lsecloud.sharepoint.com/:u:/s/TEAM_APD-DSL-Digital-Skills-Trainers/EVZS7bpU_gZElOQg922p9KMBRH0NOttxEmUPvt6TJY_bKg?e=nzwPzl){target="_blank"}.
 
-Solutions are available at the end of the survey. 
+Solutions are available at the end of the survey.

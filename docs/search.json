@@ -331,6 +331,17 @@
     ]
   },
   {
+    "objectID": "R_dissertation_4_data_analysis.html#other-options-for-making-nice-outputs-for-reports",
+    "href": "R_dissertation_4_data_analysis.html#other-options-for-making-nice-outputs-for-reports",
+    "title": "R Dissertation Masterclass 4: Data Analysis",
+    "section": "Other options for making nice outputs for reports",
+    "text": "Other options for making nice outputs for reports\nThe options we have outlined above are just a few of the many options out there!\nA good option for those who are writing reports that use APA referencing style is the apaTables package. A useful feature is the tables produced can be outputted in multiple different formats such as Word or LaTeX.\nIf you have some specific output you need then you can write some code yourself to achieve that. For example, say I wanted to make a table of descriptive statistics where the rows of the table are column names and columns are the descriptives (mean, min etc.) I could write some code to do just that.\n\n\n            mean median   min   max standard_deviation\nbmi        23.99  23.39  8.37 54.37               5.74\nage        48.24  48.00 16.00 80.00              18.42\nimd_decile  4.54   4.00  1.00 10.00               2.34\n\n\nHere is the function I wrote for this example which you are welcome to use and adjust!",
+    "crumbs": [
+      "🎓 R Dissertation workshops",
+      "🎓 Data analysis"
+    ]
+  },
+  {
     "objectID": "R_dissertation_4_data_analysis.html#wiki-temperature-data",
     "href": "R_dissertation_4_data_analysis.html#wiki-temperature-data",
     "title": "R Dissertation Masterclass 4: Data Analysis",
