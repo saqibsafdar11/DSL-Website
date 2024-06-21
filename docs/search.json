@@ -126,17 +126,6 @@
     ]
   },
   {
-    "objectID": "R_dissertation_2_data_cleaning.html#recommended-tidy-up-the-column-names-of-the-deprivation-imd-data",
-    "href": "R_dissertation_2_data_cleaning.html#recommended-tidy-up-the-column-names-of-the-deprivation-imd-data",
-    "title": "R Dissertation Masterclass 2: Data Cleaning",
-    "section": "Recommended: tidy up the column names of the deprivation (IMD) data",
-    "text": "Recommended: tidy up the column names of the deprivation (IMD) data\nTo tidy up the column names of the IMD data we recommend using the janitor package and the clean_names() function. Examples can be found here. This makes the column names more R friendly which will make working with the dataset easier.\nThe health dataset already has R friendly column names so we do not need to change that.",
-    "crumbs": [
-      "🎓 R Dissertation workshops",
-      "🎓 Data cleaning"
-    ]
-  },
-  {
     "objectID": "R_dissertation_2_data_cleaning.html#a-side-note-on-the-english-indices-of-deprivation-imd-data",
     "href": "R_dissertation_2_data_cleaning.html#a-side-note-on-the-english-indices-of-deprivation-imd-data",
     "title": "R Dissertation Masterclass 2: Data Cleaning",
@@ -152,7 +141,7 @@
     "href": "R_dissertation_2_data_cleaning.html#tips-to-help-cleaning-the-height-and-weight-columns",
     "title": "R Dissertation Masterclass 2: Data Cleaning",
     "section": "Tips to help cleaning the height and weight columns",
-    "text": "Tips to help cleaning the height and weight columns\n\n\nThis isn’t straightforward to fix so we have to make assumptions which are listed below.\n\nif height is &gt; 8 assume it is in centimetres\nif height is &gt; 4 and &lt; 8 assume it is in feet\nif weight is &lt; 25 assume it is in stone\n\n\nBelow are some converting formulas to help you out:\n\ncentimetres to meters: \\(centimetres \\div 100\\)\nfeet to meters: \\(feet \\times 0.3048\\)\nstone to kilograms: \\(stone \\times 6.35029318\\)\n\n\n\nWe are going to need to use conditional operators to find and fix the incorrect data points. The table below contains the conditional operators you can use.\n\n\n\nOperator\nMeaning\n\n\n\n\n&gt;\nGreater than\n\n\n&gt;=\nGreater than or equal to\n\n\n&lt;\nLess than\n\n\n&lt;=\nLess than or equal to\n\n\n==\nEqual to\n\n\n!=\nNot equal to\n\n\n!X\nNOT X\n\n\nX | Y\nX OR Y\n\n\nX & Y\nX AND Y\n\n\nX %in% Y\nis X in Y\n\n\n\nIn R, the easiest way to conditionally fix data is to use the ifelse() function, or the case_when() function from dplyr. To add a new column the transform() function or the mutate() function from dplyr are easiest to use.\nTo help you get started you can copy and paste the scaffolding code below. You’ll need to fill in the spaces where the ... is. It is recommended you look up the ifelse() function online or in the help menu (bottom right, help tab).\n\nhealth &lt;- mutate(health,\n                    height_m = ifelse(..., ...,\n                                      ifelse(... & ..., \n                                             ..., ...)),\n                    weight_kg = ifelse(weight &lt; 25, ... / 0.1575, weight))\n\nRemember, to see what your data should look like see the output in Section 7.",
+    "text": "Tips to help cleaning the height and weight columns\n\n\nThis isn’t straightforward to fix so we have to make assumptions which are listed below.\n\nif height is &gt; 8 assume it is in centimetres\nif height is &gt; 4 and &lt; 8 assume it is in feet\nif weight is &lt; 25 assume it is in stone\n\n\nBelow are some converting formulas to help you out:\n\ncentimetres to meters: \\(centimetres \\div 100\\)\nfeet to meters: \\(feet \\times 0.3048\\)\nstone to kilograms: \\(stone \\times 6.35029318\\)\n\n\n\nWe are going to need to use conditional operators to find and fix the incorrect data points. The table below contains the conditional operators you can use.\n\n\n\nOperator\nMeaning\n\n\n\n\n&gt;\nGreater than\n\n\n&gt;=\nGreater than or equal to\n\n\n&lt;\nLess than\n\n\n&lt;=\nLess than or equal to\n\n\n==\nEqual to\n\n\n!=\nNot equal to\n\n\n!X\nNOT X\n\n\nX | Y\nX OR Y\n\n\nX & Y\nX AND Y\n\n\nX %in% Y\nis X in Y\n\n\n\nIn R, the easiest way to conditionally fix data is to use the ifelse() function, or the case_when() function from dplyr. To add a new column the transform() function or the mutate() function from dplyr are easiest to use.\nTo help you get started you can copy and paste the scaffolding code below. You’ll need to fill in the spaces where the ... is. It is recommended you look up the ifelse() function online or in the help menu (bottom right, help tab).\n\nhealth &lt;- mutate(health,\n                    height_m = ifelse(..., ...,\n                                      ifelse(... & ..., \n                                             ..., ...)),\n                    weight_kg = ifelse(weight &lt; 25, ... / 0.1575, weight))\n\nRemember, to see what your data should look like see the output in Section 8.",
     "crumbs": [
       "🎓 R Dissertation workshops",
       "🎓 Data cleaning"

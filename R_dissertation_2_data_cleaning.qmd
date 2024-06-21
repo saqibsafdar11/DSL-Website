@@ -205,15 +205,34 @@ Remember that Excel files have different sheets. Which sheet in the `IMD2019.xls
 
 **Top tip when loading data:** move your cursor between the quotation marks ('' or "") and press tab. You should see a list of the files you can load! Press tab to select or click using your mouse. 
 
-## Recommended: tidy up the column names of the deprivation (IMD) data
-
-To tidy up the column names of the IMD data we recommend using the janitor package and the `clean_names()` function. Examples can be found [here](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names){target="_blank"}. This makes the column names more R friendly which will make working with the dataset easier. 
-
-The health dataset already has R friendly column names so we do not need to change that. 
-
 ## A side note on the English indices of deprivation (IMD) data
 
 The `IMD2019.xlsx` dataset is from the [English indices of deprivation website 2019](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019){target="_blank"}. Indices of deprivation (IMD) measure relative deprivation in small areas in England, where lower decile scores indicate a more deprived area. 
+
+# Tidy up the column names of the deprivation (IMD) data
+
+The column names in the IMD data are messy and challenging to work with in R. Look at the two examples below. Which has the clean R friendly column names? What is the difference between the examples?
+
+```{r clean-names-ex1}
+#| warning: false
+#| message: false
+#| echo: false
+
+imd_dirty <- read_excel("resources/IMD2019.xlsx", sheet = 2)
+names(imd_dirty)
+```
+
+```{r clean-names-ex2}
+#| warning: false
+#| message: false
+#| echo: false
+
+names(imd)
+```
+
+To tidy up the column names of the **IMD data** we recommend using the janitor package and the `clean_names()` function. Examples can be found on [this blog post](https://rpubs.com/jenrichmond/clean_names){target="_blank"} or on in [package documentation](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#clean-dataframe-names-with-clean_names){target="_blank"}. This makes the column names more R friendly which will make working with the dataset easier. 
+
+The health dataset already has R friendly column names so we do not need to change that. 
 
 # Some weird stuff is happening in the heights and weights columns...{#sec-fixcols}
 
