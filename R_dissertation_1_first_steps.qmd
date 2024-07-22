@@ -268,7 +268,7 @@ hist(family_data$family_bmi,
 To make a data frame we can use the `data.frame()` function. Simply add the vectors you made for names, height, weight, and bmi. Remember to assign your data frame to a name such as `family_data <- data.frame(family_names, ...)`. 
 
 ## Hint 2
-To save the csv file we recommend you use the `write.csv()`function. To find out more information on how to use this function either type `?write.csv` or search for it in the help menu which is in the bottom right panel in RStudio. The function needs two elements, the data you want to write, and the file plus extension. For example, if our dataset was called my_data then we could do `write.csv(my_data, "my_data.csv)`. 
+To save the csv file we recommend you use the `write.csv()`function. To find out more information on how to use this function either type `?write.csv` or search for it in the help menu which is in the bottom right panel in RStudio. The function needs two elements, the data you want to write, and the file plus extension. For example, if our dataset was called my_data then we could do `write.csv(my_data, "my_data.csv")`. 
 
 ## Hint 3
 We saved our file without row names. To do this you need to add an argument to the `write.csv()` function. Have a look at the help page, particularly the examples section at the bottom, to see if you can figure out how to do this. 
