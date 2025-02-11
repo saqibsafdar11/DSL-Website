@@ -1,5 +1,5 @@
 ---
-title: "Digital Skills Lab R workshops"
+title: "Digital Skills Lab workshops"
 #image: images/DigitalSkillsLab.png
 #about:
   #template: marquee

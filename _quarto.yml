@@ -6,7 +6,7 @@ project:
   - webr-worker.js
 
 website:
-  title: "Learning R at the DSL"
+  title: "Learning Data Science at the DSL"
   search: true
   reader-mode: true
   favicon: "images/colourful_flora.png"
