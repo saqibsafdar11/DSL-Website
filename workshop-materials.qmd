@@ -2,7 +2,7 @@
 title: "Information about the workshops and how to get the materials"
 ---
 
-## Workshop format
+## Workshop formatxxxxxx
 
 *   Each workshop is 2 hours long
 *   You choose which topic to work on. It is advised to work through the materials in the prescribed order unless you are already familiar with a particular topic
