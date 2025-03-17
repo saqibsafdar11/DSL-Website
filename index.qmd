@@ -14,7 +14,7 @@ title: "Digital Skills Resources"
 #      href: https://apps.lse.ac.uk/training-system/userBooking/course/9774459
 ---
 
-This website provides and introduction to the R workshops run by the Digital Skills Lab (DSL) at LSE. You can navigate this website using the top bar menu, where you can find information about:
+This sss   website provides and introduction to the R workshops run by the Digital Skills Lab (DSL) at LSE. You can navigate this website using the top bar menu, where you can find information about:
 
 -   Why R is a popular programming language and why you should learn it
 
