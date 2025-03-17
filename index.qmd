@@ -20,15 +20,6 @@ This website provides and introduction to the R workshops run by the Digital Ski
 
 -   How to install R and RStudio on to your own laptops
 
--   Information about the workshops which includes download links
-
--   How to get started with the workshops materials
-
--   Materials for dissertation workshops
-
--   Frequently asked questions about the workshops and R
-
--   A testing ground for playing around with R where you can run R through this website
 
 For support email the use at Digital.Skills.Lab\@lse.ac.uk.
 
